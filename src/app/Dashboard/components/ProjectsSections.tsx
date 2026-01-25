@@ -5,7 +5,7 @@ const cardData = [
     {
     title: "Smart Pig Management",
     status: "Personal Project",
-    images: ["/images/Smartpig0.jpg", "/images/Smartpig1.png", "/images/Smartpig2.png", "/images/Smartpig3.png", "/images/Smartpig4.png" , "/images/Smartpig5.png", "/images/Smartpig6.png",],
+    images: ["/images/SmartPig0.jpg", "/images/SmartPig1.png", "/images/SmartPig2.png", "/images/SmartPig3.png", "/images/SmartPig4.png" , "/images/SmartPig5.png", "/images/SmartPig6.png",],
     video: "/images/SmartPigVid2.mp4",
     description: "A mobile and IoT-based system that enables farmers to track individual pigs using QR codes. Integrated with ESP32, DHT22, and water level sensors, the system monitors temperature and humidity, provides real-time mobile notifications when thresholds are exceeded, and allows farmers to manually activate a water sprinkler through the mobile app. The platform also includes an in-app chatbot for support. Video available — click the card to view the demo.",
     tools: ["Kotlin", "XML", "Firebase", "Python (FastAPI)", "ESP32", "DHT22", ]
