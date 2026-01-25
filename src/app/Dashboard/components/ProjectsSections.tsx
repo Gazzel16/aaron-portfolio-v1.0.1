@@ -71,7 +71,7 @@ const cardData = [
     status: "Client's Project",
     images: ["/images/e-learning1.png", "/images/e-learning2.png", "/images/e-learning3.png",],
     description: "An educational app designed for children 8 years and older to learn the alphabet. Kids can practice tracing letters, improving their writing skills and letter recognition through interactive exercises. The app gamifies learning with stages, rewarding progress with stars for completed tasks. Available on the Play Store for easy access.   https://play.google.com/store/apps/details?id=com.punptayugcampus.e_learninggameapptest",
-    tools: ["Java", "Xml", "Canva"]
+    tools: ["Java", "Xml", "Canva", "Playstore"]
   }
 ];
 
