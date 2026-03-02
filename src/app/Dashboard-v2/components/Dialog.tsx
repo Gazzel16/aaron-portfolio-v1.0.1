@@ -65,10 +65,10 @@ export default function RoleDialog({
       >
         <DialogHeader>
           <DialogTitle className="text-center text-xl font-bold">
-            Welcome!
+            Who are you?
           </DialogTitle>
           <p className="text-sm text-muted-foreground text-center">
-            Please set up your profile to continue.
+            Response received. Much appreciated!
           </p>
         </DialogHeader>
 

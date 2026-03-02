@@ -40,7 +40,7 @@ const initialState: RoleState = {
 
 // Async thunks
 export const fetchRoles = createAsyncThunk("roles/fetchRoles", async () => {
-  const response = await api.get<Role[]>("/api/role"); // your FastAPI endpoint
+  const response = await api.get<Role[]>("/api/role/"); // your FastAPI endpoint
   return response.data;
 });
 
