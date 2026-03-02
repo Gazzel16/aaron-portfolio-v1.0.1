@@ -68,7 +68,7 @@ export default function RoleDialog({
             Who are you?
           </DialogTitle>
           <p className="text-sm text-muted-foreground text-center">
-            Response received. Much appreciated!
+            Help us get to know you better by answering this survey!
           </p>
         </DialogHeader>
 
