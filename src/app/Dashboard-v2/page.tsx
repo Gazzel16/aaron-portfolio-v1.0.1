@@ -52,6 +52,13 @@ function DashboardV2Page() {
   const [role, setRole] = useState<string | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(true);
 
+  const [userName, setUserName] = useState<string>("");
+  const handleDialogConfirm = (name: string) => {
+    setUserName(name); // Store the name
+    setIsDialogOpen(false); // Close the dialog
+    console.log("Profile Setup:", { role, name });
+  };
+
   return (
     <div className="max-w-4xl mx-auto p-6 space-y-12">
       {/* WELCOME */}
@@ -60,12 +67,14 @@ function DashboardV2Page() {
         onSelect={setRole}
         open={isDialogOpen}
         setOpen={setIsDialogOpen}
+        onConfirm={handleDialogConfirm}
       />
       <div className="fixed top-6 right-6 z-50 rounded-md border border-gray-800 bg-gray-700 px-4 py-2 shadow-lg">
         <p className="flex items-center gap-3 text-sm font-medium text-white">
           <Settings2 className="h-4 w-4" />
           <span>
-            Welcome: <span className="font-bold">{role}</span>
+            <span className="font-bold">Welcome {role}:</span>{" "}
+            <span className="italic">{userName}</span>
           </span>
         </p>
       </div>
