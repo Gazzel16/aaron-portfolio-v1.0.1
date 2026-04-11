@@ -116,7 +116,7 @@ export default function Project({ proj }: ProjectProps) {
 
               {/* 🔹 STACKS */}
               <div className="flex flex-wrap gap-1 pt-1">
-                {stacks?.slice(0, 4).map((tech, index) => (
+                {stacks?.map((tech, index) => (
                   <span
                     key={index}
                     className="text-[10px] px-2 py-[2px] rounded-md bg-zinc-100 text-zinc-600"
