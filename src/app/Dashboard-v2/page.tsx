@@ -62,13 +62,13 @@ function DashboardV2Page() {
   return (
     <div className="max-w-4xl mx-auto p-6 space-y-12">
       {/* WELCOME */}
-      <RoleDialog
+      {/* <RoleDialog
         selected={role}
         onSelect={setRole}
         open={isDialogOpen}
         setOpen={setIsDialogOpen}
         onConfirm={handleDialogConfirm}
-      />
+      /> */}
       <div className="fixed top-6 right-6 z-50 rounded-md border border-gray-800 bg-gray-700 px-4 py-2 shadow-lg">
         <p className="flex items-center gap-3 text-sm font-medium text-white">
           <Settings2 className="h-4 w-4" />
