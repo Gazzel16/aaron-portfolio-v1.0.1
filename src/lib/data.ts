@@ -37,30 +37,52 @@ export const work1 = {
   title: "Service Crew",
   company: "Mcdonalds",
   date: "August 2024 - March 2025",
+  details: ["Delivered customer service in a fast-paced environment Managed food preparation and order fulfillment Developed teamwork, communication, and time management skillss"]
 };
 
 export const work2 = {
   title: "Android Developer",
   company: "Certicode | Intern | Remote",
   date: "September 2025 – December 2025",
+  details:[
+    "Supported development of mobile features and debugging Worked with Kotlin, Android Studio, and UI frameworks",
+    " Trained in Git and GitHub under senior mentorship, with a focus on professional-grade version control, code integrity, and collaborative workflows"
+  ]
 };
 
 export const work3 = {
   title: "Fullstack Developer",
   company: "Freelance | Remote",
-  date: "Current",
+  date: "October 2024 - Current",
+  details: [
+    "I am a freelance developer specializing in student capstone project prototyping, offering both software and hardware solutions on a commission basis. I help turn project ideas into fully functional systems, integrating frontends, backends, databases, APIs, and hardware components like microcontrollers, sensors, and IoT devices for seamless operation.",
+    "Developed an E-Learning Game App for children aged 7 and above, featuring multiple-choice quizzes and tracing exercises for numbers and letters. Built using Java/XML with local data storage via Shared Preferences, the app is lightweight and easy to use. Available on Google Play Store ",
+    "Developed IcomDeaf, a web application for deaf students and teachers to learn and practice sign language. Teachers can upload instructional materials, and students can review and practice live using AI-powered recognition with Mediapipe, OpenCV, Python FastAPI, and an HTML5 frontend.",
+    "Developed Smart Fire Monitoring, an IoT system using ESP32, MQ2, DHT22, and fire sensors to track smoke, temperature, and humidity. Integrated with a Java/XML Android app using Firebase RTDB and Cloud Messaging for real-time alerts, secure authentication, and backend management via Python FastAPI.",
+    "Developed Smart Pig, an IoT system using ESP32 and sensors to monitor humidity, temperature, and water levels. Integrated with a mobile app for real-time analytics, remote water pump control, QR code management for cages and pigs, Firebase notifications, and Python FastAPI for API handling and token management, with Gemini AI for intelligent insights.",
+    "Developed a Rental Management App with three roles—Tenant, Landlord, and Admin—featuring AI-powered search with Gemini and FAISS, Google Maps integration, a Python FastAPI backend, and an Android frontend using Kotlin/XML for a seamless user experience.",
+  ]
 };
 
 export const work4 = {
   title: "Fullstack Web Developer",
   company: "Fetti (startup) | Intern | Remote",
-  date: "Current",
+  date: "October 2025 - Current",
+  details:[
+    "Developed and maintained backend APIs using Node.js, Express, and TypeScript in a startup environment Integrated backend services with frontend via React Query to enable real-time, dynamic data flow Collaborated with React developers to ensure seamless UX through efficient API consumption Contributed to schema design, API documentation, and cloud deployment of backend services ",
+    "Gained hands-on experience in a fast-paced internship environment, using Git for collaborative version control. Partnered with fellow interns to implement a standardized branching strategy, ensuring code quality and consistency across multiple concurrent workstreams"
+  ]
 };
 
 export const work5 = {
   title: "Fullstack Developer",
   company: "FMC Research Solution Inc. | Intern | Onsite",
-  date: "Current",
+  date: "December 2025 - Current",
+  details:[
+    "Responsible for the maintenance and enhancement of a Human Resource Information System (HRIS) application designed for efficient employee management. The application is built using PHP Laravel for backend operations and Next.js for the frontend, providing a seamless and responsive user experience. The system is containerized using Docker, ensuring consistent deployment across development, testing, and production environments. Key responsibilities include managing employee records, attendance, payroll integrations, and role-based access controls, while optimizing performance, ensuring system security, and implementing feature updates.",
+    "Collaborated with a development team to engineer an inventory management system using FastAPI and Next.js with Shadcn UI, specifically developing backend APIs and frontend integrations for bulk CSV uploads, automated report exports, and a dynamic query builder with functional filtering",
+    "Developed a secure login module for a Human Resource Information System (HRIS) using Kotlin and Jetpack Compose, with Room Database for local storage and Bcrypt password hashing and salting for secure authentication."
+  ]
 };
 
 export const tech1 = {
@@ -169,9 +191,13 @@ export const project2 = {
     "/images/muntirent6.png",
     "/images/muntirent7.png",
   ],
-  video: "/images/munti-rent-vid1.mp4",
+  video: [
+    "/images/munti-rent-vid1.mp4",
+    "/images/munti-rent-vid2.mp4",
+    "/images/munti-rent-vid3.mp4",
+  ],
   description:
-    "Munti Rent: Finder is a mobile app platform that allows landlords to post their properties and tenants to easily rent them. The app features an AI-powered search engine and a chatbot to help users find suitable properties and answer questions instantly. Video available — click the card to view the demo",
+    "Munti Rent: Finder is a mobile app that connects landlords and tenants, making it easy to post, find, and rent properties. It features an AI-powered search, an instant chatbot, video call for virtual viewings, and location sharing in chat for easier meet-ups. Video available — click the card to view the demo.",
   stacks: [
     "Kotlin",
     "XML",
@@ -259,7 +285,14 @@ export const project5 = {
     "/images/e-learning3.png",
   ],
   description:
-    "An educational app designed for children 8 years and older to learn the alphabet. Kids can practice tracing letters, improving their writing skills and letter recognition through interactive exercises. The app gamifies learning with stages, rewarding progress with stars for completed tasks. Available on the Play Store for easy access.   https://play.google.com/store/apps/details?id=com.punptayugcampus.e_learninggameapptest",
+    "An educational app designed for children 8 years and older to learn the alphabet. Kids can practice tracing letters, improving their writing skills and letter recognition through interactive exercises. The app gamifies learning with stages, rewarding progress with stars for completed tasks. Available on the Play Store for easy access.",
+
+  links: [
+    {
+      label: "View on Play Store",
+      href: "https://play.google.com/store/apps/details?id=com.punptayugcampus.e_learninggameapptest"
+    }
+  ],
   stacks: ["Java", "Xml", "Canva", "Playstore"],
 };
 

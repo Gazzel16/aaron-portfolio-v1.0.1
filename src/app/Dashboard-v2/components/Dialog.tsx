@@ -43,19 +43,19 @@ export default function RoleDialog({
     { id: "Viewer", label: "Viewer", icon: Eye },
   ];
 
-  const handleConfirm = async () => {
-    if (!selected || name.trim().length < 2) return;
+  const handleConfirm = () => {
+  if (!selected || name.trim().length < 2) return;
 
-    try {
-      await dispatch(
-        createRole({ name: name.trim(), role: selected.toLowerCase() }),
-      ).unwrap();
-      setOpen(false);
-      setName("");
-    } catch (err) {
-      console.error("Failed to create role:", err);
-    }
-  };
+  onConfirm(name.trim()); 
+
+  dispatch(
+    createRole({ name: name.trim(), role: selected.toLowerCase() })
+  ).catch((err) => {
+    console.error("Failed to create role:", err);
+  });
+
+  setName("");
+};
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent
@@ -137,10 +137,10 @@ export default function RoleDialog({
         <DialogFooter>
           <Button
             className="w-full h-11 text-md font-medium"
-            disabled={!selected || name.trim().length < 2 || loading}
+            disabled={!selected || name.trim().length < 2}
             onClick={handleConfirm}
           >
-            {loading ? "Creating..." : "Get Started"}
+            Get Started
           </Button>
         </DialogFooter>
       </DialogContent>

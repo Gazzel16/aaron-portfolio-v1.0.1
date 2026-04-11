@@ -28,6 +28,10 @@ interface AboutProps {
 export default function About({ data }: AboutProps) {
   if (!data) return null;
 
+  const handleEmailClick = () => {
+    window.location.href = "mailto:aaron.dev2898@gmail.com";
+  };
+
   return (
     <div className="max-w-4xl mx-auto p-6 md:p-12 font-sans bg-background text-foreground">
       {/* Header Section */}
@@ -67,8 +71,25 @@ export default function About({ data }: AboutProps) {
               variant="outline"
               className="border border-gray-200 bg-white dark:bg-zinc-100 dark:text-black hover:bg-gray-100 text-black rounded-lg px-6 shadow-sm"
             >
-              <Link href="https://www.linkedin.com/in/aaron-mercado-163b02369/" target="_blank">
+              <Link
+                href="https://www.linkedin.com/in/aaron-mercado-163b02369/"
+                target="_blank"
+              >
                 LinkedIn
+              </Link>
+            </Button>
+
+            <Button
+              asChild
+              variant="outline"
+              className="border border-gray-200 bg-white dark:bg-zinc-100 dark:text-black hover:bg-gray-100 text-black rounded-lg px-6 shadow-sm"
+            >
+              <Link
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=aaron.dev2898@gmail.com"
+                target="_blank"
+              >
+                <Mail className="w-4 h-4" />
+                Email
               </Link>
             </Button>
 
@@ -76,14 +97,9 @@ export default function About({ data }: AboutProps) {
               variant="outline"
               className="border border-gray-200 bg-white dark:bg-zinc-100 dark:text-black hover:bg-gray-100 text-black rounded-lg px-6 shadow-sm"
             >
-              Github
-            </Button>
-
-            <Button
-              variant="outline"
-              className="border border-gray-200 bg-white dark:bg-zinc-100 dark:text-black hover:bg-gray-100 text-black rounded-lg px-6 shadow-sm"
-            >
-              Facebook
+              <Link href="https://github.com/Gazzel16" target="_blank">
+                Github
+              </Link>
             </Button>
           </div>
         </div>
