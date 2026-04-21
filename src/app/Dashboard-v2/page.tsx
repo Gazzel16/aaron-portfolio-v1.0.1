@@ -4,8 +4,7 @@ import Academic from "./components/Acedemic";
 import Work from "./components/Work";
 import Tech from "./components/Tech";
 import Project from "./components/Project";
-import HappyClients from "./components/HappyClient";
-import RoleDialog from "./components/Dialog";
+import Certificate from "./components/certificates";
 // Import your data objects
 import {
   aboutData,
@@ -33,9 +32,12 @@ import {
   happyClient1Project1,
   happyClientProject2,
   happyClientProject3,
+  certificate1,
+  certificate2
 } from "@/lib/data";
 import { useState } from "react";
 import { Settings2 } from "lucide-react";
+import FloatingNav from "./components/FloatingNav";
 
 function DashboardV2Page() {
   // 1. Combine individual objects into a sorted array (Newest first)
@@ -48,6 +50,7 @@ function DashboardV2Page() {
     happyClientProject2,
     happyClientProject3,
   ];
+  const certificateData = [certificate1, certificate2];
 
   const [role, setRole] = useState<string | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(true);
@@ -59,35 +62,36 @@ function DashboardV2Page() {
     console.log("Profile Setup:", { role, name });
   };
 
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      const offset = 100; // Adjust this based on your navbar height
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = element.getBoundingClientRect().top;
+      const elementPosition = elementRect - bodyRect;
+      const offsetPosition = elementPosition - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <div className="max-w-4xl mx-auto p-6 space-y-12">
-      {/* WELCOME */}
-      {/* <RoleDialog
-        selected={role}
-        onSelect={setRole}
-        open={isDialogOpen}
-        setOpen={setIsDialogOpen}
-        onConfirm={handleDialogConfirm}
-      /> */}
-      <div className="fixed top-6 right-6 z-50 rounded-md border border-gray-800 bg-gray-700 px-4 py-2 shadow-lg">
-        <p className="flex items-center gap-3 text-sm font-medium text-white">
-          <Settings2 className="h-4 w-4" />
-          <span>
-            <span className="font-bold">Welcome {role}:</span>{" "}
-            <span className="italic">{userName}</span>
-          </span>
-        </p>
-      </div>
+ 
+     <FloatingNav />
 
       {/* Profile/About Section */}
-      <section>
+      <section id="about">
         <About data={aboutData} />
       </section>
 
       <div className="my-12 border-b border-border/60 border-gray-500" />
 
       {/* Academic/Education Section */}
-      <section className="mt-10">
+      <section className="mt-10" id="education">
         <h2 className="text-xl font-bold text-zinc-900 mb-6 px-4 border-l-4 border-blue-500">
           Education
         </h2>
@@ -102,7 +106,7 @@ function DashboardV2Page() {
       <div className="my-12 border-b border-border/60 border-gray-500" />
 
       {/* Work Section */}
-      <section className="mt-10">
+      <section className="mt-10" id="work">
         <h2 className="text-xl font-bold text-zinc-900 mb-6 px-4 border-l-4 border-blue-500">
           Work Experience
         </h2>
@@ -117,7 +121,7 @@ function DashboardV2Page() {
       <div className="my-12 border-b border-border/60 border-gray-500" />
 
       {/* Tech Stack Grid */}
-      <section>
+      <section id="stacks">
         <h2 className="text-xl font-bold mb-4">Technical Stack</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {techData.map((item, index) => (
@@ -128,7 +132,7 @@ function DashboardV2Page() {
 
       <div className="my-12 border-b border-border/60 border-gray-500" />
 
-      <section>
+      <section id="projects">
         <h2 className="text-xl font-bold">Recent Projects</h2>
         <h4 className="mb-4 text-sm italic text-gray-500">
           While I contributed to several key initiatives during my internship, I
@@ -153,6 +157,19 @@ function DashboardV2Page() {
           ))}
         </div>
       </section> */}
+      <div className="my-12 border-b border-border/60 border-gray-500" />
+      <section id="certs">
+        <h2 className="text-xl font-bold text-zinc-900 mb-6 px-4 border-l-4 border-blue-500">
+          Certificates
+        </h2>
+        <div className="grid grid-cols-1 gap-4">
+          {certificateData.map((item, index) => (
+            <Certificate key={index} cert={item} />
+          ))}
+        </div>
+      </section>
+
+
       <div className="my-12 border-b border-border/60 border-gray-500" />
 
       <div className="flex items-center justify-center w-full italic">

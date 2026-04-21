@@ -325,3 +325,21 @@ export const happyClientProject3 = {
   description:"From Smart Fire Monitoring"
 
 };
+
+/** Certificates */
+
+export const certificate1 = {
+  title: "Certicode",
+  role: "Android Developer",
+  date: "September 2025 to January 2026",
+  // Try this if the file is named "certificate-certicode.jpg" in your folder
+  image: "/images/certificate-certicode.jpg" 
+};
+
+export const certificate2 = {
+  title: "Fetti",
+  role: "Web Fullstack Developer",
+  date: "September 2025 to January 2026",
+  // Try this if the file is named "certificate-fetti.webp" in your folder
+  image: "/images/certificate-fetti.webp"
+};
