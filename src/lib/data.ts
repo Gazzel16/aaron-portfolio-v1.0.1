@@ -3,7 +3,7 @@ export const aboutData = {
   avatar: "/images/aaron1.jpg",
   verified: true,
   location: "Metro Manila, Philippines",
-  roles: ["Full stack", "Software Developer"],
+  roles: ["Full Stack Developer", "Software Developer"],
   bio: [
     "I am a Software Developer dedicated to architecting and developing high-impact technical solutions. My approach focuses on bridging the gap between complex requirements and functional, user-centric applications. With a strong foundation in modern development practices, I strive to build software that is both scalable and efficient, regardless of the platform.",
     "While completing my studies, I established myself as a technical freelancer, specializing in end-to-end development for student capstone projects. I have successfully delivered diverse solutions ranging from Web and Mobile applications to integrated Hardware (IoT) systems. This experience allowed me to act as both a lead developer and a technical consultant, turning conceptual academic requirements into fully operational prototypes.",
@@ -37,17 +37,19 @@ export const work1 = {
   title: "Service Crew",
   company: "Mcdonalds",
   date: "August 2024 - March 2025",
-  details: ["Delivered customer service in a fast-paced environment Managed food preparation and order fulfillment Developed teamwork, communication, and time management skillss"]
+  details: [
+    "Delivered customer service in a fast-paced environment Managed food preparation and order fulfillment Developed teamwork, communication, and time management skillss",
+  ],
 };
 
 export const work2 = {
   title: "Android Developer",
   company: "Certicode | Intern | Remote",
-  date: "September 2025 – December 2025",
-  details:[
+  date: "September 2025 – January 2025",
+  details: [
     "Supported development of mobile features and debugging Worked with Kotlin, Android Studio, and UI frameworks",
-    " Trained in Git and GitHub under senior mentorship, with a focus on professional-grade version control, code integrity, and collaborative workflows"
-  ]
+    " Trained in Git and GitHub under senior mentorship, with a focus on professional-grade version control, code integrity, and collaborative workflows",
+  ],
 };
 
 export const work3 = {
@@ -61,28 +63,28 @@ export const work3 = {
     "Developed Smart Fire Monitoring, an IoT system using ESP32, MQ2, DHT22, and fire sensors to track smoke, temperature, and humidity. Integrated with a Java/XML Android app using Firebase RTDB and Cloud Messaging for real-time alerts, secure authentication, and backend management via Python FastAPI.",
     "Developed Smart Pig, an IoT system using ESP32 and sensors to monitor humidity, temperature, and water levels. Integrated with a mobile app for real-time analytics, remote water pump control, QR code management for cages and pigs, Firebase notifications, and Python FastAPI for API handling and token management, with Gemini AI for intelligent insights.",
     "Developed a Rental Management App with three roles—Tenant, Landlord, and Admin—featuring AI-powered search with Gemini and FAISS, Google Maps integration, a Python FastAPI backend, and an Android frontend using Kotlin/XML for a seamless user experience.",
-  ]
+  ],
 };
 
 export const work4 = {
   title: "Fullstack Web Developer",
   company: "Fetti (startup) | Intern | Remote",
-  date: "October 2025 - Current",
-  details:[
+  date: "September 2025 - April 2026",
+  details: [
     "Developed and maintained backend APIs using Node.js, Express, and TypeScript in a startup environment Integrated backend services with frontend via React Query to enable real-time, dynamic data flow Collaborated with React developers to ensure seamless UX through efficient API consumption Contributed to schema design, API documentation, and cloud deployment of backend services ",
-    "Gained hands-on experience in a fast-paced internship environment, using Git for collaborative version control. Partnered with fellow interns to implement a standardized branching strategy, ensuring code quality and consistency across multiple concurrent workstreams"
-  ]
+    "Gained hands-on experience in a fast-paced internship environment, using Git for collaborative version control. Partnered with fellow interns to implement a standardized branching strategy, ensuring code quality and consistency across multiple concurrent workstreams",
+  ],
 };
 
 export const work5 = {
   title: "Fullstack Developer",
-  company: "FMC Research Solution Inc. | Intern | Onsite",
-  date: "December 2025 - Current",
-  details:[
+  company: "FMC Research Solution Inc. | Intern | Onsite | Mandaluyong City",
+  date: "December 2025 - April 2026",
+  details: [
     "Responsible for the maintenance and enhancement of a Human Resource Information System (HRIS) application designed for efficient employee management. The application is built using PHP Laravel for backend operations and Next.js for the frontend, providing a seamless and responsive user experience. The system is containerized using Docker, ensuring consistent deployment across development, testing, and production environments. Key responsibilities include managing employee records, attendance, payroll integrations, and role-based access controls, while optimizing performance, ensuring system security, and implementing feature updates.",
     "Collaborated with a development team to engineer an inventory management system using FastAPI and Next.js with Shadcn UI, specifically developing backend APIs and frontend integrations for bulk CSV uploads, automated report exports, and a dynamic query builder with functional filtering",
-    "Developed a secure login module for a Human Resource Information System (HRIS) using Kotlin and Jetpack Compose, with Room Database for local storage and Bcrypt password hashing and salting for secure authentication."
-  ]
+    "Developed a secure login module for a Human Resource Information System (HRIS) using Kotlin and Jetpack Compose, with Room Database for local storage and Bcrypt password hashing and salting for secure authentication.",
+  ],
 };
 
 export const tech1 = {
@@ -290,10 +292,55 @@ export const project5 = {
   links: [
     {
       label: "View on Play Store",
-      href: "https://play.google.com/store/apps/details?id=com.punptayugcampus.e_learninggameapptest"
-    }
+      href: "https://play.google.com/store/apps/details?id=com.punptayugcampus.e_learninggameapptest",
+    },
   ],
   stacks: ["Java", "Xml", "Canva", "Playstore"],
+};
+
+export const project6 = {
+  title: "EcoConnect",
+  status: "Personal",
+  image: [
+    "/images/Ecoconnect1.png",
+    "/images/Ecoconnect2.png",
+    "/images/Ecoconnect3.png",
+    "/images/Ecoconnect4.jpg",
+    "/images/Ecoconnect5.jpg",
+    "/images/Ecoconnect6.jpg",
+    "/images/Ecoconnect7.jpg",
+    "/images/Ecoconnect8.jpg",
+    "/images/Ecoconnect9.jpg",
+    "/images/Ecoconnect10.jpg",
+    "/images/Ecoconnect11.png",
+    "/images/Ecoconnect12.png",
+  ],
+  links: [
+    {
+      label: "Demo video (Google Drive)",
+      href: "https://drive.google.com/drive/folders/1xgrUp5gEpLLz07MNLLYyjwlJtBfo0G1i?usp=sharing",
+    },
+  ],
+  description:
+    "EcoConnect is an IoT-integrated mobile application designed for smart farming. It enables users to manage plants, monitor farm environmental conditions, remotely control water pumps, view pump activity logs, and receive AI-powered suggestions through a chatbot. The system also includes an admin panel for user registration and ESP32 device management, making farm operations smarter and more efficient.",
+  stacks: [
+    "Kotlin",
+    "Jetpack Compose",
+    "Room Database",
+    "MUI3",
+    "Python FastAPI",
+    "MySQL",
+    "ESP32",
+    "DHT22",
+    "Soil Moisture Sensor",
+    "HW-038 Water Level Sensor",
+    "Resistor",
+    "Water Pump",
+    "Gemini AI",
+    "Next.js",
+    "Redux",
+    "ShadCN UI"
+  ],
 };
 
 export const happyClient1Project1 = {
@@ -302,8 +349,7 @@ export const happyClient1Project1 = {
     "/images/happy-client2-project1.jpg",
     "/images/happy-client3-project1.png",
   ],
-  description:"From E-Learning game app"
-
+  description: "From E-Learning game app",
 };
 
 export const happyClientProject2 = {
@@ -311,8 +357,7 @@ export const happyClientProject2 = {
     "/images/happy-client1-project2.png",
     "/images/happy-client2-project2.png",
   ],
-  description:"From MuntiRent Finder"
-
+  description: "From MuntiRent Finder",
 };
 
 export const happyClientProject3 = {
@@ -320,8 +365,31 @@ export const happyClientProject3 = {
     "/images/happy-client1-project3.png",
     "/images/happy-client2-project3.png",
     "/images/happy-client3-project3.png",
-    "/images/happy-client4-project3.png"
+    "/images/happy-client4-project3.png",
   ],
-  description:"From Smart Fire Monitoring"
+  description: "From Smart Fire Monitoring",
+};
 
+/** Certificates */
+
+export const certificate1 = {
+  title: "Certicode",
+  role: "Android/Mobile Developer",
+  date: "September 2025 to January 2026",
+  image: "/images/certificate-certicode.jpg",
+};
+
+export const certificate2 = {
+  title: "Fetti",
+  role: "Full Stack Web Developer",
+  date: "September 2025 to April 2026",
+
+  image: "/images/certificate-fetti.webp",
+};
+
+export const certificate3 = {
+  title: "FMC Research Solution Inc.",
+  role: "Full Stack Developer",
+  date: "December 2025 to April 2026",
+  image: "/images/certificate-fmc.jpg",
 };
