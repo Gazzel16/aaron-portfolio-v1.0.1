@@ -53,7 +53,7 @@ export const work2 = {
 };
 
 export const work3 = {
-  title: "Fullstack Developer",
+  title: "Full Stack Developer",
   company: "Freelance | Remote",
   date: "October 2024 - Current",
   details: [
@@ -67,7 +67,7 @@ export const work3 = {
 };
 
 export const work4 = {
-  title: "Fullstack Web Developer",
+  title: "Full Stack Web Developer",
   company: "Fetti (startup) | Intern | Remote",
   date: "September 2025 - April 2026",
   details: [
@@ -77,7 +77,7 @@ export const work4 = {
 };
 
 export const work5 = {
-  title: "Fullstack Developer",
+  title: "Full Stack Developer",
   company: "FMC Research Solution Inc. | Intern | Onsite | Mandaluyong City",
   date: "December 2025 - April 2026",
   details: [
@@ -86,6 +86,12 @@ export const work5 = {
     "Developed a secure login module for a Human Resource Information System (HRIS) using Kotlin and Jetpack Compose, with Room Database for local storage and Bcrypt password hashing and salting for secure authentication.",
   ],
 };
+
+export const work6 = {
+  title: "Full Stack Developer",
+  company: "B1G Corporation | Fulltime | Onsite | Muntinlupa City",
+  date: "May 2026 - Current",
+}
 
 export const tech1 = {
   title: "Android Development",

@@ -17,6 +17,7 @@ import {
   work3,
   work4,
   work5,
+  work6,
   tech1,
   tech2,
   tech3,
@@ -44,7 +45,7 @@ import FloatingNav from "./components/FloatingNav";
 function DashboardV2Page() {
   // 1. Combine individual objects into a sorted array (Newest first)
   const educationData = [acedmic4, acedmic3, acedmic2, acedmic1];
-  const workData = [work1, work2, work3, work4, work5];
+  const workData = [work1, work2, work3, work4, work5, work6];
   const techData = [tech1, tech2, tech3, tech4, tech5, tech6, tech7];
   const projectData = [project6,project1, project2, project3, project4, project5];
   const happyClientData = [
