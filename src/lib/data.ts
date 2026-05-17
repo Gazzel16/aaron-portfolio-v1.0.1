@@ -349,6 +349,20 @@ export const project6 = {
   ],
 };
 
+export const project7 = {
+  title: "AI Commission Marketer",
+  status: "Personal",
+  image: ["/images/n8n1.png", "/images/n8n2.png"],
+  description: "An automated n8n workflow leveraging OpenAI to dynamically generate conversion-focused promotional posts and auto-publish them directly to my marketing channels.",
+  links: [
+    {
+      label: "View on Telegram",
+      href: "https://t.me/+zO-KFgwu3OdkMTE1",
+    }
+  ],
+  stacks: ["n8n", "Telegram", "OpenAI"],
+}
+
 export const happyClient1Project1 = {
   image: [
     "/images/happy-client1-project1.jpg",

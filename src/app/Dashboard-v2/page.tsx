@@ -31,6 +31,7 @@ import {
   project4,
   project5,
   project6,
+  project7,
   happyClient1Project1,
   happyClientProject2,
   happyClientProject3,
@@ -47,7 +48,7 @@ function DashboardV2Page() {
   const educationData = [acedmic4, acedmic3, acedmic2, acedmic1];
   const workData = [work1, work2, work3, work4, work5, work6];
   const techData = [tech1, tech2, tech3, tech4, tech5, tech6, tech7];
-  const projectData = [project6,project1, project2, project3, project4, project5];
+  const projectData = [project7, project6, project1, project2, project3, project4, project5];
   const happyClientData = [
     happyClient1Project1,
     happyClientProject2,
