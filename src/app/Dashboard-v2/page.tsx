@@ -37,7 +37,8 @@ import {
   happyClientProject3,
   certificate1,
   certificate2,
-  certificate3
+  certificate3,
+  certificate4
 } from "@/lib/data";
 import { useState } from "react";
 import { Settings2 } from "lucide-react";
@@ -54,7 +55,7 @@ function DashboardV2Page() {
     happyClientProject2,
     happyClientProject3,
   ];
-  const certificateData = [certificate1, certificate2, certificate3];
+  const certificateData = [certificate1, certificate2, certificate3, certificate4];
 
   const [role, setRole] = useState<string | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(true);

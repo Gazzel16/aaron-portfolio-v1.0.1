@@ -91,6 +91,9 @@ export const work6 = {
   title: "Full Stack Developer",
   company: "B1G Corporation | Fulltime | Onsite | Muntinlupa City",
   date: "May 2026 - Current",
+  // details:[
+  //   ""
+  // ]
 }
 
 export const tech1 = {
@@ -412,4 +415,11 @@ export const certificate3 = {
   role: "Full Stack Developer",
   date: "December 2025 to April 2026",
   image: "/images/certificate-fmc.jpg",
+};
+
+export const certificate4 = {
+  title: "Research Colloquium 2026",
+  role: "Research Team Lead",
+  date: "August 2025 to January 2026",
+  image: "/images/certificate-research-colloquium.jpg",
 };
