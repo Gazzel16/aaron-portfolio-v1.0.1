@@ -32,13 +32,16 @@ import {
   project5,
   project6,
   project7,
+  project8,
   happyClient1Project1,
   happyClientProject2,
   happyClientProject3,
   certificate1,
   certificate2,
   certificate3,
-  certificate4
+  certificate4,
+  certificate5,
+  work7
 } from "@/lib/data";
 import { useState } from "react";
 import { Settings2 } from "lucide-react";
@@ -47,15 +50,15 @@ import FloatingNav from "./components/FloatingNav";
 function DashboardV2Page() {
   // 1. Combine individual objects into a sorted array (Newest first)
   const educationData = [acedmic4, acedmic3, acedmic2, acedmic1];
-  const workData = [work1, work2, work3, work4, work5, work6];
+  const workData = [work1, work2, work3, work4, work5, work6, work7];
   const techData = [tech1, tech2, tech3, tech4, tech5, tech6, tech7];
-  const projectData = [project7, project6, project1, project2, project3, project4, project5];
+  const projectData = [project8,project7, project6, project1, project2, project3, project4, project5];
   const happyClientData = [
     happyClient1Project1,
     happyClientProject2,
     happyClientProject3,
   ];
-  const certificateData = [certificate1, certificate2, certificate3, certificate4];
+  const certificateData = [certificate1, certificate2, certificate3, certificate4, certificate5];
 
   const [role, setRole] = useState<string | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(true);

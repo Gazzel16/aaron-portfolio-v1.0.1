@@ -9,12 +9,13 @@ interface WorkProps {
     company?: string;
     date?: string;
     details?: string[];
+    links?: { label: string; href: string }[];
   };
 }
 
 export default function Work({ work }: WorkProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const { title, company, date, details } = work;
+  const { title, company, date, details, links } = work;
 
   const handleToggle = () => setIsOpen(!isOpen);
 
@@ -56,6 +57,22 @@ export default function Work({ work }: WorkProps) {
             </li>
           ))}
         </ul>
+      )}
+      {isOpen && links && links.length > 0 && (
+        <div className="mt-3 flex flex-wrap gap-3">
+          {links.map((link, index) => (
+            <a
+              key={index}
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()} // prevents toggling the card when clicking the link
+              className="inline-flex items-center gap-1 text-xs text-blue-500 hover:underline"
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
       )}
 
       <div className="absolute left-[-17px] top-6 h-2 w-2 rounded-full bg-zinc-300 group-hover:bg-blue-500 transition-colors" />

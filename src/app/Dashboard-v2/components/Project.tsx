@@ -128,14 +128,20 @@ export default function Project({ proj }: ProjectProps) {
 
               {/* 🔹 LINK */}
               {links.length > 0 && (
-                <Link
-                  href={links[0].href}
-                  target="_blank"
-                  className="inline-flex items-center gap-1 text-xs text-blue-500 mt-2"
-                >
-                  {links[0].label}
-                  <ExternalLink className="w-3 h-3" />
-                </Link>
+                <div className="flex flex-wrap gap-3 mt-2">
+                  {links.map((link, index) => (
+                    <Link
+                      key={index}
+                      href={link.href}
+                      target="_blank"
+                      onClick={(e) => e.stopPropagation()}
+                      className="inline-flex items-center gap-1 text-xs text-blue-500 hover:underline"
+                    >
+                      {link.label}
+                      <ExternalLink className="w-3 h-3" />
+                    </Link>
+                  ))}
+                </div>
               )}
             </CardContent>
           </Card>

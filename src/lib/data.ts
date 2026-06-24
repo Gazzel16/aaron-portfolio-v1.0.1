@@ -96,6 +96,30 @@ export const work6 = {
   // ]
 }
 
+export const work7 = {
+  title: "Full WebStack WebDeveloper",
+  company: "Deepsky Nation| Contract | Freelance | Remote | Muntinlupa City",
+  date: "June 2026 - Current",
+  details: [
+    "Developed a full-stack e-commerce website for Deepsky Nation, a lifestyle brand selling T-shirts, apparel, and branded merchandise to customers online.",
+    "Built a responsive product catalog with category filtering, product detail pages, image galleries, and size/variant selection so customers can browse and shop across devices.",
+    "Implemented shopping cart and checkout flows, including order summary, customer information capture, and order confirmation for a smooth end-to-end purchase experience.",
+    "Designed and developed an admin-facing interface for managing products, inventory, pricing, and order status, giving the client control over store operations without technical support.",
+    "Integrated the storefront with the brand's social presence and marketing channels, aligning the site experience with Deepsky Nation's identity and Facebook-based customer engagement.",
+    "Delivered the project on a contract/freelance basis, working remotely with the client from requirements gathering through deployment, iteration, and post-launch support.",
+  ],
+  links: [
+    {
+      label: "Facebook Page",
+      href: "https://www.facebook.com/Deepskynation",
+    },
+    {
+      label: "Live Project ( Still on Development )",
+      href: "https://deepsky-nation-client.vercel.app",
+    },
+  ],
+}
+
 export const tech1 = {
   title: "Android Development",
   stacks: ["Java", "Kotlin", "XML", "Room Database", "Jetpack Compose"],
@@ -366,6 +390,24 @@ export const project7 = {
   stacks: ["n8n", "Telegram", "OpenAI"],
 }
 
+export const project8 = {
+  title: "Deepsky Nation",
+  status: "Freelance",
+  image: ["/images/deepsky1.png"],
+  description: "A full-stack e-commerce website for Deepsky Nation, a lifestyle brand selling T-shirts, apparel, and branded merchandise to customers online.",
+  links: [
+    {
+      label: "Facebook Page",
+      href: "https://www.facebook.com/Deepskynation",
+    },
+    { 
+      label: "Live Project ( Still on Development )",
+      href: "https://deepsky-nation-client.vercel.app",
+    },
+  ],
+  stacks: ["Next.js", "Redux", "ShadCN UI", "Tailwind CSS", "TypeScript", "Python FastAPI", "Vercel", "Render"],
+}
+
 export const happyClient1Project1 = {
   image: [
     "/images/happy-client1-project1.jpg",
@@ -423,3 +465,10 @@ export const certificate4 = {
   date: "August 2025 to January 2026",
   image: "/images/certificate-research-colloquium.jpg",
 };
+
+export const certificate5 = {
+  title: "Best Capstone Awardee",
+  role: "Research Team Lead",
+  date: "June 24, 2026",
+  image: "/images/capstone-award1.jpg",
+}
