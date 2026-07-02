@@ -97,8 +97,8 @@ export const work6 = {
 }
 
 export const work7 = {
-  title: "Full WebStack WebDeveloper",
-  company: "Deepsky Nation| Contract | Freelance | Remote | Muntinlupa City",
+  title: "Full Stack Web Developer",
+  company: "Deepsky Nation | Contract | Freelance | Remote | Muntinlupa City",
   date: "June 2026 - Current",
   details: [
     "Developed a full-stack e-commerce website for Deepsky Nation, a lifestyle brand selling T-shirts, apparel, and branded merchandise to customers online.",
@@ -392,7 +392,7 @@ export const project7 = {
 
 export const project8 = {
   title: "Deepsky Nation",
-  status: "Freelance",
+  status: "Side Project",
   image: ["/images/deepsky1.png"],
   description: "A full-stack e-commerce website for Deepsky Nation, a lifestyle brand selling T-shirts, apparel, and branded merchandise to customers online.",
   links: [
@@ -406,6 +406,20 @@ export const project8 = {
     },
   ],
   stacks: ["Next.js", "Redux", "ShadCN UI", "Tailwind CSS", "TypeScript", "Python FastAPI", "Vercel", "Render"],
+}
+
+export const project9 = {
+  title: "Voice Revive Ai",
+  status: "Personal",
+  image: ["/images/voice-revive.png"],
+  description: "I built this app to help stroke patients regain their voice. Many stroke survivors can speak, but not always clearly — this app lets them practice, one word at a time, and rebuild their confidence.",
+  links:[
+    {
+      label: "Live Project",
+      href: "https://voice-revive.vercel.app/"
+    }
+  ],
+  stacks: ["Next.js", "Redux", "ShadCN UI", "Tailwind CSS", "TypeScript", "Vercel"]
 }
 
 export const happyClient1Project1 = {
