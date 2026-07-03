@@ -1,5 +1,5 @@
 "use client";
-import About from "../Dashboard-v2/components/About";
+import About from "./components/About";
 import Academic from "./components/Acedemic";
 import Work from "./components/Work";
 import Tech from "./components/Tech";
