@@ -3,11 +3,10 @@ export const aboutData = {
   avatar: "/images/aaron1.jpg",
   verified: true,
   location: "Metro Manila, Philippines",
-  roles: ["Full Stack Developer", "Software Developer"],
+  roles: ["Full Stack Developer", "Software Engineer"],
   bio: [
-    "I am a Software Developer dedicated to architecting and developing high-impact technical solutions. My approach focuses on bridging the gap between complex requirements and functional, user-centric applications. With a strong foundation in modern development practices, I strive to build software that is both scalable and efficient, regardless of the platform.",
-    "While completing my studies, I established myself as a technical freelancer, specializing in end-to-end development for student capstone projects. I have successfully delivered diverse solutions ranging from Web and Mobile applications to integrated Hardware (IoT) systems. This experience allowed me to act as both a lead developer and a technical consultant, turning conceptual academic requirements into fully operational prototypes.",
-    "I am currently immersed in a corporate internship, where I am focused on translating my freelance and academic background into enterprise-level environments. My immediate goal is to leverage this experience to secure a full-time role as a Software Engineer within the corporate sector. I am eager to apply my technical versatility and professional growth to contribute to large-scale, impactful software development teams.",
+    "Currently working full time as a Jr. Full Stack Developer, I build and ship production-ready systems across startup projects, enterprise applications, and capstone builds. My focus is on frontend development, backend systems, and creating software that scales.",
+    "I design systems that simplify workflows, develop full-stack applications from the ground up to deployment, and automate repetitive tasks to boost efficiency. From e-commerce and inventory platforms to mobile apps, IoT systems, and AI-powered tools, I work end to end — architecture, APIs, databases, and live deployment — and guide teams from planning through successful delivery.",
   ],
 };
 
@@ -25,12 +24,14 @@ export const acedmic3 = {
   title: "Senior Highschool",
   course: "Information Computer Technology",
   school: "Muntinlupa National Highschool | 2020-2022",
+  isFeatured: true,
 };
 
 export const acedmic4 = {
   title: "College",
   course: "Bachelor of Science Information Technology",
   school: "Pamantasan ng Lungsod ng Muntinlupa | 2022-2026",
+  isFeatured: true,
 };
 
 export const work1 = {
@@ -64,6 +65,7 @@ export const work3 = {
     "Developed Smart Pig, an IoT system using ESP32 and sensors to monitor humidity, temperature, and water levels. Integrated with a mobile app for real-time analytics, remote water pump control, QR code management for cages and pigs, Firebase notifications, and Python FastAPI for API handling and token management, with Gemini AI for intelligent insights.",
     "Developed a Rental Management App with three roles—Tenant, Landlord, and Admin—featuring AI-powered search with Gemini and FAISS, Google Maps integration, a Python FastAPI backend, and an Android frontend using Kotlin/XML for a seamless user experience.",
   ],
+  isFeatured: true,
 };
 
 export const work4 = {
@@ -88,12 +90,13 @@ export const work5 = {
 };
 
 export const work6 = {
-  title: "Full Stack Developer",
+  title: "Junior Full Stack Developer",
   company: "B1G Corporation | Fulltime | Onsite | Muntinlupa City",
   date: "May 2026 - Current",
   // details:[
   //   ""
   // ]
+  isFeatured: true,
 }
 
 export const work7 = {
@@ -118,11 +121,13 @@ export const work7 = {
       href: "https://deepsky-nation-client.vercel.app",
     },
   ],
+  isFeatured: true,
 }
 
 export const tech1 = {
   title: "Android Development",
   stacks: ["Java", "Kotlin", "XML", "Room Database", "Jetpack Compose"],
+  isFeatured: true,
 };
 
 export const tech2 = {
@@ -135,11 +140,13 @@ export const tech2 = {
     "Material UI",
     "Javascript",
   ],
+  isFeatured: true,
 };
 
 export const tech3 = {
   title: "Backend Development",
   stacks: ["Python (FastAPI)", "NodeJS (Express)", "Firebase", "PHP (Laravel)"],
+  isFeatured: true,
 };
 
 export const tech4 = {
@@ -186,7 +193,7 @@ export const tech7 = {
 };
 
 export const project1 = {
-  title: "Smart Pig",
+  title: "Smart Pig - 2nd Overall, Best IT Capstone Project (2026)",
   status: "Personal",
   image: [
     "/images/SmartPig0.jpg",
@@ -196,6 +203,7 @@ export const project1 = {
     "/images/SmartPig4.png",
     "/images/SmartPig5.png",
     "/images/SmartPig6.png",
+    "/images/capstone-award1.jpg",
   ],
   video: "/images/SmartPigVid2.mp4",
   description:
@@ -212,6 +220,7 @@ export const project1 = {
     "Resistor",
     "Water Pump",
   ],
+  hasImageAndVideo: true,
 };
 
 export const project2 = {
@@ -225,6 +234,7 @@ export const project2 = {
     "/images/muntirent5.png",
     "/images/muntirent6.png",
     "/images/muntirent7.png",
+    "/images/happy-client1-project2.png",
   ],
   video: [
     "/images/munti-rent-vid1.mp4",
@@ -243,10 +253,12 @@ export const project2 = {
     "NumPy",
     "MySQL",
   ],
+  hasImageAndVideo: true,
+  logo: "/images/munti-rent-logo.png",
 };
 
 export const project3 = {
-  title: "Smart Fire Monitoring",
+  title: "Smart Fire Monitoring - Presentend in Research Colloquium (2026)",
   status: "Side Project",
   image: [
     "/images/SmartAiFireMonitoring1.png",
@@ -260,6 +272,7 @@ export const project3 = {
     "/images/SmartAiFireMonitoring7.png",
     "/images/SmartAiFireMonitoring8.png",
     "/images/SmartAiFireMonitoring9.png",
+    "/images/smart-fire-monitoring-feedback.png"
   ],
   description:
     "Smart AI-Based Fire Monitoring – A mobile app connected to IoT sensors that monitors fire, temperature, smoke, and humidity. It sends instant notifications via FCM when hazards are detected, triggers AI voice alerts, and includes a chatbot for user interaction.",
@@ -275,6 +288,8 @@ export const project3 = {
     "Gemini Ai",
     "Eleven Labs Ai",
   ],
+  hasImageAndVideo: true,
+  logo: "/images/smart-fire-monitoring-logo.jpg",
 };
 
 export const project4 = {
@@ -309,15 +324,18 @@ export const project4 = {
     "Javascript",
     "MySQL",
   ],
+  hasImageAndVideo: true,
+  logo: "/images/icom-deaf-logo.jpg",
 };
 
 export const project5 = {
-  title: "E-Learning App",
+  title: "E-Learning App - Presented in Research Conference (2025)",
   status: "Side Project",
   image: [
     "/images/e-learning1.png",
     "/images/e-learning2.png",
     "/images/e-learning3.png",
+    "/images/e-learning-feedback.png"
   ],
   description:
     "An educational app designed for children 8 years and older to learn the alphabet. Kids can practice tracing letters, improving their writing skills and letter recognition through interactive exercises. The app gamifies learning with stages, rewarding progress with stars for completed tasks. Available on the Play Store for easy access.",
@@ -329,6 +347,8 @@ export const project5 = {
     },
   ],
   stacks: ["Java", "Xml", "Canva", "Playstore"],
+  isFeatured: true,
+  logo: "/images/e-learning-logo.webp",
 };
 
 export const project6 = {
@@ -374,6 +394,8 @@ export const project6 = {
     "Redux",
     "ShadCN UI"
   ],
+  hasImageAndVideo: true,
+  logo: "/images/eco-connect-logo.jpg",
 };
 
 export const project7 = {
@@ -388,6 +410,7 @@ export const project7 = {
     }
   ],
   stacks: ["n8n", "Telegram", "OpenAI"],
+  hasImageAndVideo: true,
 }
 
 export const project8 = {
@@ -406,6 +429,9 @@ export const project8 = {
     },
   ],
   stacks: ["Next.js", "Redux", "ShadCN UI", "Tailwind CSS", "TypeScript", "Python FastAPI", "Vercel", "Render"],
+  isFeatured: true,
+  logo: "/images/deepsky-logo.png",
+  hasBackground: true,
 }
 
 export const project9 = {
@@ -419,7 +445,9 @@ export const project9 = {
       href: "https://voice-revive.vercel.app/"
     }
   ],
-  stacks: ["Next.js", "Redux", "ShadCN UI", "Tailwind CSS", "TypeScript", "Vercel"]
+  stacks: ["Next.js", "Redux", "ShadCN UI", "Tailwind CSS", "TypeScript", "Vercel"],
+  isFeatured: true,
+  logo: "/images/voice-revive-logo.png",
 }
 
 export const happyClient1Project1 = {
@@ -445,6 +473,7 @@ export const happyClientProject3 = {
     "/images/happy-client2-project3.png",
     "/images/happy-client3-project3.png",
     "/images/happy-client4-project3.png",
+    "/images/happy-client1-project2.png"
   ],
   description: "From Smart Fire Monitoring",
 };
@@ -476,13 +505,15 @@ export const certificate3 = {
 export const certificate4 = {
   title: "Research Colloquium 2026",
   role: "Research Team Lead",
-  date: "August 2025 to January 2026",
+  date: "June 2026",
   image: "/images/certificate-research-colloquium.jpg",
+  isFeatured: true,
 };
 
 export const certificate5 = {
   title: "Best Capstone Awardee",
   role: "Research Team Lead",
-  date: "June 24, 2026",
+  date: "June 2026",
   image: "/images/capstone-award1.jpg",
+  isFeatured: true,
 }

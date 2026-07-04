@@ -1,22 +1,8 @@
 "use client";
 
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import { ExternalLink, Play } from "lucide-react";
+import GlassGradientBackground from "@/components/common/GlassGradientBackground";
+import { projectHasGalleryMedia } from "@/components/common/ProjectImageGallery";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -29,163 +15,149 @@ interface ProjectProps {
     description?: string;
     stacks?: string[];
     links?: { label: string; href: string }[];
+    logo?: string;
+    isFeatured?: boolean;
+    hasBackground?: boolean;
+    hasImageAndVideo?: boolean;
   };
+  onViewImages?: () => void;
 }
 
-export default function Project({ proj }: ProjectProps) {
+export default function Project({ proj, onViewImages }: ProjectProps) {
   const [expanded, setExpanded] = useState(false);
+  const [stacksExpanded, setStacksExpanded] = useState(false);
 
   const {
     title,
     status,
     description,
     stacks,
-    image = [],
-    video = [],
     links = [],
+    logo,
+    hasBackground,
   } = proj;
 
-  const videoArray = Array.isArray(video) ? video : [video].filter(Boolean);
+  const canViewGallery = projectHasGalleryMedia(proj);
+  const visibleStacks =
+    stacksExpanded || !stacks?.length || stacks.length <= 3
+      ? stacks
+      : stacks.slice(0, 3);
+  const hasMoreStacks = (stacks?.length ?? 0) > 3;
 
-  const allMedia = [
-    ...videoArray.map((src) => ({ type: "video", src })),
-    ...image.map((src) => ({ type: "image", src })),
-  ];
+  const isDark = hasBackground === true;
+
+  const cardClass = isDark
+    ? "relative flex flex-col h-full border border-white/10 bg-zinc-950/40 backdrop-blur-xl ring-1 ring-white/5 hover:scale-[1.02] transition duration-200 rounded-xl overflow-hidden"
+    : "flex flex-col h-full border border-zinc-200 bg-white hover:scale-[1.02] transition duration-200 rounded-xl overflow-hidden";
+  const titleClass = isDark
+    ? "text-sm font-medium leading-snug text-zinc-100"
+    : "text-sm font-medium leading-snug text-zinc-800";
+  const descriptionClass = isDark
+    ? "text-sm leading-relaxed text-zinc-300"
+    : "text-sm leading-relaxed text-zinc-600";
+  const previewClass = isDark
+    ? "h-14 w-14 shrink-0 rounded-xl border border-white/10 bg-white shadow-sm"
+    : "h-14 w-14 shrink-0 rounded-xl border border-zinc-200 bg-white shadow-sm";
+  const stackClass = isDark
+    ? "rounded-lg border border-white/10 bg-white/5 px-3 py-1 font-mono text-sm text-zinc-200"
+    : "rounded-lg border border-zinc-200 bg-white px-3 py-1 font-mono text-sm text-zinc-700";
+  const linkClass = isDark
+    ? "font-mono text-xs uppercase tracking-wide text-zinc-400 transition-colors hover:text-zinc-200"
+    : "font-mono text-xs uppercase tracking-wide text-zinc-400 transition-colors hover:text-zinc-600";
+  const expandButtonClass = isDark
+    ? "mt-1 font-mono text-xs text-zinc-400 transition-colors hover:text-zinc-200"
+    : "mt-1 font-mono text-xs text-zinc-400 transition-colors hover:text-zinc-600";
 
   return (
-    <div className="group h-full flex flex-col">
-      <Dialog>
-        <DialogTrigger asChild>
-          {/* ✅ SIMPLE CARD */}
-          <Card className="flex flex-col h-full border border-zinc-200 bg-white hover:scale-[1.02] transition duration-200 rounded-xl overflow-hidden cursor-pointer">
-            {/* 🔹 SIMPLE IMAGE PREVIEW */}
-            {image[0] && (
-              <div className="w-full aspect-[4/3] overflow-hidden bg-zinc-100">
-                <img
-                  src={image[0]}
-                  alt={title}
-                  className="w-full h-full object-cover"
-                />
-              </div>
+    <div className="group m-2 flex h-full flex-col">
+      <Card className={cardClass}>
+        {isDark && <GlassGradientBackground variant="dark" />}
+
+        <CardHeader className="relative z-10 flex flex-row items-start justify-between gap-3 p-4 pb-2">
+          <div className="flex min-w-0 flex-1 items-start gap-3">
+            {logo && (
+              <img
+                src={logo}
+                alt={`${title} logo`}
+                className={`${previewClass} object-contain p-2`}
+              />
             )}
 
-            <CardHeader className="p-4 pb-2">
-              <div className="flex items-center justify-between">
-                <CardTitle className="text-sm font-semibold text-zinc-900">
-                  {title}
-                </CardTitle>
-
-                {status && (
-                  <span
-                    className={`text-[10px] px-2 py-1 rounded-md font-medium ${
-                      status.toLowerCase().includes("side")
-                        ? "bg-blue-50 text-blue-600"
-                        : status.toLowerCase().includes("personal")
-                          ? "bg-zinc-100 text-zinc-600"
-                          : "bg-zinc-100 text-zinc-500"
-                    }`}
-                  >
-                    {status}
-                  </span>
-                )}
-              </div>
-            </CardHeader>
-
-            <CardContent className="p-4 pt-0 flex flex-col flex-1 gap-2">
-              <div>
-                <p
-                  className={`text-xs text-zinc-500 leading-relaxed transition-all duration-200 ${
-                    expanded ? "" : "line-clamp-2"
-                  }`}
-                >
-                  {description}
+            <div className="flex min-w-0 flex-col gap-1">
+              <h3 className={titleClass}>{title}</h3>
+              {status && (
+                <p className="font-mono text-xs lowercase text-zinc-400">
+                  {status}
                 </p>
-
-                {description && description.length > 120 && (
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation(); // ❗ prevent dialog opening
-                      setExpanded(!expanded);
-                    }}
-                    className="text-[11px] text-blue-500 mt-1 hover:underline"
-                  >
-                    {expanded ? "Show less" : "Show more"}
-                  </button>
-                )}
-              </div>
-
-              {/* 🔹 STACKS */}
-              <div className="flex flex-wrap gap-1 pt-1">
-                {stacks?.map((tech, index) => (
-                  <span
-                    key={index}
-                    className="text-[10px] px-2 py-[2px] rounded-md bg-zinc-100 text-zinc-600"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-
-              {/* 🔹 LINK */}
-              {links.length > 0 && (
-                <div className="flex flex-wrap gap-3 mt-2">
-                  {links.map((link, index) => (
-                    <Link
-                      key={index}
-                      href={link.href}
-                      target="_blank"
-                      onClick={(e) => e.stopPropagation()}
-                      className="inline-flex items-center gap-1 text-xs text-blue-500 hover:underline"
-                    >
-                      {link.label}
-                      <ExternalLink className="w-3 h-3" />
-                    </Link>
-                  ))}
-                </div>
               )}
-            </CardContent>
-          </Card>
-        </DialogTrigger>
+            </div>
+          </div>
 
-        {/* 🔥 YOUR ORIGINAL DIALOG (UNCHANGED) */}
-        <DialogContent className="max-w-[90vw] md:max-w-4xl border-none bg-transparent p-0 shadow-none">
-          <DialogHeader className="sr-only">
-            <DialogTitle>{title} Media Gallery</DialogTitle>
-          </DialogHeader>
+          {canViewGallery && onViewImages && (
+            <button
+              type="button"
+              onClick={onViewImages}
+              className={`${linkClass} shrink-0`}
+            >
+              view gallery →
+            </button>
+          )}
+        </CardHeader>
 
-          <Carousel opts={{ align: "start", loop: true }} className="w-full">
-            <CarouselContent>
-              {allMedia.map((media, index) => (
-                <CarouselItem
-                  key={index}
-                  className="flex items-center justify-center"
-                >
-                  {media.type === "video" ? (
-                    <video
-                      src={media.src as string}
-                      controls
-                      className="max-h-[85vh] w-auto rounded-lg shadow-2xl"
-                    />
-                  ) : (
-                    <img
-                      src={media.src as string}
-                      alt={title}
-                      className="max-h-[85vh] w-auto object-contain rounded-lg shadow-2xl"
-                    />
-                  )}
-                </CarouselItem>
-              ))}
-            </CarouselContent>
+        <CardContent className="relative z-10 p-4 pt-0 flex flex-col flex-1 gap-2">
+          <div>
+            <p
+              className={`${descriptionClass} transition-all duration-200 ${
+                expanded ? "" : "line-clamp-2"
+              }`}
+            >
+              {description}
+            </p>
 
-            {allMedia.length > 1 && (
-              <>
-                <CarouselPrevious className="hidden md:flex -left-12 h-12 w-12 bg-white/20 text-white hover:bg-white/40 border-none" />
-                <CarouselNext className="hidden md:flex -right-12 h-12 w-12 bg-white/20 text-white hover:bg-white/40 border-none" />
-              </>
+            {description && description.length > 120 && (
+              <button
+                onClick={() => setExpanded(!expanded)}
+                className={expandButtonClass}
+              >
+                {expanded ? "show less" : "show more"}
+              </button>
             )}
-          </Carousel>
-        </DialogContent>
-      </Dialog>
+          </div>
+
+          <div className="flex flex-wrap gap-2 pt-1">
+            {visibleStacks?.map((tech, index) => (
+              <span key={index} className={stackClass}>
+                {tech}
+              </span>
+            ))}
+            {hasMoreStacks && (
+              <button
+                type="button"
+                onClick={() => setStacksExpanded(!stacksExpanded)}
+                className={expandButtonClass}
+              >
+                {stacksExpanded ? "show less" : "show more..."}
+              </button>
+            )}
+          </div>
+
+          {links.length > 0 && (
+            <div className="mt-2 flex flex-wrap gap-3">
+              {links.map((link, index) => (
+                <Link
+                  key={index}
+                  href={link.href}
+                  target="_blank"
+                  className={linkClass}
+                >
+                  {link.label} →
+                </Link>
+              ))}
+            </div>
+          )}
+
+        </CardContent>
+      </Card>
     </div>
   );
 }
