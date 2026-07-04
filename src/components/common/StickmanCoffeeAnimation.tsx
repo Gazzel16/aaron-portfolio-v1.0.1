@@ -163,31 +163,41 @@ export default function StickmanCoffeeAnimation({
             width="4.5"
             height="4.5"
             rx="0.75"
-            stroke="#71717a"
+            stroke="#78350f"
             strokeWidth="1.25"
-            fill="#a1a1aa"
-            fillOpacity="0.35"
+            fill="#92400e"
+            fillOpacity="0.55"
           />
           <path
             d="M36 10.5 L37.25 10.5"
-            stroke="#71717a"
+            stroke="#78350f"
             strokeWidth="1"
             strokeLinecap="round"
           />
           <g className="profile-coffee-steam">
             <path
-              d="M33 7.5 C32.5 6 34 5 33.5 3.5"
-              stroke="#d4d4d8"
-              strokeWidth="1"
+              className="profile-coffee-steam-wisp"
+              d="M33 7.5 C32.5 6 34 4.5 33.5 2.5"
+              stroke="#71717a"
+              strokeWidth="1.35"
               strokeLinecap="round"
-              opacity="0.85"
+              opacity="0.9"
             />
             <path
-              d="M35 7 C34.5 5.5 36 4.5 35.5 3"
-              stroke="#d4d4d8"
-              strokeWidth="1"
+              className="profile-coffee-steam-wisp profile-coffee-steam-wisp-delay-1"
+              d="M35 7 C34.5 5.5 36 3.5 35.5 1.5"
+              stroke="#71717a"
+              strokeWidth="1.35"
               strokeLinecap="round"
-              opacity="0.65"
+              opacity="0.75"
+            />
+            <path
+              className="profile-coffee-steam-wisp profile-coffee-steam-wisp-delay-2"
+              d="M31.5 7.25 C31 5.75 32.5 4 32 2"
+              stroke="#a1a1aa"
+              strokeWidth="1.15"
+              strokeLinecap="round"
+              opacity="0.7"
             />
           </g>
       </svg>

@@ -499,12 +499,12 @@
 @keyframes profile-coffee-steam {
   0%,
   100% {
-    opacity: 0.25;
+    opacity: 0.5;
     transform: translateY(0);
   }
   50% {
-    opacity: 0.9;
-    transform: translateY(-2px);
+    opacity: 1;
+    transform: translateY(-4px);
   }
 }
 
@@ -518,10 +518,18 @@
   }
 }
 
-.profile-coffee-steam {
-  animation: profile-coffee-steam 2.2s ease-in-out infinite;
-  transform-origin: 34px 8px;
+.profile-coffee-steam-wisp {
+  animation: profile-coffee-steam 2s ease-in-out infinite;
+  transform-origin: center bottom;
   transform-box: fill-box;
+}
+
+.profile-coffee-steam-wisp-delay-1 {
+  animation-delay: 0.35s;
+}
+
+.profile-coffee-steam-wisp-delay-2 {
+  animation-delay: 0.7s;
 }
 
 .profile-coffee-cursor {
@@ -529,7 +537,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .profile-coffee-steam,
+  .profile-coffee-steam-wisp,
   .profile-coffee-cursor {
     animation: none;
   }
