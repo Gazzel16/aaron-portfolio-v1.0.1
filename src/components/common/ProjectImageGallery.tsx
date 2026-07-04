@@ -159,13 +159,13 @@ export default function ProjectImageGallery({
 
   return (
     <div
-      className="fixed inset-0 z-[100] flex h-full flex-col bg-[#0a0a0a] font-[family-name:var(--font-geist-sans)] lg:flex-row"
+      className="fixed inset-0 z-[100] flex h-full flex-col bg-black font-[family-name:var(--font-geist-sans)] lg:flex-row"
       role="dialog"
       aria-modal="true"
       aria-label={`${project.title} media gallery`}
     >
       <div className="flex min-h-0 min-w-0 flex-col p-4 lg:w-[58%] lg:flex-none lg:p-8">
-        <div className="relative flex min-h-[38vh] flex-1 items-center justify-center overflow-hidden rounded-xl bg-[#111111] lg:min-h-0">
+        <div className="relative flex min-h-[38vh] flex-1 items-center justify-center overflow-hidden rounded-xl bg-zinc-950 lg:min-h-0">
           {hasMultipleMedia && (
             <button
               type="button"
@@ -212,7 +212,7 @@ export default function ProjectImageGallery({
           )}
 
           {hasMultipleMedia && (
-            <div className="absolute bottom-4 right-4 rounded-md border border-emerald-500/30 bg-black/70 px-3 py-1.5 font-[family-name:var(--font-geist-mono)] text-xs tracking-wide text-emerald-400">
+            <div className="absolute bottom-4 right-4 rounded-md border border-zinc-700 bg-black/80 px-3 py-1.5 font-[family-name:var(--font-geist-mono)] text-xs tracking-wide text-zinc-300">
               {mediaNumber} / {mediaTotal}
             </div>
           )}
@@ -226,9 +226,9 @@ export default function ProjectImageGallery({
                 type="button"
                 onClick={() => setMediaIndex(index)}
                 className={cn(
-                  "relative h-16 w-24 shrink-0 overflow-hidden rounded-lg border-2 bg-[#111111] transition-colors",
+                  "relative h-16 w-24 shrink-0 overflow-hidden rounded-lg border-2 bg-zinc-950 transition-colors",
                   index === mediaIndex
-                    ? "border-red-500"
+                    ? "border-white"
                     : "border-transparent opacity-60 hover:opacity-100",
                 )}
               >
@@ -258,10 +258,10 @@ export default function ProjectImageGallery({
         )}
       </div>
 
-      <aside className="flex h-full min-h-0 w-full min-w-0 flex-col border-t border-zinc-800 bg-[#0a0a0a] lg:w-[42%] lg:min-w-[360px] lg:max-w-[520px] lg:border-l lg:border-t-0">
+      <aside className="flex h-full min-h-0 w-full min-w-0 flex-col border-t border-zinc-800 bg-black lg:w-[42%] lg:min-w-[360px] lg:max-w-[520px] lg:border-l lg:border-t-0">
         <div className="flex shrink-0 flex-col gap-4 border-b border-zinc-800/60 p-6 pb-4 lg:p-8 lg:pb-5">
           <div className="flex items-center justify-between gap-4">
-            <p className="font-[family-name:var(--font-geist-mono)] text-xs uppercase tracking-[0.2em] text-red-400">
+            <p className="font-[family-name:var(--font-geist-mono)] text-xs uppercase tracking-[0.2em] text-zinc-400">
               Project • {projectNumber}
             </p>
 
@@ -314,14 +314,14 @@ export default function ProjectImageGallery({
 
           {project.stacks && project.stacks.length > 0 && (
             <div className="mb-4">
-              <p className="mb-3 font-[family-name:var(--font-geist-mono)] text-[10px] uppercase tracking-[0.25em] text-emerald-500/80">
+              <p className="mb-3 text-xs font-medium uppercase tracking-wider text-zinc-400">
                 Built with
               </p>
               <div className="flex flex-wrap gap-2">
                 {project.stacks.map((stack) => (
                   <span
                     key={stack}
-                    className="rounded-full border border-emerald-500/40 bg-emerald-500/5 px-3 py-1 font-[family-name:var(--font-geist-mono)] text-xs text-emerald-400"
+                    className="rounded-lg border border-zinc-200 bg-white px-3 py-1 font-mono text-sm text-zinc-700"
                   >
                     {stack}
                   </span>
@@ -331,7 +331,7 @@ export default function ProjectImageGallery({
           )}
         </div>
 
-        <div className="flex shrink-0 flex-wrap gap-x-4 gap-y-1 border-t border-zinc-800/60 px-6 py-4 font-[family-name:var(--font-geist-mono)] text-[10px] uppercase tracking-wider text-emerald-600/70 lg:px-8">
+        <div className="flex shrink-0 flex-wrap gap-x-4 gap-y-1 border-t border-zinc-800/60 px-6 py-4 font-[family-name:var(--font-geist-mono)] text-[10px] uppercase tracking-wider text-zinc-500 lg:px-8">
           <span>Esc close</span>
           {hasMultipleMedia && <span>← / → gallery</span>}
           {hasMultipleProjects && <span>Shift + ← / → project</span>}
