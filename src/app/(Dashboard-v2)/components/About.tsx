@@ -1,18 +1,12 @@
-import {
-  CheckCircle2,
-  MapPin,
-  Calendar,
-  Mail,
-  FileText,
-  ChevronRight,
-  Trophy,
-} from "lucide-react";
+import { CheckCircle2, MapPin, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import { LinkedInIcon } from "@/components/ui/linkedin";
 import Link from "next/link";
-// Define the shape of the data for full reusability
+import CatAndDogAnimation from "@/components/common/CatAndDogAnimation";
+import RobotRocketAnimation from "@/components/common/RobotRocketAnimation";
+import SpiderAnimation from "@/components/common/SpiderAnimation";
+import StickmanCoffeeAnimation from "@/components/common/StickmanCoffeeAnimation";
+
 interface AboutProps {
   data: {
     name: string;
@@ -28,47 +22,55 @@ interface AboutProps {
 export default function About({ data }: AboutProps) {
   if (!data) return null;
 
-  const handleEmailClick = () => {
-    window.location.href = "mailto:aaron.dev2898@gmail.com";
-  };
-
   return (
-    <div className="font-sans text-foreground">
-      <div className="flex flex-col gap-8 md:flex-row md:items-start">
-        <Avatar className="w-32 h-32 rounded-xl border border-border shadow-sm">
-          <AvatarImage
-            src={data.avatar}
-            alt={data.name}
-            className="object-cover"
-          />
-          <AvatarFallback className="rounded-xl text-2xl bg-secondary">
-            {data.name?.charAt(0)}
-          </AvatarFallback>
-        </Avatar>
+    <div className="mb-2 font-sans text-foreground">
+      <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-[1fr_auto_1fr] md:gap-6 lg:gap-10">
+        <div className="hidden h-40 w-48 shrink-0 items-center justify-center md:flex md:justify-self-end lg:w-56">
+          <RobotRocketAnimation />
+        </div>
 
-        <div className="flex-1 space-y-4 w-full">
-          <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4">
+        <div className="flex w-full flex-col items-center gap-8 md:flex-row md:items-start">
+          <div className="relative shrink-0">
+            <div className="pointer-events-none absolute -top-9 left-1/2 z-10 -translate-x-1/2">
+              <SpiderAnimation />
+            </div>
+            <Avatar className="h-32 w-32 shrink-0 rounded-xl border border-border shadow-sm">
+              <AvatarImage
+                src={data.avatar}
+                alt={data.name}
+                className="object-cover"
+              />
+              <AvatarFallback className="rounded-xl bg-secondary text-2xl">
+                {data.name?.charAt(0)}
+              </AvatarFallback>
+            </Avatar>
+          </div>
+
+          <div className="flex flex-1 flex-col space-y-4">
             <div className="space-y-1">
-              <h1 className="text-3xl font-bold tracking-tight flex items-center gap-2">
-                {data.name}
-                {data.verified && (
-                  <CheckCircle2 className="w-5 h-5 fill-blue-500 text-white" />
-                )}
-              </h1>
-              <div className="flex items-center gap-1.5 text-muted-foreground text-sm font-medium">
-                <MapPin className="w-4 h-4" /> {data.location}
+            <h1 className="flex gap-2 text-3xl font-bold tracking-tight">
+              {data.name}
+              {data.verified && (
+                <CheckCircle2 className="h-5 w-5 fill-blue-500 text-white" />
+              )}
+            </h1>
+            <div className="flex gap-1.5 text-sm font-medium text-muted-foreground">
+              <MapPin className="h-4 w-4" /> {data.location}
+            </div>
+            <div className="relative">
+              <div className="pointer-events-none absolute bottom-full right-5 z-10 translate-y-2">
+                <StickmanCoffeeAnimation />
               </div>
-              <p className="text-m font-medium text-foreground pt-1">
+              <p className="text-m font-medium text-foreground">
                 {data.roles?.join(" | ")}
               </p>
             </div>
           </div>
 
-          {/* Action Buttons */}
           <div className="flex flex-wrap gap-3">
             <Button
               variant="outline"
-              className="border border-gray-200 bg-white dark:bg-zinc-100 dark:text-black hover:bg-gray-100 text-black rounded-lg px-6 shadow-sm"
+              className="rounded-lg border border-gray-200 bg-white px-6 text-black shadow-sm hover:bg-gray-100 dark:bg-zinc-100 dark:text-black"
             >
               <Link
                 href="https://www.linkedin.com/in/aaron-mercado-163b02369/"
@@ -81,27 +83,37 @@ export default function About({ data }: AboutProps) {
             <Button
               asChild
               variant="outline"
-              className="border border-gray-200 bg-white dark:bg-zinc-100 dark:text-black hover:bg-gray-100 text-black rounded-lg px-6 shadow-sm"
+              className="rounded-lg border border-gray-200 bg-white px-6 text-black shadow-sm hover:bg-gray-100 dark:bg-zinc-100 dark:text-black"
             >
               <Link
                 href="https://mail.google.com/mail/?view=cm&fs=1&to=aaron.dev2898@gmail.com"
                 target="_blank"
               >
-                <Mail className="w-4 h-4" />
+                <Mail className="h-4 w-4" />
                 Email
               </Link>
             </Button>
 
             <Button
               variant="outline"
-              className="border border-gray-200 bg-white dark:bg-zinc-100 dark:text-black hover:bg-gray-100 text-black rounded-lg px-6 shadow-sm"
+              className="rounded-lg border border-gray-200 bg-white px-6 text-black shadow-sm hover:bg-gray-100 dark:bg-zinc-100 dark:text-black"
             >
               <Link href="https://github.com/Gazzel16" target="_blank">
                 Github
               </Link>
             </Button>
           </div>
+          </div>
         </div>
+
+        <div className="hidden h-40 w-48 shrink-0 items-center justify-center md:flex md:justify-self-start lg:w-56">
+          <CatAndDogAnimation />
+        </div>
+      </div>
+
+      <div className="flex justify-center gap-6 py-2 md:hidden">
+        <RobotRocketAnimation compact />
+        <CatAndDogAnimation compact />
       </div>
     </div>
   );

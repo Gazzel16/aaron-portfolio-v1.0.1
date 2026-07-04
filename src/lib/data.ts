@@ -3,7 +3,7 @@ export const aboutData = {
   avatar: "/images/aaron1.jpg",
   verified: true,
   location: "Metro Manila, Philippines",
-  roles: ["Jr. Full Stack Developer", "Full Stack Developer"],
+  roles: ["Full Stack Developer", "Software Engineer"],
   bio: [
     "Currently working full time as a Jr. Full Stack Developer, I build and ship production-ready systems across startup projects, enterprise applications, and capstone builds. My focus is on frontend development, backend systems, and creating software that scales.",
     "I design systems that simplify workflows, develop full-stack applications from the ground up to deployment, and automate repetitive tasks to boost efficiency. From e-commerce and inventory platforms to mobile apps, IoT systems, and AI-powered tools, I work end to end — architecture, APIs, databases, and live deployment — and guide teams from planning through successful delivery.",
@@ -90,7 +90,7 @@ export const work5 = {
 };
 
 export const work6 = {
-  title: "Full Stack Developer",
+  title: "Junior Full Stack Developer",
   company: "B1G Corporation | Fulltime | Onsite | Muntinlupa City",
   date: "May 2026 - Current",
   // details:[
@@ -336,6 +336,8 @@ export const project5 = {
     },
   ],
   stacks: ["Java", "Xml", "Canva", "Playstore"],
+  isFeatured: true,
+  logo: "/images/e-learning-logo.webp",
 };
 
 export const project6 = {
@@ -413,6 +415,8 @@ export const project8 = {
     },
   ],
   stacks: ["Next.js", "Redux", "ShadCN UI", "Tailwind CSS", "TypeScript", "Python FastAPI", "Vercel", "Render"],
+  isFeatured: true,
+  logo: "/images/deepsky-logo.png",
 }
 
 export const project9 = {
@@ -426,7 +430,9 @@ export const project9 = {
       href: "https://voice-revive.vercel.app/"
     }
   ],
-  stacks: ["Next.js", "Redux", "ShadCN UI", "Tailwind CSS", "TypeScript", "Vercel"]
+  stacks: ["Next.js", "Redux", "ShadCN UI", "Tailwind CSS", "TypeScript", "Vercel"],
+  isFeatured: true,
+  logo: "/images/voice-revive-logo.png",
 }
 
 export const happyClient1Project1 = {
@@ -483,13 +489,15 @@ export const certificate3 = {
 export const certificate4 = {
   title: "Research Colloquium 2026",
   role: "Research Team Lead",
-  date: "August 2025 to January 2026",
+  date: "June 2026",
   image: "/images/certificate-research-colloquium.jpg",
+  isFeatured: true,
 };
 
 export const certificate5 = {
   title: "Best Capstone Awardee",
   role: "Research Team Lead",
-  date: "June 24, 2026",
+  date: "June 2026",
   image: "/images/capstone-award1.jpg",
+  isFeatured: true,
 }

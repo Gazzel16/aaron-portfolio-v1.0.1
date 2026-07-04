@@ -12,18 +12,34 @@ interface WorkProps {
     links?: { label: string; href: string }[];
     isFeatured?: boolean;
   };
+  variant?: "default" | "dark";
 }
 
-export default function Work({ work }: WorkProps) {
+export default function Work({ work, variant = "default" }: WorkProps) {
   const [isOpen, setIsOpen] = useState(false);
   const { title, company, date, details, links } = work;
   const hasExpandableContent =
     (details && details.length > 0) || (links && links.length > 0);
 
+  const isDark = variant === "dark";
+  const dividerClass = isDark ? "border-white/10" : "border-zinc-200/50";
+  const companyClass = isDark
+    ? "text-sm font-medium leading-snug text-zinc-100"
+    : "text-sm font-medium leading-snug text-zinc-800";
+  const dateClass = isDark
+    ? "font-mono text-sm text-zinc-400"
+    : "font-mono text-sm text-zinc-500";
+  const detailClass = isDark
+    ? "text-sm leading-relaxed text-zinc-300"
+    : "text-sm leading-relaxed text-zinc-600";
+  const linkClass = isDark
+    ? "font-mono text-xs uppercase tracking-wide text-zinc-400 transition-colors hover:text-zinc-200"
+    : "font-mono text-xs uppercase tracking-wide text-zinc-400 transition-colors hover:text-zinc-600";
+
   return (
     <div
       onClick={hasExpandableContent ? () => setIsOpen(!isOpen) : undefined}
-      className={`flex flex-col gap-1 border-b border-zinc-100 py-4 first:pt-0 last:border-b-0 last:pb-0 ${
+      className={`flex flex-col gap-1 border-b ${dividerClass} py-4 first:pt-0 last:border-b-0 last:pb-0 ${
         hasExpandableContent ? "cursor-pointer" : ""
       }`}
     >
@@ -31,13 +47,9 @@ export default function Work({ work }: WorkProps) {
         <div className="flex min-w-0 flex-1 flex-col gap-1">
           <h3 className="font-mono text-xs lowercase text-zinc-400">{title}</h3>
 
-          {company && (
-            <p className="text-sm font-medium leading-snug text-zinc-800">
-              {company}
-            </p>
-          )}
+          {company && <p className={companyClass}>{company}</p>}
 
-          {date && <p className="font-mono text-sm text-zinc-500">{date}</p>}
+          {date && <p className={dateClass}>{date}</p>}
         </div>
 
         {hasExpandableContent && (
@@ -50,12 +62,9 @@ export default function Work({ work }: WorkProps) {
       </div>
 
       {isOpen && details && details.length > 0 && (
-        <ul className="mt-3 space-y-2 border-t border-zinc-100 pt-3">
+        <ul className={`mt-3 space-y-2 border-t ${dividerClass} pt-3`}>
           {details.map((detail, index) => (
-            <li
-              key={index}
-              className="text-sm leading-relaxed text-zinc-600"
-            >
+            <li key={index} className={detailClass}>
               {detail}
             </li>
           ))}
@@ -63,7 +72,7 @@ export default function Work({ work }: WorkProps) {
       )}
 
       {isOpen && links && links.length > 0 && (
-        <div className="mt-3 flex flex-wrap gap-3 border-t border-zinc-100 pt-3">
+        <div className={`mt-3 flex flex-wrap gap-3 border-t ${dividerClass} pt-3`}>
           {links.map((link, index) => (
             <a
               key={index}
@@ -71,7 +80,7 @@ export default function Work({ work }: WorkProps) {
               target="_blank"
               rel="noopener noreferrer"
               onClick={(e) => e.stopPropagation()}
-              className="font-mono text-xs uppercase tracking-wide text-zinc-400 transition-colors hover:text-zinc-600"
+              className={linkClass}
             >
               {link.label} →
             </a>

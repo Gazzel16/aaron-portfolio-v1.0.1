@@ -48,6 +48,7 @@ import {
 import { useState } from "react";
 import Link from "next/link";
 import FloatingNav from "./components/FloatingNav";
+import GlassGradientBackground from "@/components/common/GlassGradientBackground";
 
 function DashboardV2Page() {
   const isFeatured = (item: object) =>
@@ -73,7 +74,7 @@ function DashboardV2Page() {
     project3,
     project4,
     project5,
-  ];
+  ].filter(isFeatured);
   const happyClientData = [
     happyClient1Project1,
     happyClientProject2,
@@ -85,7 +86,7 @@ function DashboardV2Page() {
     certificate3,
     certificate4,
     certificate5,
-  ];
+  ].filter(isFeatured);
 
   const [role, setRole] = useState<string | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(true);
@@ -97,25 +98,11 @@ function DashboardV2Page() {
     console.log("Profile Setup:", { role, name });
   };
 
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      const offset = 100; // Adjust this based on your navbar height
-      const bodyRect = document.body.getBoundingClientRect().top;
-      const elementRect = element.getBoundingClientRect().top;
-      const elementPosition = elementRect - bodyRect;
-      const offsetPosition = elementPosition - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
-    }
-  };
-
   return (
     <div className="max-w-6xl mx-auto p-6 space-y-12">
-      <FloatingNav />
+      {/* <FloatingNav /> */}
+
+    
 
       <div>
         {/* Profile/About Section */}
@@ -125,6 +112,31 @@ function DashboardV2Page() {
 
         <div className="grid grid-cols-1 items-start gap-6 lg:grid-cols-2">
           <div id="div1">
+
+          <section
+            id="motto"
+            className="relative mb-2 overflow-hidden rounded-lg"
+          >
+            <GlassGradientBackground variant="dark" />
+
+            <div className="relative z-10 flex min-h-36 flex-col justify-center rounded-lg border border-white/10 bg-zinc-950/40 px-5 py-6 shadow-lg backdrop-blur-xl ring-1 ring-white/5">
+              <div className="mb-4 flex w-full min-w-[20rem] items-center justify-between gap-4">
+                <h2 className="font-mono text-sm lowercase text-zinc-400">
+                  00 — my motto
+                </h2>
+              </div>
+
+              <blockquote className="border-l-2 border-white/10 py-1 pl-5">
+                <p className="text-base italic leading-relaxed text-zinc-300">
+                  &ldquo;The only way to do great work is to love what you do.&rdquo;
+                </p>
+                <footer className="mt-3 font-mono text-xs uppercase tracking-wide text-zinc-400">
+                  — Steve Jobs
+                </footer>
+              </blockquote>
+            </div>
+          </section>
+
             <section
               id="bio"
               className="h-full rounded-lg border border-border/60 border-gray-200 p-4"
@@ -136,6 +148,37 @@ function DashboardV2Page() {
               </div>
 
               <Bio paragraphs={aboutData.bio} />
+            </section>
+
+            <section
+              id="projects"
+              className="rounded-lg border border-border/60 border-gray-200 p-4 mt-2"
+            >
+              
+              
+              <div className="mb-6 flex w-full min-w-[20rem] items-center justify-between gap-4">
+                <h2 className="font-mono text-sm lowercase text-zinc-400">
+                  05 — projects
+                </h2>
+                <Link
+                  href="/projects"
+                  className="font-mono text-sm uppercase tracking-wide text-zinc-400 transition-colors hover:text-zinc-600"
+                >
+                  view all →
+                </Link>
+              </div>
+
+              {/* <h4 className="mb-4 text-sm italic text-gray-500">
+          While I contributed to several key initiatives during my internship, I
+          have excluded specific project descriptions due to confidentiality
+          requirements. I am, however, happy to discuss the general scope of my
+          responsibilities and the technical skills I applied.
+        </h4> */}
+              <div className="mt-4 items-stretch">
+                {projectData.map((item, index) => (
+                  <Project key={index} proj={item} />
+                ))}
+              </div>
             </section>
           </div>
 
@@ -165,26 +208,27 @@ function DashboardV2Page() {
             </section>
 
             {/* Work Section */}
-            <section
-              id="work"
-              className="rounded-lg border border-border/60 border-gray-200 p-4"
-            >
-              <div className="mb-6 flex w-full min-w-[20rem] items-center justify-between gap-4">
-                <h2 className="font-mono text-sm lowercase text-zinc-400">
-                  03 — experience
-                </h2>
-                <Link
-                  href="/work"
-                  className="font-mono text-sm uppercase tracking-wide text-zinc-400 transition-colors hover:text-zinc-600"
-                >
-                  view all →
-                </Link>
-              </div>
+            <section id="work" className="relative overflow-hidden rounded-lg">
+              <GlassGradientBackground variant="dark" />
 
-              <div className="flex flex-col">
-                {workData.map((item, index) => (
-                  <Work key={index} work={item} />
-                ))}
+              <div className="relative z-10 rounded-lg border border-white/10 bg-zinc-950/40 p-4 shadow-lg backdrop-blur-xl ring-1 ring-white/5">
+                <div className="mb-6 flex w-full min-w-[20rem] items-center justify-between gap-4">
+                  <h2 className="font-mono text-sm lowercase text-zinc-400">
+                    03 — experience
+                  </h2>
+                  <Link
+                    href="/work"
+                    className="font-mono text-sm uppercase tracking-wide text-zinc-400 transition-colors hover:text-zinc-200"
+                  >
+                    view all →
+                  </Link>
+                </div>
+
+                <div className="flex flex-col">
+                  {workData.map((item, index) => (
+                    <Work key={index} work={item} variant="dark" />
+                  ))}
+                </div>
               </div>
             </section>
 
@@ -211,51 +255,34 @@ function DashboardV2Page() {
                 ))}
               </div>
             </section>
+
+            <section
+              id="certs"
+              className="rounded-lg border border-border/60 border-gray-200 p-4"
+            >
+              <div className="mb-6 flex w-full min-w-[20rem] items-center justify-between gap-4">
+                <h2 className="font-mono text-sm lowercase text-zinc-400">
+                  06 — certificates
+                </h2>
+                <Link
+                  href="/certificates"
+                  className="font-mono text-sm uppercase tracking-wide text-zinc-400 transition-colors hover:text-zinc-600"
+                >
+                  view all →
+                </Link>
+              </div>
+              <div className="mt-4 items-stretch">
+                {certificateData.map((item, index) => (
+                  <Certificate key={index} cert={item} />
+                ))}
+              </div>
+            </section>
+
           </div>
         </div>
-    
       </div>
 
-      <div className="my-12 border-b border-border/60 border-gray-500" />
-
-      <section id="projects">
-        <h2 className="text-xl font-bold">Recent Projects</h2>
-        <h4 className="mb-4 text-sm italic text-gray-500">
-          While I contributed to several key initiatives during my internship, I
-          have excluded specific project descriptions due to confidentiality
-          requirements. I am, however, happy to discuss the general scope of my
-          responsibilities and the technical skills I applied.
-        </h4>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-stretch">
-          {projectData.map((item, index) => (
-            <Project key={index} proj={item} />
-          ))}
-        </div>
-      </section>
-
-      {/* <div className="my-12 border-b border-border/60 border-gray-500" /> */}
-      {/* 
-      <section>
-        <h2 className="text-xl font-bold mb-4">Clients</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {happyClientData.map((item, index) => (
-            <HappyClients key={index} hc={item} />
-          ))}
-        </div>
-      </section> */}
-      <div className="my-12 border-b border-border/60 border-gray-500" />
-      <section id="certs">
-        <h2 className="text-xl font-bold text-zinc-900 mb-6 px-4 border-l-4 border-blue-500">
-          Certificates
-        </h2>
-        <div className="grid grid-cols-1 gap-4">
-          {certificateData.map((item, index) => (
-            <Certificate key={index} cert={item} />
-          ))}
-        </div>
-      </section>
-
-      <div className="my-12 border-b border-border/60 border-gray-500" />
+      <div className="my-12 border-b border-border/60 border-gray-200" />
 
       <div className="flex items-center justify-center w-full italic">
         <p className="text-sm text-gray-500">

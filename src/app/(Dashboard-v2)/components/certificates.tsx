@@ -16,12 +16,13 @@ interface CertificateProps {
     role: string;
     date: string;
     image?: string;
+    isFeatured?: boolean;
   };
 }
 
 export default function Certificate({ cert }: CertificateProps) {
   return (
-    <div className="group relative rounded-xl border border-zinc-200 bg-white p-5 transition-all hover:shadow-md hover:border-blue-500/50">
+    <div className="mt-2 group relative rounded-xl border border-zinc-200 bg-white p-5 transition-all hover:shadow-md hover:border-blue-500/50">
       <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6">
         
         <Dialog>
@@ -70,23 +71,28 @@ export default function Certificate({ cert }: CertificateProps) {
             </div>
             
             <div className="bg-white/95 backdrop-blur-sm p-4 rounded-b-lg -mt-2">
-                <h3 className="text-lg font-bold text-zinc-900">{cert.title}</h3>
-                <p className="text-sm text-zinc-600">{cert.role}</p>
+              <h3 className="font-mono text-xs lowercase text-zinc-400">
+                {cert.title}
+              </h3>
+              <p className="text-sm font-medium leading-snug text-zinc-800">
+                {cert.role}
+              </p>
+              <p className="mt-1 font-mono text-sm text-zinc-500">{cert.date}</p>
             </div>
           </DialogContent>
         </Dialog>
 
         <div className="flex-1 text-center sm:text-left">
           <div className="flex flex-col gap-1">
-            <h3 className="text-lg font-bold text-zinc-900 group-hover:text-blue-600 transition-colors">
+            <h3 className="font-mono text-xs lowercase text-zinc-400">
               {cert.title}
             </h3>
-            <p className="text-sm font-semibold text-blue-600/80 uppercase tracking-wider">
+            <p className="text-sm font-medium leading-snug text-zinc-800">
               {cert.role}
             </p>
           </div>
 
-          <div className="mt-3 flex items-center justify-center sm:justify-start gap-2 text-xs font-medium text-zinc-500">
+          <div className="mt-3 flex items-center justify-center sm:justify-start gap-2 font-mono text-sm text-zinc-500">
             <Calendar className="h-3.5 w-3.5" />
             <span>{cert.date}</span>
           </div>
