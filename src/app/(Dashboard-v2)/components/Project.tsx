@@ -17,6 +17,7 @@ interface ProjectProps {
     logo?: string;
     isFeatured?: boolean;
     hasBackground?: boolean;
+    hasImage?: boolean;
   };
 }
 

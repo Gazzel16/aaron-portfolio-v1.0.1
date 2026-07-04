@@ -161,7 +161,7 @@ function DashboardV2Page() {
                   05 — projects
                 </h2>
                 <Link
-                  href="/projects"
+                  href="/project"
                   className="font-mono text-sm uppercase tracking-wide text-zinc-400 transition-colors hover:text-zinc-600"
                 >
                   view all →
@@ -193,7 +193,7 @@ function DashboardV2Page() {
                   02 — education
                 </h2>
                 <Link
-                  href="/education"
+                  href="/academic"
                   className="font-mono text-sm uppercase tracking-wide text-zinc-400 transition-colors hover:text-zinc-600"
                 >
                   view all →
@@ -217,7 +217,7 @@ function DashboardV2Page() {
                     03 — experience
                   </h2>
                   <Link
-                    href="/work"
+                    href="/experience"
                     className="font-mono text-sm uppercase tracking-wide text-zinc-400 transition-colors hover:text-zinc-200"
                   >
                     view all →
@@ -265,7 +265,7 @@ function DashboardV2Page() {
                   06 — certificates
                 </h2>
                 <Link
-                  href="/certificates"
+                  href="/certificate"
                   className="font-mono text-sm uppercase tracking-wide text-zinc-400 transition-colors hover:text-zinc-600"
                 >
                   view all →
