@@ -3,11 +3,10 @@ export const aboutData = {
   avatar: "/images/aaron1.jpg",
   verified: true,
   location: "Metro Manila, Philippines",
-  roles: ["Full Stack Developer", "Software Developer"],
+  roles: ["Jr. Full Stack Developer", "Full Stack Developer"],
   bio: [
-    "I am a Software Developer dedicated to architecting and developing high-impact technical solutions. My approach focuses on bridging the gap between complex requirements and functional, user-centric applications. With a strong foundation in modern development practices, I strive to build software that is both scalable and efficient, regardless of the platform.",
-    "While completing my studies, I established myself as a technical freelancer, specializing in end-to-end development for student capstone projects. I have successfully delivered diverse solutions ranging from Web and Mobile applications to integrated Hardware (IoT) systems. This experience allowed me to act as both a lead developer and a technical consultant, turning conceptual academic requirements into fully operational prototypes.",
-    "I am currently immersed in a corporate internship, where I am focused on translating my freelance and academic background into enterprise-level environments. My immediate goal is to leverage this experience to secure a full-time role as a Software Engineer within the corporate sector. I am eager to apply my technical versatility and professional growth to contribute to large-scale, impactful software development teams.",
+    "Currently working full time as a Jr. Full Stack Developer, I build and ship production-ready systems across startup projects, enterprise applications, and capstone builds. My focus is on frontend development, backend systems, and creating software that scales.",
+    "I design systems that simplify workflows, develop full-stack applications from the ground up to deployment, and automate repetitive tasks to boost efficiency. From e-commerce and inventory platforms to mobile apps, IoT systems, and AI-powered tools, I work end to end — architecture, APIs, databases, and live deployment — and guide teams from planning through successful delivery.",
   ],
 };
 
@@ -25,12 +24,14 @@ export const acedmic3 = {
   title: "Senior Highschool",
   course: "Information Computer Technology",
   school: "Muntinlupa National Highschool | 2020-2022",
+  isFeatured: true,
 };
 
 export const acedmic4 = {
   title: "College",
   course: "Bachelor of Science Information Technology",
   school: "Pamantasan ng Lungsod ng Muntinlupa | 2022-2026",
+  isFeatured: true,
 };
 
 export const work1 = {
@@ -64,6 +65,7 @@ export const work3 = {
     "Developed Smart Pig, an IoT system using ESP32 and sensors to monitor humidity, temperature, and water levels. Integrated with a mobile app for real-time analytics, remote water pump control, QR code management for cages and pigs, Firebase notifications, and Python FastAPI for API handling and token management, with Gemini AI for intelligent insights.",
     "Developed a Rental Management App with three roles—Tenant, Landlord, and Admin—featuring AI-powered search with Gemini and FAISS, Google Maps integration, a Python FastAPI backend, and an Android frontend using Kotlin/XML for a seamless user experience.",
   ],
+  isFeatured: true,
 };
 
 export const work4 = {
@@ -94,6 +96,7 @@ export const work6 = {
   // details:[
   //   ""
   // ]
+  isFeatured: true,
 }
 
 export const work7 = {
@@ -118,11 +121,13 @@ export const work7 = {
       href: "https://deepsky-nation-client.vercel.app",
     },
   ],
+  isFeatured: true,
 }
 
 export const tech1 = {
   title: "Android Development",
   stacks: ["Java", "Kotlin", "XML", "Room Database", "Jetpack Compose"],
+  isFeatured: true,
 };
 
 export const tech2 = {
@@ -135,11 +140,13 @@ export const tech2 = {
     "Material UI",
     "Javascript",
   ],
+  isFeatured: true,
 };
 
 export const tech3 = {
   title: "Backend Development",
   stacks: ["Python (FastAPI)", "NodeJS (Express)", "Firebase", "PHP (Laravel)"],
+  isFeatured: true,
 };
 
 export const tech4 = {

@@ -1,5 +1,6 @@
 "use client";
 import About from "./components/About";
+import Bio from "./components/Bio";
 import Academic from "./components/Acedemic";
 import Work from "./components/Work";
 import Tech from "./components/Tech";
@@ -42,24 +43,49 @@ import {
   certificate3,
   certificate4,
   certificate5,
-  work7
+  work7,
 } from "@/lib/data";
 import { useState } from "react";
-import { Settings2 } from "lucide-react";
+import Link from "next/link";
 import FloatingNav from "./components/FloatingNav";
 
 function DashboardV2Page() {
-  // 1. Combine individual objects into a sorted array (Newest first)
-  const educationData = [acedmic4, acedmic3, acedmic2, acedmic1];
-  const workData = [work1, work2, work3, work4, work5, work6, work7];
-  const techData = [tech1, tech2, tech3, tech4, tech5, tech6, tech7];
-  const projectData = [project9,project8,project7, project6, project1, project2, project3, project4, project5];
+  const isFeatured = (item: object) =>
+    "isFeatured" in item &&
+    (item as { isFeatured?: boolean }).isFeatured === true;
+
+  const educationData = [acedmic4, acedmic3, acedmic2, acedmic1].filter(
+    isFeatured,
+  );
+  const workData = [work1, work2, work3, work4, work5, work6, work7].filter(
+    isFeatured,
+  );
+  const techData = [tech1, tech2, tech3, tech4, tech5, tech6, tech7].filter(
+    isFeatured,
+  );
+  const projectData = [
+    project9,
+    project8,
+    project7,
+    project6,
+    project1,
+    project2,
+    project3,
+    project4,
+    project5,
+  ];
   const happyClientData = [
     happyClient1Project1,
     happyClientProject2,
     happyClientProject3,
   ];
-  const certificateData = [certificate1, certificate2, certificate3, certificate4, certificate5];
+  const certificateData = [
+    certificate1,
+    certificate2,
+    certificate3,
+    certificate4,
+    certificate5,
+  ];
 
   const [role, setRole] = useState<string | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(true);
@@ -88,56 +114,107 @@ function DashboardV2Page() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-6 space-y-12">
- 
-     <FloatingNav />
+    <div className="max-w-6xl mx-auto p-6 space-y-12">
+      <FloatingNav />
 
-      {/* Profile/About Section */}
-      <section id="about">
-        <About data={aboutData} />
-      </section>
+      <div>
+        {/* Profile/About Section */}
+        <section id="about">
+          <About data={aboutData} />
+        </section>
 
-      <div className="my-12 border-b border-border/60 border-gray-500" />
+        <div className="grid grid-cols-1 items-start gap-6 lg:grid-cols-2">
+          <div id="div1">
+            <section
+              id="bio"
+              className="h-full rounded-lg border border-border/60 border-gray-200 p-4"
+            >
+              <div className="mb-6 flex w-full min-w-[20rem] items-center justify-between gap-4">
+                <h2 className="font-mono text-sm lowercase text-zinc-400">
+                  01 — about
+                </h2>
+              </div>
 
-      {/* Academic/Education Section */}
-      <section className="mt-10" id="education">
-        <h2 className="text-xl font-bold text-zinc-900 mb-6 px-4 border-l-4 border-blue-500">
-          Education
-        </h2>
+              <Bio paragraphs={aboutData.bio} />
+            </section>
+          </div>
 
-        <div className="flex flex-col">
-          {educationData.map((item, index) => (
-            <Academic key={index} acedmic={item} />
-          ))}
+          <div id="div2" className="flex flex-col gap-6">
+            {/* Academic/Education Section */}
+            <section
+              id="education"
+              className="rounded-lg border border-border/60 border-gray-200 p-4"
+            >
+              <div className="mb-6 flex w-full min-w-[20rem] items-center justify-between gap-4">
+                <h2 className="font-mono text-sm lowercase text-zinc-400">
+                  02 — education
+                </h2>
+                <Link
+                  href="/education"
+                  className="font-mono text-sm uppercase tracking-wide text-zinc-400 transition-colors hover:text-zinc-600"
+                >
+                  view all →
+                </Link>
+              </div>
+
+              <div className="flex flex-col">
+                {educationData.map((item, index) => (
+                  <Academic key={index} acedmic={item} />
+                ))}
+              </div>
+            </section>
+
+            {/* Work Section */}
+            <section
+              id="work"
+              className="rounded-lg border border-border/60 border-gray-200 p-4"
+            >
+              <div className="mb-6 flex w-full min-w-[20rem] items-center justify-between gap-4">
+                <h2 className="font-mono text-sm lowercase text-zinc-400">
+                  03 — experience
+                </h2>
+                <Link
+                  href="/work"
+                  className="font-mono text-sm uppercase tracking-wide text-zinc-400 transition-colors hover:text-zinc-600"
+                >
+                  view all →
+                </Link>
+              </div>
+
+              <div className="flex flex-col">
+                {workData.map((item, index) => (
+                  <Work key={index} work={item} />
+                ))}
+              </div>
+            </section>
+
+            {/* Tech Stack */}
+            <section
+              id="stacks"
+              className="rounded-lg border border-border/60 border-gray-200 p-4"
+            >
+              <div className="mb-6 flex w-full min-w-[20rem] items-center justify-between gap-4">
+                <h2 className="font-mono text-sm lowercase text-zinc-400">
+                  04 — stacks
+                </h2>
+                <Link
+                  href="/stacks"
+                  className="font-mono text-sm uppercase tracking-wide text-zinc-400 transition-colors hover:text-zinc-600"
+                >
+                  view all →
+                </Link>
+              </div>
+
+              <div className="flex flex-col gap-6">
+                {techData.map((item, index) => (
+                  <Tech key={index} tech={item} />
+                ))}
+              </div>
+            </section>
+          </div>
         </div>
-      </section>
-
-      <div className="my-12 border-b border-border/60 border-gray-500" />
-
-      {/* Work Section */}
-      <section className="mt-10" id="work">
-        <h2 className="text-xl font-bold text-zinc-900 mb-6 px-4 border-l-4 border-blue-500">
-          Work Experience
-        </h2>
-
-        <div className="flex flex-col">
-          {workData.map((item, index) => (
-            <Work key={index} work={item} />
-          ))}
-        </div>
-      </section>
-
-      <div className="my-12 border-b border-border/60 border-gray-500" />
-
-      {/* Tech Stack Grid */}
-      <section id="stacks">
-        <h2 className="text-xl font-bold mb-4">Technical Stack</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {techData.map((item, index) => (
-            <Tech key={index} tech={item} />
-          ))}
-        </div>
-      </section>
+    
+      </div>
 
       <div className="my-12 border-b border-border/60 border-gray-500" />
 
@@ -177,7 +254,6 @@ function DashboardV2Page() {
           ))}
         </div>
       </section>
-
 
       <div className="my-12 border-b border-border/60 border-gray-500" />
 

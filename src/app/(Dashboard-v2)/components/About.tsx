@@ -33,9 +33,8 @@ export default function About({ data }: AboutProps) {
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-6 md:p-12 font-sans bg-background text-foreground">
-      {/* Header Section */}
-      <div className="flex flex-col md:flex-row gap-8 items-start w-full">
+    <div className="font-sans text-foreground">
+      <div className="flex flex-col gap-8 md:flex-row md:items-start">
         <Avatar className="w-32 h-32 rounded-xl border border-border shadow-sm">
           <AvatarImage
             src={data.avatar}
@@ -104,19 +103,6 @@ export default function About({ data }: AboutProps) {
           </div>
         </div>
       </div>
-
-      {/* Horizontal Divider */}
-      <div className="my-12 border-b border-border/60 border-gray-500" />
-
-      {/* About Section */}
-      <section className="max-w-2xl space-y-6">
-        <h2 className="text-2xl font-bold tracking-tight">About</h2>
-        <div className="space-y-5 text-muted-foreground leading-relaxed text-[1.05rem]">
-          {data.bio?.map((paragraph: string, index: number) => (
-            <p key={index}>{paragraph}</p>
-          ))}
-        </div>
-      </section>
     </div>
   );
 }

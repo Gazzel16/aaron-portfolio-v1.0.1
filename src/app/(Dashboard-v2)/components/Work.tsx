@@ -10,72 +10,74 @@ interface WorkProps {
     date?: string;
     details?: string[];
     links?: { label: string; href: string }[];
+    isFeatured?: boolean;
   };
 }
 
 export default function Work({ work }: WorkProps) {
   const [isOpen, setIsOpen] = useState(false);
   const { title, company, date, details, links } = work;
-
-  const handleToggle = () => setIsOpen(!isOpen);
+  const hasExpandableContent =
+    (details && details.length > 0) || (links && links.length > 0);
 
   return (
     <div
-      onClick={handleToggle}
-      className="cursor-pointer group relative flex flex-col gap-1 p-4 rounded-xl hover:bg-zinc-50 transition-all duration-300"
+      onClick={hasExpandableContent ? () => setIsOpen(!isOpen) : undefined}
+      className={`flex flex-col gap-1 border-b border-zinc-100 py-4 first:pt-0 last:border-b-0 last:pb-0 ${
+        hasExpandableContent ? "cursor-pointer" : ""
+      }`}
     >
-      <div className="flex items-center">
-        <div>
-          <h3 className="text-sm font-bold text-zinc-900 uppercase tracking-wider">
-            {title}
-          </h3>
+      <div className="flex items-start gap-3">
+        <div className="flex min-w-0 flex-1 flex-col gap-1">
+          <h3 className="font-mono text-xs lowercase text-zinc-400">{title}</h3>
 
           {company && (
-            <p className="text-base font-medium text-blue-600 leading-tight">
+            <p className="text-sm font-medium leading-snug text-zinc-800">
               {company}
             </p>
           )}
 
-          <p className="text-sm text-zinc-500 font-normal">{date}</p>
+          {date && <p className="font-mono text-sm text-zinc-500">{date}</p>}
         </div>
 
-        <div className="ml-auto text-sm text-blue-500 hover:underline">
+        {hasExpandableContent && (
           <ChevronRight
-            className={`h-4 w-4 transition-transform duration-300 ${
+            className={`mt-1 h-4 w-4 shrink-0 text-zinc-400 transition-transform duration-300 ${
               isOpen ? "rotate-90" : "rotate-0"
             }`}
           />
-        </div>
+        )}
       </div>
 
-      {/* 5. Conditionally render details based on state */}
       {isOpen && details && details.length > 0 && (
-        <ul className="mt-4 list-disc list-inside space-y-2 border-l-2 border-zinc-100 pl-2 animate-in fade-in slide-in-from-top-1">
+        <ul className="mt-3 space-y-2 border-t border-zinc-100 pt-3">
           {details.map((detail, index) => (
-            <li key={index} className="text-sm text-zinc-600">
+            <li
+              key={index}
+              className="text-sm leading-relaxed text-zinc-600"
+            >
               {detail}
             </li>
           ))}
         </ul>
       )}
+
       {isOpen && links && links.length > 0 && (
-        <div className="mt-3 flex flex-wrap gap-3">
+        <div className="mt-3 flex flex-wrap gap-3 border-t border-zinc-100 pt-3">
           {links.map((link, index) => (
             <a
               key={index}
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={(e) => e.stopPropagation()} // prevents toggling the card when clicking the link
-              className="inline-flex items-center gap-1 text-xs text-blue-500 hover:underline"
+              onClick={(e) => e.stopPropagation()}
+              className="font-mono text-xs uppercase tracking-wide text-zinc-400 transition-colors hover:text-zinc-600"
             >
-              {link.label}
+              {link.label} →
             </a>
           ))}
         </div>
       )}
-
-      <div className="absolute left-[-17px] top-6 h-2 w-2 rounded-full bg-zinc-300 group-hover:bg-blue-500 transition-colors" />
     </div>
   );
 }
