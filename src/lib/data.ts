@@ -417,6 +417,7 @@ export const project8 = {
   stacks: ["Next.js", "Redux", "ShadCN UI", "Tailwind CSS", "TypeScript", "Python FastAPI", "Vercel", "Render"],
   isFeatured: true,
   logo: "/images/deepsky-logo.png",
+  hasBackground: true,
 }
 
 export const project9 = {

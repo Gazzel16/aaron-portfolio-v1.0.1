@@ -1,5 +1,6 @@
 "use client";
 
+import GlassGradientBackground from "@/components/common/GlassGradientBackground";
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import Link from "next/link";
 import { useState } from "react";
@@ -15,6 +16,7 @@ interface ProjectProps {
     links?: { label: string; href: string }[];
     logo?: string;
     isFeatured?: boolean;
+    hasBackground?: boolean;
   };
 }
 
@@ -29,28 +31,50 @@ export default function Project({ proj }: ProjectProps) {
     image = [],
     links = [],
     logo,
+    hasBackground,
   } = proj;
 
+  const isDark = hasBackground === true;
   const previewSrc = logo ?? image[0];
+
+  const cardClass = isDark
+    ? "relative flex flex-col h-full border border-white/10 bg-zinc-950/40 backdrop-blur-xl ring-1 ring-white/5 hover:scale-[1.02] transition duration-200 rounded-xl overflow-hidden"
+    : "flex flex-col h-full border border-zinc-200 bg-white hover:scale-[1.02] transition duration-200 rounded-xl overflow-hidden";
+  const titleClass = isDark
+    ? "text-sm font-medium leading-snug text-zinc-100"
+    : "text-sm font-medium leading-snug text-zinc-800";
+  const descriptionClass = isDark
+    ? "text-sm leading-relaxed text-zinc-300"
+    : "text-sm leading-relaxed text-zinc-600";
+  const previewClass = isDark
+    ? "h-14 w-14 shrink-0 rounded-xl border border-white/10 bg-white shadow-sm"
+    : "h-14 w-14 shrink-0 rounded-xl border border-zinc-200 bg-white shadow-sm";
+  const stackClass = isDark
+    ? "rounded-lg border border-white/10 bg-white/5 px-3 py-1 font-mono text-sm text-zinc-200"
+    : "rounded-lg border border-zinc-200 bg-white px-3 py-1 font-mono text-sm text-zinc-700";
+  const linkClass = isDark
+    ? "font-mono text-xs uppercase tracking-wide text-zinc-400 transition-colors hover:text-zinc-200"
+    : "font-mono text-xs uppercase tracking-wide text-zinc-400 transition-colors hover:text-zinc-600";
+  const expandButtonClass = isDark
+    ? "mt-1 font-mono text-xs text-zinc-400 transition-colors hover:text-zinc-200"
+    : "mt-1 font-mono text-xs text-zinc-400 transition-colors hover:text-zinc-600";
 
   return (
     <div className="group h-full flex flex-col m-2">
-      <Card className="flex flex-col h-full border border-zinc-200 bg-white hover:scale-[1.02] transition duration-200 rounded-xl overflow-hidden">
-        <CardHeader className="flex flex-row items-start gap-3 p-4 pb-2">
+      <Card className={cardClass}>
+        {isDark && <GlassGradientBackground variant="dark" />}
+
+        <CardHeader className="relative z-10 flex flex-row items-start gap-3 p-4 pb-2">
           {previewSrc && (
-            <div className="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-zinc-200 bg-zinc-50 shadow-sm">
-              <img
-                src={previewSrc}
-                alt={logo ? `${title} logo` : title}
-                className={`h-full w-full ${logo ? "object-contain p-2" : "object-cover"}`}
-              />
-            </div>
+            <img
+              src={previewSrc}
+              alt={logo ? `${title} logo` : title}
+              className={`${previewClass} ${logo ? "object-contain p-2" : "object-cover"}`}
+            />
           )}
 
           <div className="flex min-w-0 flex-1 flex-col gap-1">
-            <h3 className="text-sm font-medium leading-snug text-zinc-800">
-              {title}
-            </h3>
+            <h3 className={titleClass}>{title}</h3>
             {status && (
               <p className="font-mono text-xs lowercase text-zinc-400">
                 {status}
@@ -59,10 +83,10 @@ export default function Project({ proj }: ProjectProps) {
           </div>
         </CardHeader>
 
-        <CardContent className="p-4 pt-0 flex flex-col flex-1 gap-2">
+        <CardContent className="relative z-10 p-4 pt-0 flex flex-col flex-1 gap-2">
           <div>
             <p
-              className={`text-sm leading-relaxed text-zinc-600 transition-all duration-200 ${
+              className={`${descriptionClass} transition-all duration-200 ${
                 expanded ? "" : "line-clamp-2"
               }`}
             >
@@ -72,7 +96,7 @@ export default function Project({ proj }: ProjectProps) {
             {description && description.length > 120 && (
               <button
                 onClick={() => setExpanded(!expanded)}
-                className="mt-1 font-mono text-xs text-zinc-400 transition-colors hover:text-zinc-600"
+                className={expandButtonClass}
               >
                 {expanded ? "show less" : "show more"}
               </button>
@@ -81,10 +105,7 @@ export default function Project({ proj }: ProjectProps) {
 
           <div className="flex flex-wrap gap-2 pt-1">
             {stacks?.map((tech, index) => (
-              <span
-                key={index}
-                className="rounded-lg border border-zinc-200 bg-white px-3 py-1 font-mono text-sm text-zinc-700"
-              >
+              <span key={index} className={stackClass}>
                 {tech}
               </span>
             ))}
@@ -97,7 +118,7 @@ export default function Project({ proj }: ProjectProps) {
                   key={index}
                   href={link.href}
                   target="_blank"
-                  className="font-mono text-xs uppercase tracking-wide text-zinc-400 transition-colors hover:text-zinc-600"
+                  className={linkClass}
                 >
                   {link.label} →
                 </Link>
