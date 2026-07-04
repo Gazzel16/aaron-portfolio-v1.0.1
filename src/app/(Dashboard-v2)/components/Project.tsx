@@ -1,6 +1,7 @@
 "use client";
 
 import GlassGradientBackground from "@/components/common/GlassGradientBackground";
+import { projectHasGalleryMedia } from "@/components/common/ProjectImageGallery";
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import Link from "next/link";
 import { useState } from "react";
@@ -17,26 +18,33 @@ interface ProjectProps {
     logo?: string;
     isFeatured?: boolean;
     hasBackground?: boolean;
-    hasImage?: boolean;
+    hasImageAndVideo?: boolean;
   };
+  onViewImages?: () => void;
 }
 
-export default function Project({ proj }: ProjectProps) {
+export default function Project({ proj, onViewImages }: ProjectProps) {
   const [expanded, setExpanded] = useState(false);
+  const [stacksExpanded, setStacksExpanded] = useState(false);
 
   const {
     title,
     status,
     description,
     stacks,
-    image = [],
     links = [],
     logo,
     hasBackground,
   } = proj;
 
+  const canViewGallery = projectHasGalleryMedia(proj);
+  const visibleStacks =
+    stacksExpanded || !stacks?.length || stacks.length <= 3
+      ? stacks
+      : stacks.slice(0, 3);
+  const hasMoreStacks = (stacks?.length ?? 0) > 3;
+
   const isDark = hasBackground === true;
-  const previewSrc = logo ?? image[0];
 
   const cardClass = isDark
     ? "relative flex flex-col h-full border border-white/10 bg-zinc-950/40 backdrop-blur-xl ring-1 ring-white/5 hover:scale-[1.02] transition duration-200 rounded-xl overflow-hidden"
@@ -61,27 +69,39 @@ export default function Project({ proj }: ProjectProps) {
     : "mt-1 font-mono text-xs text-zinc-400 transition-colors hover:text-zinc-600";
 
   return (
-    <div className="group h-full flex flex-col m-2">
+    <div className="group m-2 flex h-full flex-col">
       <Card className={cardClass}>
         {isDark && <GlassGradientBackground variant="dark" />}
 
-        <CardHeader className="relative z-10 flex flex-row items-start gap-3 p-4 pb-2">
-          {previewSrc && (
-            <img
-              src={previewSrc}
-              alt={logo ? `${title} logo` : title}
-              className={`${previewClass} ${logo ? "object-contain p-2" : "object-cover"}`}
-            />
-          )}
-
-          <div className="flex min-w-0 flex-1 flex-col gap-1">
-            <h3 className={titleClass}>{title}</h3>
-            {status && (
-              <p className="font-mono text-xs lowercase text-zinc-400">
-                {status}
-              </p>
+        <CardHeader className="relative z-10 flex flex-row items-start justify-between gap-3 p-4 pb-2">
+          <div className="flex min-w-0 flex-1 items-start gap-3">
+            {logo && (
+              <img
+                src={logo}
+                alt={`${title} logo`}
+                className={`${previewClass} object-contain p-2`}
+              />
             )}
+
+            <div className="flex min-w-0 flex-col gap-1">
+              <h3 className={titleClass}>{title}</h3>
+              {status && (
+                <p className="font-mono text-xs lowercase text-zinc-400">
+                  {status}
+                </p>
+              )}
+            </div>
           </div>
+
+          {canViewGallery && onViewImages && (
+            <button
+              type="button"
+              onClick={onViewImages}
+              className={`${linkClass} shrink-0`}
+            >
+              view gallery →
+            </button>
+          )}
         </CardHeader>
 
         <CardContent className="relative z-10 p-4 pt-0 flex flex-col flex-1 gap-2">
@@ -105,11 +125,20 @@ export default function Project({ proj }: ProjectProps) {
           </div>
 
           <div className="flex flex-wrap gap-2 pt-1">
-            {stacks?.map((tech, index) => (
+            {visibleStacks?.map((tech, index) => (
               <span key={index} className={stackClass}>
                 {tech}
               </span>
             ))}
+            {hasMoreStacks && (
+              <button
+                type="button"
+                onClick={() => setStacksExpanded(!stacksExpanded)}
+                className={expandButtonClass}
+              >
+                {stacksExpanded ? "show less" : "show more..."}
+              </button>
+            )}
           </div>
 
           {links.length > 0 && (
@@ -126,6 +155,7 @@ export default function Project({ proj }: ProjectProps) {
               ))}
             </div>
           )}
+
         </CardContent>
       </Card>
     </div>

@@ -193,7 +193,7 @@ export const tech7 = {
 };
 
 export const project1 = {
-  title: "Smart Pig",
+  title: "Smart Pig - 2nd Overall, Best IT Capstone Project (2026)",
   status: "Personal",
   image: [
     "/images/SmartPig0.jpg",
@@ -203,6 +203,7 @@ export const project1 = {
     "/images/SmartPig4.png",
     "/images/SmartPig5.png",
     "/images/SmartPig6.png",
+    "/images/capstone-award1.jpg",
   ],
   video: "/images/SmartPigVid2.mp4",
   description:
@@ -219,6 +220,7 @@ export const project1 = {
     "Resistor",
     "Water Pump",
   ],
+  hasImageAndVideo: true,
 };
 
 export const project2 = {
@@ -232,6 +234,7 @@ export const project2 = {
     "/images/muntirent5.png",
     "/images/muntirent6.png",
     "/images/muntirent7.png",
+    "/images/happy-client1-project2.png",
   ],
   video: [
     "/images/munti-rent-vid1.mp4",
@@ -250,10 +253,12 @@ export const project2 = {
     "NumPy",
     "MySQL",
   ],
+  hasImageAndVideo: true,
+  logo: "/images/munti-rent-logo.png",
 };
 
 export const project3 = {
-  title: "Smart Fire Monitoring",
+  title: "Smart Fire Monitoring - Presentend in Research Colloquium (2026)",
   status: "Side Project",
   image: [
     "/images/SmartAiFireMonitoring1.png",
@@ -267,6 +272,7 @@ export const project3 = {
     "/images/SmartAiFireMonitoring7.png",
     "/images/SmartAiFireMonitoring8.png",
     "/images/SmartAiFireMonitoring9.png",
+    "/images/smart-fire-monitoring-feedback.png"
   ],
   description:
     "Smart AI-Based Fire Monitoring – A mobile app connected to IoT sensors that monitors fire, temperature, smoke, and humidity. It sends instant notifications via FCM when hazards are detected, triggers AI voice alerts, and includes a chatbot for user interaction.",
@@ -282,6 +288,8 @@ export const project3 = {
     "Gemini Ai",
     "Eleven Labs Ai",
   ],
+  hasImageAndVideo: true,
+  logo: "/images/smart-fire-monitoring-logo.jpg",
 };
 
 export const project4 = {
@@ -316,15 +324,18 @@ export const project4 = {
     "Javascript",
     "MySQL",
   ],
+  hasImageAndVideo: true,
+  logo: "/images/icom-deaf-logo.jpg",
 };
 
 export const project5 = {
-  title: "E-Learning App",
+  title: "E-Learning App - Presented in Research Conference (2025)",
   status: "Side Project",
   image: [
     "/images/e-learning1.png",
     "/images/e-learning2.png",
     "/images/e-learning3.png",
+    "/images/e-learning-feedback.png"
   ],
   description:
     "An educational app designed for children 8 years and older to learn the alphabet. Kids can practice tracing letters, improving their writing skills and letter recognition through interactive exercises. The app gamifies learning with stages, rewarding progress with stars for completed tasks. Available on the Play Store for easy access.",
@@ -383,6 +394,8 @@ export const project6 = {
     "Redux",
     "ShadCN UI"
   ],
+  hasImageAndVideo: true,
+  logo: "/images/eco-connect-logo.jpg",
 };
 
 export const project7 = {
@@ -397,6 +410,7 @@ export const project7 = {
     }
   ],
   stacks: ["n8n", "Telegram", "OpenAI"],
+  hasImageAndVideo: true,
 }
 
 export const project8 = {
@@ -459,6 +473,7 @@ export const happyClientProject3 = {
     "/images/happy-client2-project3.png",
     "/images/happy-client3-project3.png",
     "/images/happy-client4-project3.png",
+    "/images/happy-client1-project2.png"
   ],
   description: "From Smart Fire Monitoring",
 };

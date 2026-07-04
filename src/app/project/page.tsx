@@ -1,4 +1,4 @@
-import Project from "@/app/(Dashboard-v2)/components/Project";
+import ProjectList from "@/app/(Dashboard-v2)/components/ProjectList";
 import SectionListPage from "@/components/common/SectionListPage";
 import {
   project1,
@@ -27,11 +27,7 @@ const items = [
 export default function ProjectPage() {
   return (
     <SectionListPage title="05 — projects">
-      <div className="flex flex-col">
-        {items.map((item, index) => (
-          <Project key={index} proj={item} />
-        ))}
-      </div>
+      <ProjectList items={items} layout="grid" />
     </SectionListPage>
   );
 }

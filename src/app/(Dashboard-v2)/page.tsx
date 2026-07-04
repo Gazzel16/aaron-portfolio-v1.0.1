@@ -4,7 +4,7 @@ import Bio from "./components/Bio";
 import Academic from "./components/Acedemic";
 import Work from "./components/Work";
 import Tech from "./components/Tech";
-import Project from "./components/Project";
+import ProjectList from "./components/ProjectList";
 import Certificate from "./components/certificates";
 // Import your data objects
 import {
@@ -175,9 +175,7 @@ function DashboardV2Page() {
           responsibilities and the technical skills I applied.
         </h4> */}
               <div className="mt-4 items-stretch">
-                {projectData.map((item, index) => (
-                  <Project key={index} proj={item} />
-                ))}
+                <ProjectList items={projectData} />
               </div>
             </section>
           </div>
