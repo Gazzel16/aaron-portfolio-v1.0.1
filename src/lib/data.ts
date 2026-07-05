@@ -473,7 +473,7 @@ export const project10 = {
   title: "Event Management System",
   status: "Fetti Creative Solution",
   description: "A web application built for creative event management, where users can organize and oversee their events end to end. The platform supports event planning, bookings, and event speech management, giving organizers a single place to coordinate schedules, content, and participant details.",
-  stacks: ["Next.js","React Query", "Tailwind", "ShadCN UI"],
+  stacks: ["Next.js","React Query", "Tailwind", "ShadCN UI", "Prisma", "PostgreSQL","Node.js(Express)"],
   logo: "/images/fetti-logo-v2.png",
   isCompanyProject: true,
   links: [
