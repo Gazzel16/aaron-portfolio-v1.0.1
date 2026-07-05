@@ -5,6 +5,7 @@ import { projectHasGalleryMedia } from "@/components/common/ProjectImageGallery"
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import Link from "next/link";
 import { useState } from "react";
+import NdaDialog from "@/app/(Dashboard-v2)/components/NdaDialog";
 
 interface ProjectProps {
   proj: {
@@ -19,6 +20,11 @@ interface ProjectProps {
     isFeatured?: boolean;
     hasBackground?: boolean;
     hasImageAndVideo?: boolean;
+    isCompanyProject?: boolean;
+    isPersonalProject?: boolean;
+    isContractProject?: boolean;
+    isCapstoneProject?: boolean;
+    isComissionProject?: boolean;
   };
   onViewImages?: () => void;
 }
@@ -26,6 +32,7 @@ interface ProjectProps {
 export default function Project({ proj, onViewImages }: ProjectProps) {
   const [expanded, setExpanded] = useState(false);
   const [stacksExpanded, setStacksExpanded] = useState(false);
+  const [ndaOpen, setNdaOpen] = useState(false);
 
   const {
     title,
@@ -35,6 +42,7 @@ export default function Project({ proj, onViewImages }: ProjectProps) {
     links = [],
     logo,
     hasBackground,
+    isCompanyProject,
   } = proj;
 
   const canViewGallery = projectHasGalleryMedia(proj);
@@ -143,21 +151,38 @@ export default function Project({ proj, onViewImages }: ProjectProps) {
 
           {links.length > 0 && (
             <div className="mt-2 flex flex-wrap gap-3">
-              {links.map((link, index) => (
-                <Link
-                  key={index}
-                  href={link.href}
-                  target="_blank"
-                  className={linkClass}
-                >
-                  {link.label} →
-                </Link>
-              ))}
+              {links.map((link, index) =>
+                isCompanyProject ? (
+                  <button
+                    key={index}
+                    type="button"
+                    onClick={() => setNdaOpen(true)}
+                    className={linkClass}
+                  >
+                    {link.label} →
+                  </button>
+                ) : (
+                  <Link
+                    key={index}
+                    href={link.href}
+                    target="_blank"
+                    className={linkClass}
+                  >
+                    {link.label} →
+                  </Link>
+                ),
+              )}
             </div>
           )}
 
         </CardContent>
       </Card>
+
+      <NdaDialog
+        open={ndaOpen}
+        onOpenChange={setNdaOpen}
+        projectTitle={title}
+      />
     </div>
   );
 }

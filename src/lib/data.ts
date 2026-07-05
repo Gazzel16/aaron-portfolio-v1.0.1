@@ -58,12 +58,15 @@ export const work3 = {
   company: "Freelance | Remote",
   date: "October 2024 - Current",
   details: [
-    "I am a freelance developer specializing in student capstone project prototyping, offering both software and hardware solutions on a commission basis. I help turn project ideas into fully functional systems, integrating frontends, backends, databases, APIs, and hardware components like microcontrollers, sensors, and IoT devices for seamless operation.",
-    "Developed an E-Learning Game App for children aged 7 and above, featuring multiple-choice quizzes and tracing exercises for numbers and letters. Built using Java/XML with local data storage via Shared Preferences, the app is lightweight and easy to use. Available on Google Play Store ",
-    "Developed IcomDeaf, a web application for deaf students and teachers to learn and practice sign language. Teachers can upload instructional materials, and students can review and practice live using AI-powered recognition with Mediapipe, OpenCV, Python FastAPI, and an HTML5 frontend.",
-    "Developed Smart Fire Monitoring, an IoT system using ESP32, MQ2, DHT22, and fire sensors to track smoke, temperature, and humidity. Integrated with a Java/XML Android app using Firebase RTDB and Cloud Messaging for real-time alerts, secure authentication, and backend management via Python FastAPI.",
-    "Developed Smart Pig, an IoT system using ESP32 and sensors to monitor humidity, temperature, and water levels. Integrated with a mobile app for real-time analytics, remote water pump control, QR code management for cages and pigs, Firebase notifications, and Python FastAPI for API handling and token management, with Gemini AI for intelligent insights.",
-    "Developed a Rental Management App with three roles—Tenant, Landlord, and Admin—featuring AI-powered search with Gemini and FAISS, Google Maps integration, a Python FastAPI backend, and an Android frontend using Kotlin/XML for a seamless user experience.",
+    "Freelance developer specializing in student capstone prototypes, delivering end-to-end web and mobile (Android) solutions — frontend, backend, databases, APIs, and IoT hardware integration."   ,
+    "Guided 4 solo capstone groups (13 students) and 3 collaborative ( with my mentor) groups (9 students) through full project development and defense — 100% success rate across all 22 students. ",  
+    "",
+"Projects: AI-powered Rental Management App (FastAPI, Kotlin, Gemini, FAISS, Google Maps), Smart Pig IoT system (ESP32, Firebase, Android, Gemini AI), Smart Fire Monitoring IoT (ESP32, Android, FastAPI), IcomDeaf Sign language web app (FastAPI, Mediapipe, OpenCV), and an E-Learning Game App published on Google Play. ",
+    // "Developed an E-Learning Game App for children aged 7 and above, featuring multiple-choice quizzes and tracing exercises for numbers and letters. Built using Java/XML with local data storage via Shared Preferences, the app is lightweight and easy to use. Available on Google Play Store ",
+    // "Developed IcomDeaf, a web application for deaf students and teachers to learn and practice sign language. Teachers can upload instructional materials, and students can review and practice live using AI-powered recognition with Mediapipe, OpenCV, Python FastAPI, and an HTML5 frontend.",
+    // "Developed Smart Fire Monitoring, an IoT system using ESP32, MQ2, DHT22, and fire sensors to track smoke, temperature, and humidity. Integrated with a Java/XML Android app using Firebase RTDB and Cloud Messaging for real-time alerts, secure authentication, and backend management via Python FastAPI.",
+    // "Developed Smart Pig, an IoT system using ESP32 and sensors to monitor humidity, temperature, and water levels. Integrated with a mobile app for real-time analytics, remote water pump control, QR code management for cages and pigs, Firebase notifications, and Python FastAPI for API handling and token management, with Gemini AI for intelligent insights.",
+    // "Developed a Rental Management App with three roles—Tenant, Landlord, and Admin—featuring AI-powered search with Gemini and FAISS, Google Maps integration, a Python FastAPI backend, and an Android frontend using Kotlin/XML for a seamless user experience.",
   ],
   isFeatured: true,
 };
@@ -93,9 +96,11 @@ export const work6 = {
   title: "Junior Full Stack Developer",
   company: "B1G Corporation | Fulltime | Onsite | Muntinlupa City",
   date: "May 2026 - Current",
-  // details:[
-  //   ""
-  // ]
+  details:[
+    "Maintained and enhanced an existing high-volume Inventory & Ordering System using Vite and Supabase — fixing bugs and delivering new features for a system handling millions of material requests and millions of PHP in monthly transactions.",
+"Managed production database operations and handled end-to-end application deployment via Vercel, ensuring data integrity and reliability across live environments from staging to production. ",
+"Took ownership of internal requirement meetings, feature planning, and technical decisions, set up and managed Trello for task tracking, led interns, and managed Git branching workflows. ",
+  ],
   isFeatured: true,
 }
 
@@ -221,6 +226,8 @@ export const project1 = {
     "Water Pump",
   ],
   hasImageAndVideo: true,
+  isCapstoneProject: true,
+  isPersonalProject: true,
 };
 
 export const project2 = {
@@ -255,6 +262,8 @@ export const project2 = {
   ],
   hasImageAndVideo: true,
   logo: "/images/munti-rent-logo.png",
+  isCapstoneProject: true,
+  isComissionProject: true,
 };
 
 export const project3 = {
@@ -290,6 +299,8 @@ export const project3 = {
   ],
   hasImageAndVideo: true,
   logo: "/images/smart-fire-monitoring-logo.jpg",
+  isCapstoneProject: true,
+  isComissionProject: true,
 };
 
 export const project4 = {
@@ -326,6 +337,8 @@ export const project4 = {
   ],
   hasImageAndVideo: true,
   logo: "/images/icom-deaf-logo.jpg",
+  isCapstoneProject: true,
+  isComissionProject: true,
 };
 
 export const project5 = {
@@ -349,6 +362,8 @@ export const project5 = {
   stacks: ["Java", "Xml", "Canva", "Playstore"],
   isFeatured: true,
   logo: "/images/e-learning-logo.webp",
+  isCapstoneProject: true,
+  isComissionProject: true,
 };
 
 export const project6 = {
@@ -396,6 +411,7 @@ export const project6 = {
   ],
   hasImageAndVideo: true,
   logo: "/images/eco-connect-logo.jpg",
+  isCapstoneProject: true,
 };
 
 export const project7 = {
@@ -411,11 +427,12 @@ export const project7 = {
   ],
   stacks: ["n8n", "Telegram", "OpenAI"],
   hasImageAndVideo: true,
+  isPersonalProject: true,
 }
 
 export const project8 = {
-  title: "Deepsky Nation",
-  status: "Side Project",
+  title: "E-Commerce Website",
+  status: "Deepsky",
   image: ["/images/deepsky1.png"],
   description: "A full-stack e-commerce website for Deepsky Nation, a lifestyle brand selling T-shirts, apparel, and branded merchandise to customers online.",
   links: [
@@ -432,6 +449,7 @@ export const project8 = {
   isFeatured: true,
   logo: "/images/deepsky-logo.png",
   hasBackground: true,
+  isContractProject: true,
 }
 
 export const project9 = {
@@ -448,7 +466,72 @@ export const project9 = {
   stacks: ["Next.js", "Redux", "ShadCN UI", "Tailwind CSS", "TypeScript", "Vercel"],
   isFeatured: true,
   logo: "/images/voice-revive-logo.png",
+  isPersonalProject: true,
 }
+
+export const project10 = {
+  title: "Event Management System",
+  status: "Fetti Creative Solution",
+  description: "A web application built for creative event management, where users can organize and oversee their events end to end. The platform supports event planning, bookings, and event speech management, giving organizers a single place to coordinate schedules, content, and participant details.",
+  stacks: ["Next.js","React Query", "Tailwind", "ShadCN UI"],
+  logo: "/images/fetti-logo-v2.png",
+  isCompanyProject: true,
+  links: [
+    {
+      label: "Live Project",
+      href: "https://no-reply.com/"
+    }
+  ],
+  hasBackground: true,
+}
+
+export const project11 ={
+  title: "Asset Management System",
+  status: "FMC Research Solution Inc.",
+  description: "A web app that lets admins/managers assign, transfer, and track company assets across employees, locations, and other companies. It includes a centralized inventory with pricing, warranty, and end-of-life tracking, lifecycle status badges (Active, Out of Warranty, Phased Out), asset categorization, employee/facility administration, a full activity history log, and a dashboard with trend charts and analytics for monitoring asset usage and distribution.",
+  stacks: ["Next.js", "Redux", "ShadCN UI", "Tailwind CSS", "TypeScript", "Python FastAPI"],
+  logo: "/images/fmc-logo.png",
+  isCompanyProject: true,
+  links: [
+    {
+      label: "Live Project",
+      href: "https://no-reply.com/"
+    }
+  ],
+  hasBackground: true,
+}
+
+export const project12 ={
+  title: "Inventory & Ordering System",
+  status: "B1G Corporation",
+  description: "Maintained and enhanced B1G Corporation's existing multi-tenant Ordering System, which processes millions of pesos in monthly transactions. The platform enables super admins to allocate stock to agents, who place orders, remit them through their team leaders, and route deposits to finance for approval.",
+  stacks: ["Vite", "Supabase", "Tailwind", "Vercel"],
+  isCompanyProject: true,
+  links: [
+    {
+      label: "Live Project",
+      href: "https://no-reply.com/"
+    }
+  ],
+  hasBackground: true,
+  logo: "/images/b1g-logo.png",
+ }
+
+ export const project13 ={
+  title: "Human Resource Information System",
+  status: "B1G Corporation",
+  description: "Maintained and enhanced B1G Corporation's existing Human Resource Information System (HRIS), developing a new attendance data export feature (Excel format) used by HR for manual upload into the bank's payroll system, along with ongoing bug fixes to improve system reliability.",
+  stacks: ["Vite", "Supabase", "Tailwind", "Vercel"],
+  isCompanyProject: true,
+  links: [
+    {
+      label: "Live Project",
+      href: "https://no-reply.com/"
+    }
+  ],
+  hasBackground: true,
+  logo: "/images/b1g-logo.png",
+ }
 
 export const happyClient1Project1 = {
   image: [
