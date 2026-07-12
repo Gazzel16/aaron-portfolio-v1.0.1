@@ -6,6 +6,7 @@ import Work from "./components/Work";
 import Tech from "./components/Tech";
 import ProjectList from "./components/ProjectList";
 import Certificate from "./components/certificates";
+import GithubContribution from "./components/GithubContribution";
 // Import your data objects
 import {
   aboutData,
@@ -112,6 +113,11 @@ function DashboardV2Page() {
           <About data={aboutData} />
         </section>
 
+        <section id="github">
+          <GithubContribution />
+        </section>
+
+      
         <div className="grid grid-cols-1 items-start gap-6 lg:grid-cols-2">
           <div id="div1">
 
