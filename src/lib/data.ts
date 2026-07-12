@@ -201,6 +201,7 @@ export const project1 = {
   title: "Smart Pig - 2nd Overall, Best IT Capstone Project (2026)",
   status: "Personal",
   image: [
+    "/images/capstone-award1.jpg",
     "/images/SmartPig0.jpg",
     "/images/SmartPig1.png",
     "/images/SmartPig2.png",
@@ -208,7 +209,6 @@ export const project1 = {
     "/images/SmartPig4.png",
     "/images/SmartPig5.png",
     "/images/SmartPig6.png",
-    "/images/capstone-award1.jpg",
   ],
   video: "/images/SmartPigVid2.mp4",
   description:
@@ -270,6 +270,7 @@ export const project3 = {
   title: "Smart Fire Monitoring - Presentend in Research Colloquium (2026)",
   status: "Side Project",
   image: [
+    "/images/smart-fire-monitoring-feedback.png",
     "/images/SmartAiFireMonitoring1.png",
     "/images/SmartAiFireMonitoring10.png",
     "/images/SmartAiFireMonitoring11.png",
@@ -281,7 +282,6 @@ export const project3 = {
     "/images/SmartAiFireMonitoring7.png",
     "/images/SmartAiFireMonitoring8.png",
     "/images/SmartAiFireMonitoring9.png",
-    "/images/smart-fire-monitoring-feedback.png"
   ],
   description:
     "Smart AI-Based Fire Monitoring – A mobile app connected to IoT sensors that monitors fire, temperature, smoke, and humidity. It sends instant notifications via FCM when hazards are detected, triggers AI voice alerts, and includes a chatbot for user interaction.",
