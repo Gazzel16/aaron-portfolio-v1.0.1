@@ -544,7 +544,9 @@ export const project12 ={
       href: "https://www.dev-hive.online/"
     }
   ],
+  isFeatured: true,
   hasBackground: false,
+  isPersonalProject: true,
   logo: "/images/dev-hive-logo.svg",
  }
 
