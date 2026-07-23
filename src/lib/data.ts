@@ -533,11 +533,24 @@ export const project12 ={
   logo: "/images/b1g-logo.png",
  }
 
+ export const project14 ={
+  title: "DevHive",
+  status: "Personal",
+  description:"Free open-source starter templates and project structures that give developers a solid foundation for building modern applications quickly.",
+  stacks: ["Next.js", "Tailwind", "ShadCN UI", "TypeScript", "Vercel"],
+  links: [
+    {
+      label: "Live Project",
+      href: "https://www.dev-hive.online/"
+    }
+  ],
+  hasBackground: false,
+  logo: "/images/dev-hive-logo.svg",
+ }
+
 export const happyClient1Project1 = {
   image: [
-    "/images/happy-client1-project1.jpg",
-    "/images/happy-client2-project1.jpg",
-    "/images/happy-client3-project1.png",
+    "/images/dev-hive1.png",
   ],
   description: "From E-Learning game app",
 };

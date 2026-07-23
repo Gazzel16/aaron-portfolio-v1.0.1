@@ -14,10 +14,12 @@ import {
   project11,
   project12,
   project13,    
+  project14,
 } from "@/lib/data";
 
 const items = [
   project13,
+  project14,
   project11,
   project12,
   project10,
