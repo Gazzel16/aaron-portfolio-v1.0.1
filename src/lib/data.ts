@@ -228,6 +228,7 @@ export const project1 = {
   hasImageAndVideo: true,
   isCapstoneProject: true,
   isPersonalProject: true,
+  isFeatured: true,
 };
 
 export const project2 = {
@@ -464,7 +465,7 @@ export const project9 = {
     }
   ],
   stacks: ["Next.js", "Redux", "ShadCN UI", "Tailwind CSS", "TypeScript", "Vercel"],
-  isFeatured: true,
+  isFeatured: false,
   logo: "/images/voice-revive-logo.png",
   isPersonalProject: true,
 }
@@ -499,6 +500,7 @@ export const project11 ={
     }
   ],
   hasBackground: true,
+  isFeatured: false,
 }
 
 export const project12 ={
@@ -515,6 +517,7 @@ export const project12 ={
   ],
   hasBackground: true,
   logo: "/images/b1g-logo.png",
+  isFeatured: true,
  }
 
  export const project13 ={
@@ -531,6 +534,7 @@ export const project12 ={
   ],
   hasBackground: true,
   logo: "/images/b1g-logo.png",
+  isFeatured: false,
  }
 
  export const project14 ={
@@ -544,7 +548,7 @@ export const project12 ={
       href: "https://www.dev-hive.online/"
     }
   ],
-  isFeatured: true,
+  isFeatured: false,
   hasBackground: false,
   isPersonalProject: true,
   logo: "/images/dev-hive-logo.svg",
@@ -614,4 +618,19 @@ export const certificate5 = {
   date: "June 2026",
   image: "/images/capstone-award1.jpg",
   isFeatured: true,
-}
+};
+
+export const appBuilderPH = [
+  {
+    src: "https://appbuildersph.com/embed/apps/devhive",
+    title: "DevHive votes on App Builders PH",
+    width: 320,
+    height: 72,
+  },
+  {
+    src: "https://appbuildersph.com/embed/apps/voice-revive",
+    title: "Voice Revive votes on App Builders PH",
+    width: 320,
+    height: 72,
+  },
+];

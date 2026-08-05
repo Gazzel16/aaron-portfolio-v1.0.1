@@ -50,6 +50,7 @@ import {
   certificate4,
   certificate5,
   work7,
+  appBuilderPH,
 } from "@/lib/data";
 import { useState } from "react";
 import Link from "next/link";
@@ -125,7 +126,6 @@ function DashboardV2Page() {
           <GithubContribution />
         </section>
 
-      
         <div className="grid grid-cols-1 items-start gap-6 lg:grid-cols-2">
           <div id="div1">
 
@@ -174,7 +174,7 @@ function DashboardV2Page() {
               
               <div className="mb-6 flex w-full min-w-[20rem] items-center justify-between gap-4">
                 <h2 className="font-mono text-sm lowercase text-zinc-400">
-                  05 — projects
+                  02 — projects
                 </h2>
                 <Link
                   href="/project"
@@ -197,6 +197,32 @@ function DashboardV2Page() {
           </div>
 
           <div id="div2" className="flex flex-col gap-6">
+            <section
+              id="app-builders"
+              className="bg-emerald-700 rounded-lg border border-border/60 border-gray-200 p-4"
+            >
+              <div className="mb-6 flex w-full min-w-[20rem] items-center justify-between gap-4">
+                <h2 className="font-mono text-sm lowercase text-white">
+                  03 — app builders
+                </h2>
+              </div>
+
+              <div className="flex flex-wrap gap-3">
+                {appBuilderPH.map((embed) => (
+                  <iframe
+                    key={embed.src}
+                    src={embed.src}
+                    title={embed.title}
+                    className="w-full"
+                    height={embed.height}
+                    style={{ border: 0 }}
+                    loading="lazy"
+                    scrolling="no"
+                  />
+                ))}
+              </div>
+            </section>
+
             {/* Academic/Education Section */}
             <section
               id="education"
@@ -204,7 +230,7 @@ function DashboardV2Page() {
             >
               <div className="mb-6 flex w-full min-w-[20rem] items-center justify-between gap-4">
                 <h2 className="font-mono text-sm lowercase text-zinc-400">
-                  02 — education
+                  04 — education
                 </h2>
                 <Link
                   href="/academic"
@@ -228,7 +254,7 @@ function DashboardV2Page() {
               <div className="relative z-10 rounded-lg border border-white/10 bg-zinc-950/40 p-4 shadow-lg backdrop-blur-xl ring-1 ring-white/5">
                 <div className="mb-6 flex w-full min-w-[20rem] items-center justify-between gap-4">
                   <h2 className="font-mono text-sm lowercase text-zinc-400">
-                    03 — experience
+                    05 — experience
                   </h2>
                   <Link
                     href="/experience"
@@ -253,7 +279,7 @@ function DashboardV2Page() {
             >
               <div className="mb-6 flex w-full min-w-[20rem] items-center justify-between gap-4">
                 <h2 className="font-mono text-sm lowercase text-zinc-400">
-                  04 — stacks
+                  06 — stacks
                 </h2>
                 <Link
                   href="/stacks"
@@ -276,7 +302,7 @@ function DashboardV2Page() {
             >
               <div className="mb-6 flex w-full min-w-[20rem] items-center justify-between gap-4">
                 <h2 className="font-mono text-sm lowercase text-zinc-400">
-                  06 — certificates
+                  07 — certificates
                 </h2>
                 <Link
                   href="/certificate"
