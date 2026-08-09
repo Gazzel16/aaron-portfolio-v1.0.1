@@ -1,8 +1,8 @@
 import Tech from "@/app/(Dashboard-v2)/components/Tech";
 import SectionListPage from "@/components/common/SectionListPage";
-import { tech1, tech2, tech3, tech4, tech5, tech6, tech7 } from "@/lib/data";
+import { tech1, tech2, tech3, tech4, tech5, tech6, tech7, tech8 } from "@/lib/data";
 
-const items = [tech1, tech2, tech3, tech4, tech5, tech6, tech7];
+const items = [tech1, tech2, tech3, tech4, tech5, tech6, tech7, tech8];
 
 export default function StacksPage() {
   return (

@@ -197,6 +197,11 @@ export const tech7 = {
   ],
 };
 
+export const tech8 = {
+  title: "Deployment Platforms",
+  stacks: ["Vercel", "Render", "Digital Ocean", "Supabase", "Firebase"],
+}
+
 export const project1 = {
   title: "Smart Pig - 2nd Overall, Best IT Capstone Project (2026)",
   status: "Personal",
@@ -552,6 +557,23 @@ export const project12 ={
   hasBackground: false,
   isPersonalProject: true,
   logo: "/images/dev-hive-logo.svg",
+ }
+
+ export const project15 ={
+  title: "Templato",
+  status: "Personal",
+  description: "Templato is a free open-source starter templates and project structures that give developers a solid foundation for building modern applications quickly.",
+  stacks: ["Next.js", "Tailwind", "ShadCN UI", "TypeScript", "Digital Ocean", "Node.JS(Express)", "Redux"],
+  links: [
+    {
+      label: "Live Project",
+      href: "https://www.yourtemplato.online/"
+    }
+  ],
+  isFeatured: false,
+  hasBackground: false,
+  isPersonalProject: true,
+  logo: "/images/templato-logo.png",
  }
 
 export const happyClient1Project1 = {

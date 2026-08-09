@@ -41,6 +41,7 @@ import {
   project12,
   project13,
   project14,
+  project15,
   happyClient1Project1,
   happyClientProject2,
   happyClientProject3,
@@ -72,6 +73,7 @@ function DashboardV2Page() {
     isFeatured,
   );
   const projectData = [
+    project15,
     project14,
     project13,
     project12,
