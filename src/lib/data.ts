@@ -633,4 +633,10 @@ export const appBuilderPH = [
     width: 320,
     height: 72,
   },
+  {
+    src: "https://appbuildersph.com/embed/apps/templato",
+    title: "Templato votes on App Builders PH",
+    width: 320,
+    height: 72,
+  }
 ];
