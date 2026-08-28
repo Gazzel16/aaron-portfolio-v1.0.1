@@ -5,8 +5,8 @@ export const aboutData = {
   location: "Metro Manila, Philippines",
   roles: ["Full Stack Developer", "Software Engineer"],
   bio: [
-    "Currently working full time as a Jr. Full Stack Developer, I build and ship production-ready systems across startup projects, enterprise applications, and capstone builds. My focus is on frontend development, backend systems, and creating software that scales.",
-    "I design systems that simplify workflows, develop full-stack applications from the ground up to deployment, and automate repetitive tasks to boost efficiency. From e-commerce and inventory platforms to mobile apps, IoT systems, and AI-powered tools, I work end to end — architecture, APIs, databases, and live deployment — and guide teams from planning through successful delivery.",
+    "Jr. Full Stack Developer based in Metro Manila. I build and ship production-ready apps across startups, enterprise systems, and personal products — from frontend UI to backend APIs and live deployment.",
+    "I care about clean systems that simplify workflows, whether that's e-commerce platforms, IoT builds, or AI-powered tools. End to end is my default: architecture, code, and delivery.",
   ],
 };
 
@@ -449,11 +449,13 @@ export const project8 = {
     { 
       label: "Live Project ( Still on Development )",
       href: "https://deepsky-nation-client.vercel.app",
+      isCompanyProject: true,
     },
   ],
   stacks: ["Next.js", "Redux", "ShadCN UI", "Tailwind CSS", "TypeScript", "Python FastAPI", "Vercel", "Render"],
   isFeatured: true,
   logo: "/images/deepsky-logo.png",
+  isCompanyProject: true,
   hasBackground: true,
   isContractProject: true,
 }
@@ -511,7 +513,7 @@ export const project11 ={
 export const project12 ={
   title: "Inventory & Ordering System",
   status: "B1G Corporation",
-  description: "Maintained and enhanced B1G Corporation's existing multi-tenant Ordering System, which processes millions of pesos in monthly transactions. The platform enables super admins to allocate stock to agents, who place orders, remit them through their team leaders, and route deposits to finance for approval.",
+  description: "Maintained and enhanced B1G Corporation's multi-tenant Inventory & Ordering System, which processes millions of pesos in monthly transactions — from stock allocation to agent orders, remittance, and finance approval. Key features we implemented: Consignment — consignee orders only appear in analytics after payment (not when placed), and each entry is clickable to show when that consignment order was created. AR (Accounts Receivable) — payment status is tracked per product line, not the whole order, so unpaid items stay visible until settled. FSN — products are classified as Fast, Slow, or Non-moving so the sales team can plan stock and promotions from real movement data.",
   stacks: ["Vite", "Supabase", "Tailwind", "Vercel"],
   isCompanyProject: true,
   links: [
@@ -562,7 +564,7 @@ export const project12 ={
  export const project15 ={
   title: "Templato",
   status: "Personal",
-  description: "Templato is a free open-source starter templates and project structures that give developers a solid foundation for building modern applications quickly.",
+  description: "A free open-source hub of starter templates and project structures I built to help beginners get a clear foundation before they start coding. Instead of guessing folder layouts, boilerplate, and setup, developers can grab a ready structure and focus on building — no more confusion on where to begin.",
   stacks: ["Next.js", "Tailwind", "ShadCN UI", "TypeScript", "Digital Ocean", "Node.JS(Express)", "Redux"],
   links: [
     {

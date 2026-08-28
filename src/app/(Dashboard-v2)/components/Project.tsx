@@ -25,6 +25,7 @@ interface ProjectProps {
     isContractProject?: boolean;
     isCapstoneProject?: boolean;
     isComissionProject?: boolean;
+    isConfidentialProject?: boolean;
   };
   onViewImages?: () => void;
 }
