@@ -93,10 +93,10 @@ export default function BookIntro({
     const tOpen = window.setTimeout(() => {
       setPhase("open");
       setDoors("opening");
-    }, 280);
-    const tDoorsPark = window.setTimeout(() => setDoors("open"), 1950);
-    const tRoar = window.setTimeout(() => setPhase("roar"), 2000);
-    const tType = window.setTimeout(() => setPhase("type"), 3800);
+    }, 750);
+    const tDoorsPark = window.setTimeout(() => setDoors("open"), 1550);
+    const tRoar = window.setTimeout(() => setPhase("roar"), 1600);
+    const tType = window.setTimeout(() => setPhase("type"), 3400);
 
     return () => {
       window.clearTimeout(tOpen);
@@ -197,35 +197,22 @@ export default function BookIntro({
         </p>
       </div>
 
-      <div className="book-intro-stage pointer-events-none absolute inset-0 z-10 flex">
-        <div className="book-intro-door book-intro-door-left relative h-full w-1/2 bg-[#f4f5f2] shadow-[8px_0_28px_-12px_rgba(28,36,48,0.35)]">
-          <div
-            aria-hidden
-            className="absolute inset-y-0 right-0 w-px bg-[#1c2430]/15"
-          />
-          <div
-            aria-hidden
-            className="absolute inset-y-[18%] right-3 w-2.5 rounded-full bg-[#1c2430]/12"
-          />
-          <div className="flex h-full items-center justify-center">
-            <span className="font-[family-name:var(--font-geist-mono)] text-[10px] uppercase tracking-[0.28em] text-[#8a9488]">
-              Portfolio
-            </span>
+      <div className="book-intro-stage pointer-events-none absolute inset-0 z-10">
+        <div aria-hidden className="book-intro-seam" />
+        <div className="book-intro-door book-intro-door-left absolute inset-y-0 left-0 w-1/2">
+          <div className="book-intro-door-face book-intro-door-face-left relative h-full w-full">
+            <span aria-hidden className="book-intro-door-sheen" />
+            <span aria-hidden className="book-intro-door-groove" />
+            <span aria-hidden className="book-intro-door-edge book-intro-door-edge-left" />
+            <span aria-hidden className="book-intro-door-pull book-intro-door-pull-left" />
           </div>
         </div>
-        <div className="book-intro-door book-intro-door-right relative h-full w-1/2 bg-[#fafaf7] shadow-[-8px_0_28px_-12px_rgba(28,36,48,0.35)]">
-          <div
-            aria-hidden
-            className="absolute inset-y-0 left-0 w-px bg-[#1c2430]/15"
-          />
-          <div
-            aria-hidden
-            className="absolute inset-y-[18%] left-3 w-2.5 rounded-full bg-[#1c2430]/12"
-          />
-          <div className="flex h-full items-center justify-center">
-            <span className="font-[family-name:var(--font-geist-mono)] text-[10px] uppercase tracking-[0.28em] text-[#8a9488]">
-              Version III
-            </span>
+        <div className="book-intro-door book-intro-door-right absolute inset-y-0 right-0 w-1/2">
+          <div className="book-intro-door-face book-intro-door-face-right relative h-full w-full">
+            <span aria-hidden className="book-intro-door-sheen book-intro-door-sheen-right" />
+            <span aria-hidden className="book-intro-door-groove book-intro-door-groove-right" />
+            <span aria-hidden className="book-intro-door-edge book-intro-door-edge-right" />
+            <span aria-hidden className="book-intro-door-pull book-intro-door-pull-right" />
           </div>
         </div>
       </div>

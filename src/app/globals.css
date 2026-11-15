@@ -614,70 +614,49 @@
   }
 }
 
-/* Stepped “tick” open — hold, jump, hold, jump */
+/* Slam open — hard swing, slight overshoot, settle */
 @keyframes book-intro-door-open-left {
-  0%,
-  8% {
-    transform: translateX(0) rotateY(0deg);
-    box-shadow: 8px 0 28px -12px rgba(28, 36, 48, 0.35);
+  0% {
+    transform: rotateY(0deg);
   }
-  12%,
-  22% {
-    transform: translateX(-18%) rotateY(-6deg);
+  55% {
+    transform: rotateY(-118deg);
   }
-  26%,
-  36% {
-    transform: translateX(-36%) rotateY(-12deg);
-  }
-  40%,
-  50% {
-    transform: translateX(-54%) rotateY(-18deg);
-  }
-  54%,
-  64% {
-    transform: translateX(-72%) rotateY(-22deg);
-  }
-  68%,
   78% {
-    transform: translateX(-88%) rotateY(-26deg);
+    transform: rotateY(-100deg);
   }
-  82%,
   100% {
-    transform: translateX(-102%) rotateY(-28deg);
-    box-shadow: 0 0 0 transparent;
+    transform: rotateY(-108deg);
   }
 }
 
 @keyframes book-intro-door-open-right {
-  0%,
-  8% {
-    transform: translateX(0) rotateY(0deg);
-    box-shadow: -8px 0 28px -12px rgba(28, 36, 48, 0.35);
+  0% {
+    transform: rotateY(0deg);
   }
-  12%,
-  22% {
-    transform: translateX(18%) rotateY(6deg);
+  55% {
+    transform: rotateY(118deg);
   }
-  26%,
-  36% {
-    transform: translateX(36%) rotateY(12deg);
-  }
-  40%,
-  50% {
-    transform: translateX(54%) rotateY(18deg);
-  }
-  54%,
-  64% {
-    transform: translateX(72%) rotateY(22deg);
-  }
-  68%,
   78% {
-    transform: translateX(88%) rotateY(26deg);
+    transform: rotateY(100deg);
   }
-  82%,
   100% {
-    transform: translateX(102%) rotateY(28deg);
-    box-shadow: 0 0 0 transparent;
+    transform: rotateY(108deg);
+  }
+}
+
+@keyframes book-intro-seam {
+  0% {
+    opacity: 0;
+    transform: scaleY(0.15);
+  }
+  35% {
+    opacity: 0.7;
+    transform: scaleY(0.85);
+  }
+  100% {
+    opacity: 0;
+    transform: scaleY(1.05);
   }
 }
 
@@ -701,8 +680,27 @@
 }
 
 .book-intro-stage {
-  perspective: 1400px;
+  perspective: 1800px;
   transform-style: preserve-3d;
+}
+
+.book-intro-seam {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  z-index: 20;
+  width: 1px;
+  transform: translateX(-50%) scaleY(0.2);
+  transform-origin: center;
+  background: linear-gradient(
+    to bottom,
+    transparent 8%,
+    rgba(250, 250, 247, 0.75) 50%,
+    transparent 92%
+  );
+  opacity: 0;
+  pointer-events: none;
 }
 
 .book-intro-door {
@@ -711,31 +709,157 @@
   will-change: transform;
 }
 
+.book-intro-door-face {
+  overflow: hidden;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04), transparent 28%),
+    linear-gradient(180deg, #242c38 0%, #1c2430 48%, #161c26 100%);
+}
+
+.book-intro-door-face-right {
+  background:
+    linear-gradient(270deg, rgba(255, 255, 255, 0.04), transparent 28%),
+    linear-gradient(180deg, #2a3340 0%, #1f2834 48%, #182029 100%);
+}
+
+.book-intro-door-sheen {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.05) 48%,
+    transparent 62%
+  );
+}
+
+.book-intro-door-sheen-right {
+  background: linear-gradient(
+    245deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.05) 48%,
+    transparent 62%
+  );
+}
+
+.book-intro-door-groove {
+  position: absolute;
+  top: 12%;
+  bottom: 12%;
+  right: 22%;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(250, 250, 247, 0.12),
+    transparent
+  );
+}
+
+.book-intro-door-groove-right {
+  right: auto;
+  left: 22%;
+}
+
+.book-intro-door-edge {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 10px;
+  background: linear-gradient(
+    90deg,
+    #3d4a42 0%,
+    #8a9488 45%,
+    #5c6b5e 70%,
+    #2d4a3e 100%
+  );
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+}
+
+.book-intro-door-edge-left {
+  right: 0;
+}
+
+.book-intro-door-edge-right {
+  left: 0;
+  background: linear-gradient(
+    270deg,
+    #3d4a42 0%,
+    #8a9488 45%,
+    #5c6b5e 70%,
+    #2d4a3e 100%
+  );
+}
+
+.book-intro-door-pull {
+  position: absolute;
+  top: 50%;
+  width: 6px;
+  height: 72px;
+  border-radius: 999px;
+  background: linear-gradient(
+    180deg,
+    #fafaf7 0%,
+    #c5cbc3 40%,
+    #8a9488 100%
+  );
+  box-shadow:
+    0 8px 16px -10px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.55);
+  transform: translateY(-50%);
+}
+
+.book-intro-door-pull-left {
+  right: 28px;
+}
+
+.book-intro-door-pull-right {
+  left: 28px;
+}
+
 .book-intro-door-left {
   transform-origin: left center;
-  transform: translateX(0) rotateY(0deg);
+  transform: rotateY(0deg);
+}
+
+.book-intro-door-left .book-intro-door-face {
+  box-shadow:
+    inset -40px 0 50px -30px rgba(0, 0, 0, 0.45),
+    12px 0 32px -14px rgba(0, 0, 0, 0.4);
 }
 
 .book-intro-door-right {
   transform-origin: right center;
-  transform: translateX(0) rotateY(0deg);
+  transform: rotateY(0deg);
 }
 
-/* Animate open once (ticking steps), then park open for later phases */
+.book-intro-door-right .book-intro-door-face {
+  box-shadow:
+    inset 40px 0 50px -30px rgba(0, 0, 0, 0.45),
+    -12px 0 32px -14px rgba(0, 0, 0, 0.4);
+}
+
+/* Animate open once, then park fully swung for later phases */
 .book-intro-root[data-doors="opening"] .book-intro-door-left {
-  animation: book-intro-door-open-left 1.6s linear forwards;
+  animation: book-intro-door-open-left 0.75s cubic-bezier(0.16, 0.84, 0.28, 1)
+    forwards;
 }
 
 .book-intro-root[data-doors="opening"] .book-intro-door-right {
-  animation: book-intro-door-open-right 1.6s linear 0.06s forwards;
+  animation: book-intro-door-open-right 0.75s cubic-bezier(0.16, 0.84, 0.28, 1)
+    0.04s forwards;
+}
+
+.book-intro-root[data-doors="opening"] .book-intro-seam {
+  animation: book-intro-seam 0.75s ease-out forwards;
 }
 
 .book-intro-root[data-doors="open"] .book-intro-door-left {
-  transform: translateX(-102%) rotateY(-28deg);
+  transform: rotateY(-108deg);
 }
 
 .book-intro-root[data-doors="open"] .book-intro-door-right {
-  transform: translateX(102%) rotateY(28deg);
+  transform: rotateY(108deg);
 }
 
 .book-intro-caret {
@@ -849,13 +973,13 @@
   }
 
   .book-intro-root[data-doors="opening"] .book-intro-door-left,
-  .book-intro-root[data-doors="open"] .book-intro-door-left {
-    transform: translateX(-102%);
-  }
-
+  .book-intro-root[data-doors="open"] .book-intro-door-left,
   .book-intro-root[data-doors="opening"] .book-intro-door-right,
-  .book-intro-root[data-doors="open"] .book-intro-door-right {
-    transform: translateX(102%);
+  .book-intro-root[data-doors="open"] .book-intro-door-right,
+  .book-intro-seam {
+    animation: none;
+    transform: none;
+    opacity: 0;
   }
 }
 
