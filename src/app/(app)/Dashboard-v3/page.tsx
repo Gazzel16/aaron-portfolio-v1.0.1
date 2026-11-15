@@ -61,6 +61,7 @@ import StickmanCoffeeAnimation from "@/components/common/StickmanCoffeeAnimation
 import CatAndDogAnimation from "@/components/common/CatAndDogAnimation";
 import BookIntro from "@/components/common/BookIntro";
 import GithubContributionBook from "./components/GithubContributionBook";
+import PortfolioChat from "./components/PortfolioChat";
 
 const skillGroups = [
   tech1,
@@ -180,6 +181,7 @@ export default function DashboardV3() {
       />
 
       <Header />
+      <PortfolioChat />
 
       <section
         id="Home"
