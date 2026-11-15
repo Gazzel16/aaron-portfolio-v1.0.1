@@ -60,6 +60,7 @@ import SpiderAnimation from "@/components/common/SpiderAnimation";
 import StickmanCoffeeAnimation from "@/components/common/StickmanCoffeeAnimation";
 import CatAndDogAnimation from "@/components/common/CatAndDogAnimation";
 import BookIntro from "@/components/common/BookIntro";
+import GithubContributionBook from "./components/GithubContributionBook";
 
 const skillGroups = [
   tech1,
@@ -461,6 +462,8 @@ export default function DashboardV3() {
                       </li>
                     ))}
                   </ul>
+
+                  <GithubContributionBook />
                 </div>
               </div>
 
