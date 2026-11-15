@@ -1,4 +1,4 @@
-import Work from "@/app/(Dashboard-v2)/components/Work";
+import Work from "@/app/(app)/Dashboard-v2/components/Work";
 import SectionListPage from "@/components/common/SectionListPage";
 import { work1, work2, work3, work4, work5, work6, work7 } from "@/lib/data";
 

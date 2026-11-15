@@ -1,4 +1,4 @@
-import Tech from "@/app/(Dashboard-v2)/components/Tech";
+import Tech from "@/app/(app)/Dashboard-v2/components/Tech";
 import SectionListPage from "@/components/common/SectionListPage";
 import { tech1, tech2, tech3, tech4, tech5, tech6, tech7, tech8 } from "@/lib/data";
 

@@ -5,7 +5,7 @@ import { projectHasGalleryMedia } from "@/components/common/ProjectImageGallery"
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import Link from "next/link";
 import { useState } from "react";
-import NdaDialog from "@/app/(Dashboard-v2)/components/NdaDialog";
+import NdaDialog from "@/app/(app)/Dashboard-v2/components/NdaDialog";
 
 interface ProjectProps {
   proj: {

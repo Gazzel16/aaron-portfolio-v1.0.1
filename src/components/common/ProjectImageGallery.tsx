@@ -1,8 +1,21 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import { createPortal } from "react-dom";
+import { Instrument_Serif, Syne } from "next/font/google";
 import { ChevronLeft, ChevronRight, Play, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+
+const instrumentSerif = Instrument_Serif({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-book-display",
+});
+
+const syne = Syne({
+  subsets: ["latin"],
+  variable: "--font-book-sans",
+});
 
 export type ProjectGalleryItem = {
   title?: string;
@@ -47,6 +60,7 @@ interface ProjectImageGalleryProps {
   onProjectIndexChange: (index: number) => void;
   mediaMaxWidth?: string;
   mediaMaxHeight?: string;
+  variant?: "dark" | "book";
 }
 
 export default function ProjectImageGallery({
@@ -57,8 +71,10 @@ export default function ProjectImageGallery({
   onProjectIndexChange,
   mediaMaxWidth = "min(100%, 800px)",
   mediaMaxHeight = "min(55vh, 560px)",
+  variant = "dark",
 }: ProjectImageGalleryProps) {
   const [mediaIndex, setMediaIndex] = useState(0);
+  const isBook = variant === "book";
 
   const project = projects[projectIndex];
   const media = project ? getProjectMedia(project) : [];
@@ -133,12 +149,11 @@ export default function ProjectImageGallery({
   ]);
 
   useEffect(() => {
-    if (open) {
-      document.body.style.overflow = "hidden";
-      return () => {
-        document.body.style.overflow = "";
-      };
-    }
+    if (!open) return;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [open]);
 
   useEffect(() => {
@@ -157,9 +172,243 @@ export default function ProjectImageGallery({
     height: "auto",
   };
 
-  return (
+  const navBtn = isBook
+    ? "flex h-9 w-9 items-center justify-center border border-[#1c2430]/20 bg-[#fafaf7] text-[#1c2430] transition-colors hover:border-[#2d4a3e] hover:text-[#2d4a3e]"
+    : "flex h-8 w-8 items-center justify-center rounded-full border border-zinc-700 text-zinc-400 transition-colors hover:border-zinc-500 hover:text-white";
+
+  const mediaNavBtn = isBook
+    ? "absolute z-10 flex h-10 w-10 items-center justify-center border border-[#1c2430]/15 bg-[#fafaf7]/90 text-[#1c2430] backdrop-blur-sm transition-colors hover:bg-[#fafaf7]"
+    : "absolute z-10 flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-black/40 text-zinc-300 transition-colors hover:bg-black/60 hover:text-white";
+
+  const bookDialog = isBook ? (
+      <div
+        className={`${instrumentSerif.variable} ${syne.variable} fixed inset-0 z-[200] flex items-center justify-center p-4 sm:p-6`}
+        role="dialog"
+        aria-modal="true"
+        aria-label={`${project.title} media gallery`}
+      >
+        <button
+          type="button"
+          aria-label="Close gallery"
+          className="absolute inset-0 bg-[#1c2430]/40 backdrop-blur-[2px]"
+          onClick={() => onOpenChange(false)}
+        />
+
+        <div
+          className="book-spread relative z-10 grid h-[min(78vh,640px)] w-full max-w-6xl grid-cols-1 overflow-hidden shadow-[0_28px_90px_-20px_rgba(28,36,48,0.55)] lg:grid-cols-2"
+          onClick={(e) => e.stopPropagation()}
+        >
+          {/* Spine */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-y-8 left-1/2 z-20 hidden w-px -translate-x-1/2 bg-gradient-to-b from-transparent via-[#1c2430]/25 to-transparent lg:block"
+          />
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-y-0 left-1/2 z-10 hidden w-20 -translate-x-1/2 bg-gradient-to-r from-transparent via-[#1c2430]/[0.07] to-transparent lg:block"
+          />
+
+          {/* Left page — media */}
+          <div className="relative flex h-full min-h-0 flex-col overflow-hidden bg-[#f4f5f2] p-4 sm:p-6 lg:rounded-l-[2px] lg:shadow-[inset_-18px_0_28px_-20px_rgba(28,36,48,0.12)]">
+            <header className="mb-3 flex shrink-0 items-start justify-between gap-4">
+              <p className="font-[family-name:var(--font-geist-mono)] text-[10px] uppercase tracking-[0.28em] text-[#5c6b5e]">
+                Gallery · Plate {mediaNumber}
+              </p>
+              <span className="font-[family-name:var(--font-geist-mono)] text-[10px] uppercase tracking-[0.22em] text-[#8a9488]">
+                {mediaNumber} / {mediaTotal}
+              </span>
+            </header>
+
+            <div className="relative flex min-h-0 flex-1 items-center justify-center overflow-hidden bg-[#1c2430]/[0.04]">
+              {hasMultipleMedia && (
+                <button
+                  type="button"
+                  onClick={goToPrevMedia}
+                  className={cn(mediaNavBtn, "left-3")}
+                  aria-label="Previous item"
+                >
+                  <ChevronLeft className="h-5 w-5" />
+                </button>
+              )}
+
+              <div className="flex h-full w-full items-center justify-center p-2 sm:p-4">
+                {currentMedia.type === "video" ? (
+                  <video
+                    key={currentMedia.src}
+                    src={currentMedia.src}
+                    controls
+                    playsInline
+                    className="h-full w-full object-contain"
+                  >
+                    Your browser does not support the video tag.
+                  </video>
+                ) : (
+                  <img
+                    key={currentMedia.src}
+                    src={currentMedia.src}
+                    alt={`${project.title} screenshot ${mediaIndex + 1}`}
+                    className="h-full w-full object-contain"
+                  />
+                )}
+              </div>
+
+              {hasMultipleMedia && (
+                <button
+                  type="button"
+                  onClick={goToNextMedia}
+                  className={cn(mediaNavBtn, "right-3")}
+                  aria-label="Next item"
+                >
+                  <ChevronRight className="h-5 w-5" />
+                </button>
+              )}
+            </div>
+
+            {hasMultipleMedia && (
+              <div className="mt-3 flex shrink-0 gap-2 overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+                {media.map((item, index) => (
+                  <button
+                    key={`${item.type}-${item.src}-${index}`}
+                    type="button"
+                    onClick={() => setMediaIndex(index)}
+                    className={cn(
+                      "relative h-12 w-16 shrink-0 overflow-hidden border bg-[#fafaf7] transition-opacity",
+                      index === mediaIndex
+                        ? "border-[#2d4a3e] opacity-100"
+                        : "border-[#1c2430]/15 opacity-55 hover:opacity-100",
+                    )}
+                  >
+                    {item.type === "video" ? (
+                      <>
+                        <video
+                          src={item.src}
+                          muted
+                          playsInline
+                          preload="metadata"
+                          className="h-full w-full object-cover"
+                        />
+                        <span className="absolute inset-0 flex items-center justify-center bg-[#1c2430]/35">
+                          <Play className="h-3.5 w-3.5 fill-[#fafaf7] text-[#fafaf7]" />
+                        </span>
+                      </>
+                    ) : (
+                      <img
+                        src={item.src}
+                        alt=""
+                        className="h-full w-full object-cover"
+                      />
+                    )}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Right page — description */}
+          <aside className="relative flex h-full min-h-0 flex-col overflow-hidden bg-[#fafaf7] lg:rounded-r-[2px] lg:shadow-[inset_18px_0_28px_-20px_rgba(28,36,48,0.1)]">
+            <div className="flex shrink-0 items-center justify-between gap-4 border-b border-[#1c2430]/10 px-5 py-3 lg:px-7">
+              <p className="font-[family-name:var(--font-geist-mono)] text-[10px] uppercase tracking-[0.28em] text-[#5c6b5e]">
+                Folio · {projectNumber}
+              </p>
+
+              <div className="flex shrink-0 items-center gap-2">
+                {hasMultipleProjects && (
+                  <>
+                    <button
+                      type="button"
+                      onClick={goToPrevProject}
+                      className={navBtn}
+                      aria-label="Previous project"
+                    >
+                      <ChevronLeft className="h-4 w-4" />
+                    </button>
+                    <button
+                      type="button"
+                      onClick={goToNextProject}
+                      className={navBtn}
+                      aria-label="Next project"
+                    >
+                      <ChevronRight className="h-4 w-4" />
+                    </button>
+                  </>
+                )}
+                <button
+                  type="button"
+                  onClick={() => onOpenChange(false)}
+                  className={navBtn}
+                  aria-label="Close gallery"
+                >
+                  <X className="h-4 w-4" />
+                </button>
+              </div>
+            </div>
+
+            <div
+              key={project.title}
+              className="flex min-h-0 flex-1 flex-col overflow-hidden px-5 py-5 lg:px-7"
+            >
+              {project.status && (
+                <p className="mb-2 shrink-0 font-[family-name:var(--font-book-sans)] text-xs font-semibold uppercase tracking-[0.2em] text-[#2d4a3e]">
+                  {project.status}
+                </p>
+              )}
+
+              <h2 className="mb-3 shrink-0 break-words font-[family-name:var(--font-book-display)] text-[clamp(1.4rem,2.4vw,1.9rem)] leading-[1.12] tracking-[-0.02em] text-[#1c2430]">
+                {project.title}
+              </h2>
+
+              {project.description && (
+                <p className="min-h-0 flex-1 overflow-hidden break-words font-[family-name:var(--font-book-sans)] text-sm leading-[1.65] text-[#4a554c] [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:8]">
+                  {project.description}
+                </p>
+              )}
+
+              {project.stacks && project.stacks.length > 0 && (
+                <div className="mt-4 shrink-0 border-t border-[#1c2430]/10 pt-4">
+                  <p className="mb-2 font-[family-name:var(--font-book-sans)] text-xs font-semibold uppercase tracking-[0.2em] text-[#2d4a3e]">
+                    Built with
+                  </p>
+                  <ul className="flex flex-wrap gap-x-3 gap-y-1.5">
+                    {project.stacks.slice(0, 10).map((stack) => (
+                      <li
+                        key={stack}
+                        className="flex items-center gap-1.5 font-[family-name:var(--font-geist-mono)] text-[10px] uppercase tracking-[0.12em] text-[#4a554c]"
+                      >
+                        <span
+                          aria-hidden
+                          className="inline-block h-1 w-1 shrink-0 rounded-full bg-[#2d4a3e]"
+                        />
+                        {stack}
+                      </li>
+                    ))}
+                    {project.stacks.length > 10 && (
+                      <li className="font-[family-name:var(--font-geist-mono)] text-[10px] uppercase tracking-[0.12em] text-[#8a9488]">
+                        +{project.stacks.length - 10}
+                      </li>
+                    )}
+                  </ul>
+                </div>
+              )}
+            </div>
+
+            <div className="flex shrink-0 flex-wrap items-center justify-between gap-3 border-t border-[#1c2430]/10 px-5 py-3 font-[family-name:var(--font-geist-mono)] text-[10px] uppercase tracking-[0.18em] text-[#8a9488] lg:px-7">
+              <div className="flex flex-wrap gap-x-4 gap-y-1">
+                <span>Esc close</span>
+                {hasMultipleMedia && <span>← / → plates</span>}
+                {hasMultipleProjects && <span>Shift + ← / → folio</span>}
+              </div>
+              <span className="font-[family-name:var(--font-book-display)] text-xl italic text-[#2d4a3e]/60">
+                {projectNumber}
+              </span>
+            </div>
+          </aside>
+        </div>
+      </div>
+  ) : null;
+
+  const darkDialog = !isBook ? (
     <div
-      className="fixed inset-0 z-[100] flex h-full flex-col bg-black font-[family-name:var(--font-geist-sans)] lg:flex-row"
+      className="fixed inset-0 z-[200] flex h-full flex-col bg-black font-[family-name:var(--font-geist-sans)] lg:flex-row"
       role="dialog"
       aria-modal="true"
       aria-label={`${project.title} media gallery`}
@@ -170,7 +419,7 @@ export default function ProjectImageGallery({
             <button
               type="button"
               onClick={goToPrevMedia}
-              className="absolute left-4 z-10 flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-black/40 text-zinc-300 transition-colors hover:bg-black/60 hover:text-white"
+              className={cn(mediaNavBtn, "left-4")}
               aria-label="Previous item"
             >
               <ChevronLeft className="h-5 w-5" />
@@ -204,7 +453,7 @@ export default function ProjectImageGallery({
             <button
               type="button"
               onClick={goToNextMedia}
-              className="absolute right-4 z-10 flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-black/40 text-zinc-300 transition-colors hover:bg-black/60 hover:text-white"
+              className={cn(mediaNavBtn, "right-4")}
               aria-label="Next item"
             >
               <ChevronRight className="h-5 w-5" />
@@ -271,7 +520,7 @@ export default function ProjectImageGallery({
                   <button
                     type="button"
                     onClick={goToPrevProject}
-                    className="flex h-8 w-8 items-center justify-center rounded-full border border-zinc-700 text-zinc-400 transition-colors hover:border-zinc-500 hover:text-white"
+                    className={navBtn}
                     aria-label="Previous project"
                   >
                     <ChevronLeft className="h-4 w-4" />
@@ -279,7 +528,7 @@ export default function ProjectImageGallery({
                   <button
                     type="button"
                     onClick={goToNextProject}
-                    className="flex h-8 w-8 items-center justify-center rounded-full border border-zinc-700 text-zinc-400 transition-colors hover:border-zinc-500 hover:text-white"
+                    className={navBtn}
                     aria-label="Next project"
                   >
                     <ChevronRight className="h-4 w-4" />
@@ -289,7 +538,7 @@ export default function ProjectImageGallery({
               <button
                 type="button"
                 onClick={() => onOpenChange(false)}
-                className="flex h-8 w-8 items-center justify-center rounded-full border border-zinc-700 text-zinc-400 transition-colors hover:border-zinc-500 hover:text-white"
+                className={navBtn}
                 aria-label="Close gallery"
               >
                 <X className="h-4 w-4" />
@@ -338,5 +587,9 @@ export default function ProjectImageGallery({
         </div>
       </aside>
     </div>
-  );
+  ) : null;
+
+  if (typeof document === "undefined") return null;
+
+  return createPortal(isBook ? bookDialog : darkDialog, document.body);
 }

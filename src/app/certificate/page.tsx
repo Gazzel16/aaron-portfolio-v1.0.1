@@ -1,4 +1,4 @@
-import Certificate from "@/app/(Dashboard-v2)/components/certificates";
+import Certificate from "@/app/(app)/Dashboard-v2/components/certificates";
 import SectionListPage from "@/components/common/SectionListPage";
 import {
   certificate1,

@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import Project from "@/app/(Dashboard-v2)/components/Project";
+import Project from "@/app/(app)/Dashboard-v2/components/Project";
 import ProjectImageGallery, {
   projectHasGalleryMedia,
   type ProjectGalleryItem,

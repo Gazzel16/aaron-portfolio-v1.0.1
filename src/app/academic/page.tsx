@@ -1,4 +1,4 @@
-import Academic from "@/app/(Dashboard-v2)/components/Acedemic";
+import Academic from "@/app/(app)/Dashboard-v2/components/Acedemic";
 import SectionListPage from "@/components/common/SectionListPage";
 import { acedmic1, acedmic2, acedmic3, acedmic4 } from "@/lib/data";
 

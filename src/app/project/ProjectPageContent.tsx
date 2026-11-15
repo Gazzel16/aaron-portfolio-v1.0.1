@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import ProjectList from "@/app/(Dashboard-v2)/components/ProjectList";
+import ProjectList from "@/app/(app)/Dashboard-v2/components/ProjectList";
 import { cn } from "@/lib/utils";
 
 type ProjectFilter =

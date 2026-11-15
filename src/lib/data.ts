@@ -93,21 +93,24 @@ export const work5 = {
 };
 
 export const work6 = {
-  title: "Junior Full Stack Developer",
-  company: "B1G Corporation | Fulltime | Onsite | Muntinlupa City",
-  date: "May 2026 - Current",
-  details:[
-    "Maintained and enhanced an existing high-volume Inventory & Ordering System using Vite and Supabase — fixing bugs and delivering new features for a system handling millions of material requests and millions of PHP in monthly transactions.",
-"Managed production database operations and handled end-to-end application deployment via Vercel, ensuring data integrity and reliability across live environments from staging to production. ",
-"Took ownership of internal requirement meetings, feature planning, and technical decisions, set up and managed Trello for task tracking, led interns, and managed Git branching workflows. ",
+  title: "Jr. Full Stack Developer",
+  company: "B1G Corporation | Full Time | Onsite | Muntinlupa",
+  date: "May 2026 - Present",
+  details: [
+    "Maintain and extend a high-volume Inventory & Ordering System processing millions of material requests and millions of PHP in monthly transactions, shipping features and resolving production bugs across staging and live environments.",
+    "Led end-to-end development of a new Asset Management system, from the ground up through production: built the application, engineered a cross-database integration that syncs employee and asset data with the HRIS, and owned the DigitalOcean deployment infrastructure (Docker, Nginx reverse proxy, server firewall, Discord commit/deploy alerts).",
+    "Lead interns and run requirement meetings, feature planning, and technical decision-making, tracking work in Trello and enforcing a Git branching workflow so the team ships without stepping on each other’s code.",
+    "Partnered with Accounting and executives to reconcile stock discrepancies, then imported and validated [100,000+] stock records into the system’s hub, establishing the verified beginning balance for live inventory.",
+    "Imported and validated a full year of historical sales data (2025 to 2026) into the Key Accounts Sales module, auditing records and resolving discrepancies to keep downstream reports accurate.",
+    "Architected the refactor of the Inventory & Ordering System and HRIS from manual, AI-generated SQL workflows to a layered architecture (Repository, Service, Controller, Route) with Redux state management and version-controlled migrations, making deployments repeatable and the codebase easier to extend.",
   ],
   isFeatured: true,
-}
+};
 
 export const work7 = {
   title: "Full Stack Web Developer",
   company: "Deepsky Nation | Contract | Freelance | Remote | Muntinlupa City",
-  date: "June 2026 - Current",
+  date: "June 2026 - September 2026",
   details: [
     "Developed a full-stack e-commerce website for Deepsky Nation, a lifestyle brand selling T-shirts, apparel, and branded merchandise to customers online.",
     "Built a responsive product catalog with category filtering, product detail pages, image galleries, and size/variant selection so customers can browse and shop across devices.",
@@ -130,8 +133,16 @@ export const work7 = {
 }
 
 export const tech1 = {
-  title: "Android Development",
-  stacks: ["Java", "Kotlin", "XML", "Room Database", "Jetpack Compose"],
+  title: "Mobile Development",
+  stacks: [
+    "Expo",
+    "React Native",
+    "Java",
+    "Kotlin",
+    "XML",
+    "Room Database",
+    "Jetpack Compose",
+  ],
   isFeatured: true,
 };
 
@@ -142,6 +153,7 @@ export const tech2 = {
     "Redux",
     "SHADCN",
     "Typescript",
+    "Tailwind",
     "Material UI",
     "Javascript",
   ],
@@ -159,6 +171,7 @@ export const tech4 = {
   stacks: [
     "MySQL",
     "PostgreSQL",
+    "Supabase",
     "Room Database",
     "Firebase RTDB",
     "Firebase Firestore",
@@ -578,6 +591,60 @@ export const project12 ={
   logo: "/images/templato-logo.png",
  }
 
+ export const project16 = {
+  title: "Asset Management System",
+  status: "B1G Corporation",
+  description:
+    "Led end-to-end development of B1G Corporation's Asset Management System from the ground up through production — covering the full asset lifecycle from request and issuance to transfer, return, repair, and disposal. Built multi-step approval workflows (Department Head → Operations Manager → Head of Operations), procurement flows (asset needs → purchase requests → purchase orders → receiving), kit/BOM inventory, QR-based physical counts, Excel bulk import, role-based access, and a cross-database HRIS sync for employee and asset data. Owned DigitalOcean deployment with Docker, Nginx, and Discord commit/deploy alerts.",
+  stacks: [
+    "Next.js",
+    "TypeScript",
+    "Redux",
+    "Tailwind CSS",
+    "Prisma",
+    "PostgreSQL",
+    "Supabase",
+    "Digital Ocean",
+  ],
+  logo: "/images/b1g-logo.png",
+  isCompanyProject: true,
+  links: [
+    {
+      label: "Live Project",
+      href: "https://b1gassets.online/",
+    },
+  ],
+  hasBackground: true,
+  isFeatured: true,
+};
+
+export const project17 = {
+  title: "B1G Fuel — RBAC Warehouse, Hub Ops & Order Booking",
+  status: "B1G Corporation",
+  description:
+    "Led the architecture and end-to-end development of a working proposal prototype for B1G Corporation's multi-tenant fuel warehouse and hub operations system — covering companies, hubs/facilities, suppliers, purchase orders and receiving, inventory with stock movements, material requests between warehouses and hubs, and a consumer booking flow so clients can book orders. Built for internal proposal and workflow demonstration only; a third-party company will provide a separate production system. Designed the layered RBAC and dashboard permission model: global Super Admin vs company-scoped roles, page-level dashboard grants, and action permissions (view/add/edit/delete) with all / company / own scopes — so Super Admin configures role templates while company supervisors can provision staff and assign per-person dashboard subsets without rewriting the shared role.",
+  stacks: [
+    "Next.js",
+    "TypeScript",
+    "Redux",
+    "Tailwind CSS",
+    "shadcn/ui",
+    "Express",
+    "Prisma",
+    "PostgreSQL",
+    "Supabase",
+  ],
+  logo: "/images/b1g-logo.png",
+  isCompanyProject: true,
+  links: [
+    {
+      label: "Live Project",
+      href: "https://no-reply.com/",
+    },
+  ],
+  hasBackground: true,
+  isFeatured: true,
+};
 export const happyClient1Project1 = {
   image: [
     "/images/dev-hive1.png",

@@ -542,3 +542,402 @@
     animation: none;
   }
 }
+
+/* Dashboard-v3 — modern open-book hero */
+@keyframes book-page-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-2.5%) rotateY(8deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) rotateY(0);
+  }
+}
+
+@keyframes book-page-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(2.5%) rotateY(-8deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) rotateY(0);
+  }
+}
+
+@keyframes book-line-in {
+  from {
+    opacity: 0;
+    transform: translateX(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.book-spread {
+  perspective: 1400px;
+  transform-style: preserve-3d;
+}
+
+.book-page-left {
+  animation: book-page-in-left 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+  transform-origin: right center;
+}
+
+.book-page-right {
+  animation: book-page-in-right 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.08s both;
+  transform-origin: left center;
+}
+
+.book-line {
+  animation: book-line-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .book-page-left,
+  .book-page-right,
+  .book-line {
+    animation: none;
+  }
+}
+
+/* BookIntro — double doors + typewriter */
+@keyframes book-intro-fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* Stepped “tick” open — hold, jump, hold, jump */
+@keyframes book-intro-door-open-left {
+  0%,
+  8% {
+    transform: translateX(0) rotateY(0deg);
+    box-shadow: 8px 0 28px -12px rgba(28, 36, 48, 0.35);
+  }
+  12%,
+  22% {
+    transform: translateX(-18%) rotateY(-6deg);
+  }
+  26%,
+  36% {
+    transform: translateX(-36%) rotateY(-12deg);
+  }
+  40%,
+  50% {
+    transform: translateX(-54%) rotateY(-18deg);
+  }
+  54%,
+  64% {
+    transform: translateX(-72%) rotateY(-22deg);
+  }
+  68%,
+  78% {
+    transform: translateX(-88%) rotateY(-26deg);
+  }
+  82%,
+  100% {
+    transform: translateX(-102%) rotateY(-28deg);
+    box-shadow: 0 0 0 transparent;
+  }
+}
+
+@keyframes book-intro-door-open-right {
+  0%,
+  8% {
+    transform: translateX(0) rotateY(0deg);
+    box-shadow: -8px 0 28px -12px rgba(28, 36, 48, 0.35);
+  }
+  12%,
+  22% {
+    transform: translateX(18%) rotateY(6deg);
+  }
+  26%,
+  36% {
+    transform: translateX(36%) rotateY(12deg);
+  }
+  40%,
+  50% {
+    transform: translateX(54%) rotateY(18deg);
+  }
+  54%,
+  64% {
+    transform: translateX(72%) rotateY(22deg);
+  }
+  68%,
+  78% {
+    transform: translateX(88%) rotateY(26deg);
+  }
+  82%,
+  100% {
+    transform: translateX(102%) rotateY(28deg);
+    box-shadow: 0 0 0 transparent;
+  }
+}
+
+@keyframes book-intro-caret {
+  0%,
+  45% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.book-intro-root {
+  overflow: hidden;
+}
+
+.book-intro-root[data-phase="exit"] {
+  animation: book-intro-fade-out 0.4s ease-in both;
+}
+
+.book-intro-stage {
+  perspective: 1400px;
+  transform-style: preserve-3d;
+}
+
+.book-intro-door {
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  will-change: transform;
+}
+
+.book-intro-door-left {
+  transform-origin: left center;
+  transform: translateX(0) rotateY(0deg);
+}
+
+.book-intro-door-right {
+  transform-origin: right center;
+  transform: translateX(0) rotateY(0deg);
+}
+
+/* Animate open once (ticking steps), then park open for later phases */
+.book-intro-root[data-doors="opening"] .book-intro-door-left {
+  animation: book-intro-door-open-left 1.6s linear forwards;
+}
+
+.book-intro-root[data-doors="opening"] .book-intro-door-right {
+  animation: book-intro-door-open-right 1.6s linear 0.06s forwards;
+}
+
+.book-intro-root[data-doors="open"] .book-intro-door-left {
+  transform: translateX(-102%) rotateY(-28deg);
+}
+
+.book-intro-root[data-doors="open"] .book-intro-door-right {
+  transform: translateX(102%) rotateY(28deg);
+}
+
+.book-intro-caret {
+  display: inline-block;
+  width: 0.08em;
+  height: 0.9em;
+  margin-left: 0.08em;
+  vertical-align: -0.05em;
+  background: currentColor;
+  animation: book-intro-caret 0.9s step-end infinite;
+}
+
+/* Bear roar — short, punchy, logo-fierce (not cute wiggle) */
+@keyframes profile-bear-head-roar {
+  0%,
+  100% {
+    transform: scale(1) translateY(0);
+  }
+  15% {
+    transform: scale(1.04) translateY(-2px);
+  }
+  35% {
+    transform: scale(1.08) translateY(1px);
+  }
+  55% {
+    transform: scale(1.03) translateY(-1px);
+  }
+  75% {
+    transform: scale(1.06) translateY(0);
+  }
+}
+
+@keyframes profile-bear-jaw-roar {
+  0%,
+  100% {
+    transform: translateY(0) scaleY(1);
+  }
+  20%,
+  45% {
+    transform: translateY(3px) scaleY(1.08);
+  }
+  30% {
+    transform: translateY(5px) scaleY(1.12);
+  }
+}
+
+@keyframes profile-bear-burst {
+  0% {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  20% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  55% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.12);
+  }
+}
+
+@keyframes profile-bear-brow {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  35% {
+    transform: translateY(3px);
+  }
+}
+
+.profile-bear-head.is-roaring {
+  animation: profile-bear-head-roar 0.75s ease-out 2;
+  transform-origin: 100px 100px;
+  transform-box: fill-box;
+}
+
+.profile-bear-jaw.is-roaring {
+  animation: profile-bear-jaw-roar 0.75s ease-out 2;
+  transform-origin: 100px 140px;
+  transform-box: fill-box;
+}
+
+.profile-bear-roar-burst {
+  opacity: 0;
+}
+
+.profile-bear-roar-burst.is-roaring {
+  animation: profile-bear-burst 0.55s ease-out 2;
+  transform-origin: 100px 100px;
+}
+
+.profile-bear-brow.is-roaring {
+  animation: profile-bear-brow 0.75s ease-out 2;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .book-intro-root[data-phase="exit"],
+  .book-intro-root[data-doors="opening"] .book-intro-door-left,
+  .book-intro-root[data-doors="opening"] .book-intro-door-right,
+  .book-intro-caret,
+  .profile-bear-head.is-roaring,
+  .profile-bear-jaw.is-roaring,
+  .profile-bear-roar-burst.is-roaring,
+  .profile-bear-brow.is-roaring {
+    animation: none;
+  }
+
+  .book-intro-root[data-doors="opening"] .book-intro-door-left,
+  .book-intro-root[data-doors="open"] .book-intro-door-left {
+    transform: translateX(-102%);
+  }
+
+  .book-intro-root[data-doors="opening"] .book-intro-door-right,
+  .book-intro-root[data-doors="open"] .book-intro-door-right {
+    transform: translateX(102%);
+  }
+}
+
+/* Contact — torn paper calling card */
+.torn-paper {
+  background-color: #f7f3ea;
+  filter: drop-shadow(0 14px 28px rgba(28, 36, 48, 0.16));
+  clip-path: polygon(
+    0% 2.5%,
+    2% 0.8%,
+    5% 2.2%,
+    8% 0.4%,
+    12% 2.8%,
+    16% 0.6%,
+    20% 2%,
+    24% 0.2%,
+    28% 2.4%,
+    33% 0.8%,
+    38% 2.6%,
+    43% 0.4%,
+    48% 2.2%,
+    53% 0.6%,
+    58% 2.8%,
+    63% 0.3%,
+    68% 2.1%,
+    73% 0.7%,
+    78% 2.5%,
+    83% 0.5%,
+    88% 2.3%,
+    93% 0.9%,
+    97% 2%,
+    100% 0.6%,
+    99.2% 6%,
+    100% 11%,
+    98.8% 17%,
+    100% 23%,
+    99% 29%,
+    100% 36%,
+    98.6% 42%,
+    100% 49%,
+    99.1% 55%,
+    100% 62%,
+    98.7% 69%,
+    100% 76%,
+    99% 83%,
+    100% 90%,
+    98.8% 96%,
+    100% 100%,
+    96% 98.2%,
+    91% 99.6%,
+    86% 97.8%,
+    81% 99.4%,
+    76% 98%,
+    71% 99.7%,
+    66% 97.6%,
+    61% 99.2%,
+    56% 98.1%,
+    51% 99.5%,
+    46% 97.9%,
+    41% 99.3%,
+    36% 98%,
+    31% 99.6%,
+    26% 97.7%,
+    21% 99.1%,
+    16% 98.3%,
+    11% 99.5%,
+    6% 97.9%,
+    2% 99.2%,
+    0% 97.5%,
+    1.2% 92%,
+    0% 86%,
+    1.4% 80%,
+    0% 73%,
+    1.1% 66%,
+    0% 59%,
+    1.3% 52%,
+    0% 45%,
+    1% 38%,
+    0% 31%,
+    1.4% 24%,
+    0% 17%,
+    1.2% 10%,
+    0% 4%
+  );
+}
