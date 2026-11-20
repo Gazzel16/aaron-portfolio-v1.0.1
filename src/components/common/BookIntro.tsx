@@ -12,7 +12,7 @@ const syne = Syne({
 
 const SESSION_KEY = "book-intro-seen";
 
-type BookIntroPhase = "idle" | "roar" | "type" | "hold" | "exit";
+type BookIntroPhase = "idle" | "fly" | "type" | "hold" | "exit";
 
 export type BookIntroProps = {
   description: string;
@@ -75,11 +75,11 @@ export default function BookIntro({
       };
     }
 
-    const tRoar = window.setTimeout(() => setPhase("roar"), 400);
-    const tType = window.setTimeout(() => setPhase("type"), 2200);
+    const tFly = window.setTimeout(() => setPhase("fly"), 400);
+    const tType = window.setTimeout(() => setPhase("type"), 2400);
 
     return () => {
-      window.clearTimeout(tRoar);
+      window.clearTimeout(tFly);
       window.clearTimeout(tType);
       document.body.style.overflow = "";
     };
@@ -120,12 +120,14 @@ export default function BookIntro({
 
   if (!mounted || !visible) return null;
 
-  const roaring = phase === "roar";
+  const flying = phase === "fly";
+  const glitching = phase === "idle" || phase === "fly";
 
   return createPortal(
     <div
       className={`${syne.variable} book-intro-root fixed inset-0 z-[300] flex items-center justify-center bg-[#e8ebe6]`}
       data-phase={phase}
+      data-glitch={glitching ? "hard" : "soft"}
       role="dialog"
       aria-modal="true"
       aria-label="Introduction"
@@ -134,14 +136,19 @@ export default function BookIntro({
         aria-hidden
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_20%_0%,rgba(45,74,62,0.08),transparent_50%),radial-gradient(ellipse_at_80%_100%,rgba(28,36,48,0.06),transparent_45%)]"
       />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-[0.35] [background-image:url('data:image/svg+xml,%3Csvg viewBox=%220 0 256 256%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22n%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.85%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22 opacity=%220.05%22/%3E%3C/svg%3E')]"
-      />
 
-      <div className="relative z-0 flex max-w-md flex-col items-center px-6 text-center">
+      {/* TV screen glitch layers */}
+      <div aria-hidden className="book-intro-tv pointer-events-none absolute inset-0 z-[1]">
+        <div className="book-intro-tv-rgb" />
+        <div className="book-intro-tv-tear" />
+        <div className="book-intro-tv-scanlines" />
+        <div className="book-intro-tv-noise" />
+        <div className="book-intro-tv-vignette" />
+      </div>
+
+      <div className="relative z-[2] flex max-w-md flex-col items-center px-6 text-center">
         <BearRoarAnimation
-          roaring={roaring}
+          flying={flying}
           className="mb-5 h-40 w-56 sm:h-48 sm:w-72"
         />
 
