@@ -850,7 +850,8 @@
   position: relative;
 }
 
-.book-intro-root[data-typing="true"] .book-intro-copy {
+.book-intro-root[data-typing="true"] .book-intro-copy,
+.book-intro-copy[data-typing="true"] {
   animation: book-intro-copy-pulse 0.9s steps(2, end) infinite;
 }
 
@@ -1098,6 +1099,43 @@
 
   .book-intro-tv-scanlines {
     opacity: 0.25;
+  }
+}
+
+/* Ask Goru — floating launcher */
+@keyframes ask-goru-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes ask-goru-answer-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ask-goru-float {
+  animation: ask-goru-float 3.2s ease-in-out infinite;
+}
+
+.ask-goru-answer {
+  animation: ask-goru-answer-in 0.28s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ask-goru-float,
+  .ask-goru-answer {
+    animation: none;
   }
 }
 

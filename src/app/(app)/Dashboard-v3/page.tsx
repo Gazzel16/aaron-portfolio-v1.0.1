@@ -62,6 +62,7 @@ import CatAndDogAnimation from "@/components/common/CatAndDogAnimation";
 import BookIntro from "@/components/common/BookIntro";
 import GithubContributionBook from "./components/GithubContributionBook";
 import PortfolioChat from "./components/PortfolioChat";
+import AskGoru from "./components/AskGoru";
 
 const skillGroups = [
   tech1,
@@ -180,6 +181,7 @@ export default function DashboardV3() {
       />
 
       <Header />
+      <AskGoru />
       <PortfolioChat />
 
       <section
