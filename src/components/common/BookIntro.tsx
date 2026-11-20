@@ -11,6 +11,7 @@ const syne = Syne({
 });
 
 const SESSION_KEY = "book-intro-seen";
+const GLITCH_CHARS = "░▒▓█ ent@#*+/<>";
 
 type BookIntroPhase = "idle" | "fly" | "type" | "hold" | "exit";
 
@@ -20,6 +21,14 @@ export type BookIntroProps = {
   onComplete?: () => void;
 };
 
+function delayForChar(char: string, index: number) {
+  if (char === "." || char === "!" || char === "?") return 160;
+  if (char === "," || char === ";" || char === ":") return 90;
+  if (char === " ") return 36;
+  if (index % 11 === 0) return 70; // signal stutter
+  return 18 + (index % 4) * 5;
+}
+
 export default function BookIntro({
   description,
   oncePerSession = true,
@@ -28,7 +37,7 @@ export default function BookIntro({
   const [mounted, setMounted] = useState(false);
   const [visible, setVisible] = useState(false);
   const [phase, setPhase] = useState<BookIntroPhase>("idle");
-  const [typedDescription, setTypedDescription] = useState("");
+  const [revealed, setRevealed] = useState(0);
   const [typing, setTyping] = useState(false);
 
   const finish = useCallback(() => {
@@ -66,7 +75,7 @@ export default function BookIntro({
     document.body.style.overflow = "hidden";
 
     if (reduceMotion) {
-      setTypedDescription(description);
+      setRevealed(description.length);
       setPhase("hold");
       const done = window.setTimeout(() => finish(), 2000);
       return () => {
@@ -88,21 +97,34 @@ export default function BookIntro({
   useEffect(() => {
     if (phase !== "type") return;
 
-    setTypedDescription("");
+    setRevealed(0);
     setTyping(true);
 
     let index = 0;
-    const timer = window.setInterval(() => {
+    let timer: number | undefined;
+    let cancelled = false;
+
+    const tick = () => {
+      if (cancelled) return;
       index += 1;
-      setTypedDescription(description.slice(0, index));
+      setRevealed(index);
+
       if (index >= description.length) {
-        window.clearInterval(timer);
         setTyping(false);
         setPhase("hold");
+        return;
       }
-    }, 28);
 
-    return () => window.clearInterval(timer);
+      const nextChar = description[index] ?? "";
+      timer = window.setTimeout(() => tick(), delayForChar(nextChar, index));
+    };
+
+    timer = window.setTimeout(() => tick(), 40);
+
+    return () => {
+      cancelled = true;
+      if (timer) window.clearTimeout(timer);
+    };
   }, [phase, description]);
 
   // Hold the finished plate for 2s, then fade to dashboard
@@ -122,12 +144,14 @@ export default function BookIntro({
 
   const flying = phase === "fly";
   const glitching = phase === "idle" || phase === "fly";
+  const chars = description.slice(0, revealed).split("");
 
   return createPortal(
     <div
       className={`${syne.variable} book-intro-root fixed inset-0 z-[300] flex items-center justify-center bg-[#e8ebe6]`}
       data-phase={phase}
       data-glitch={glitching ? "hard" : "soft"}
+      data-typing={typing ? "true" : "false"}
       role="dialog"
       aria-modal="true"
       aria-label="Introduction"
@@ -138,7 +162,10 @@ export default function BookIntro({
       />
 
       {/* TV screen glitch layers */}
-      <div aria-hidden className="book-intro-tv pointer-events-none absolute inset-0 z-[1]">
+      <div
+        aria-hidden
+        className="book-intro-tv pointer-events-none absolute inset-0 z-[1]"
+      >
         <div className="book-intro-tv-rgb" />
         <div className="book-intro-tv-tear" />
         <div className="book-intro-tv-scanlines" />
@@ -152,8 +179,32 @@ export default function BookIntro({
           className="mb-5 h-40 w-56 sm:h-48 sm:w-72"
         />
 
-        <p className="min-h-[3.2em] max-w-[32ch] font-[family-name:var(--font-book-sans)] text-base leading-relaxed text-[#1c2430] sm:text-lg">
-          {typedDescription}
+        <p
+          className="book-intro-copy min-h-[3.2em] max-w-[32ch] font-[family-name:var(--font-book-sans)] text-base leading-relaxed text-[#1c2430] sm:text-lg"
+          aria-live="polite"
+        >
+          {chars.map((char, i) => {
+            const isLatest = i === revealed - 1 && typing;
+            const glitchGlyph =
+              isLatest &&
+              char.trim() !== "" &&
+              GLITCH_CHARS[(i * 3) % GLITCH_CHARS.length];
+
+            return (
+              <span
+                key={`${i}-${char}`}
+                className={`book-intro-glyph ${isLatest ? "is-resolving" : ""}`}
+                data-char={char === " " ? "space" : undefined}
+              >
+                {char === " " ? "\u00a0" : char}
+                {glitchGlyph ? (
+                  <span className="book-intro-glyph-ghost" aria-hidden>
+                    {glitchGlyph}
+                  </span>
+                ) : null}
+              </span>
+            );
+          })}
           {typing && <span className="book-intro-caret" aria-hidden />}
         </p>
       </div>

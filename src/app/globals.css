@@ -790,6 +790,99 @@
   animation: book-intro-caret 0.9s step-end infinite;
 }
 
+@keyframes book-intro-glyph-in {
+  0% {
+    opacity: 0;
+    transform: translateX(-3px) skewX(-10deg);
+    text-shadow:
+      3px 0 #e23b3b,
+      -3px 0 #3b6fe2;
+    filter: blur(1.2px);
+  }
+  28% {
+    opacity: 1;
+    transform: translateX(2px) skewX(6deg);
+    text-shadow:
+      -4px 0 #e23b3b,
+      4px 0 #3b6fe2;
+    filter: blur(0.4px);
+  }
+  52% {
+    transform: translateX(-1px) skewX(-3deg);
+    text-shadow:
+      2px 0 #e23b3b,
+      -2px 0 #3b6fe2;
+    filter: none;
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+    text-shadow: none;
+    filter: none;
+  }
+}
+
+@keyframes book-intro-glyph-ghost {
+  0%,
+  40% {
+    opacity: 0.85;
+    transform: translate(-50%, -55%) skewX(-8deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-20%, -70%) skewX(4deg);
+  }
+}
+
+@keyframes book-intro-copy-pulse {
+  0%,
+  100% {
+    text-shadow: none;
+  }
+  40% {
+    text-shadow:
+      1px 0 rgba(226, 59, 59, 0.35),
+      -1px 0 rgba(59, 111, 226, 0.35);
+  }
+}
+
+.book-intro-copy {
+  position: relative;
+}
+
+.book-intro-root[data-typing="true"] .book-intro-copy {
+  animation: book-intro-copy-pulse 0.9s steps(2, end) infinite;
+}
+
+.book-intro-glyph {
+  position: relative;
+  display: inline-block;
+  animation: book-intro-glyph-in 0.32s steps(2, end) both;
+}
+
+.book-intro-glyph[data-char="space"] {
+  animation: none;
+  width: 0.28em;
+}
+
+.book-intro-glyph.is-resolving {
+  z-index: 1;
+}
+
+.book-intro-glyph-ghost {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: #2d4a3e;
+  opacity: 0;
+  pointer-events: none;
+  animation: book-intro-glyph-ghost 0.22s steps(2, end) both;
+  text-shadow:
+    2px 0 #e23b3b,
+    -2px 0 #3b6fe2;
+}
+
 .book-intro-tv {
   mix-blend-mode: multiply;
 }
@@ -978,7 +1071,10 @@
 @media (prefers-reduced-motion: reduce) {
   .book-intro-root[data-phase="exit"],
   .book-intro-root[data-glitch="hard"],
+  .book-intro-root[data-typing="true"] .book-intro-copy,
   .book-intro-caret,
+  .book-intro-glyph,
+  .book-intro-glyph-ghost,
   .book-intro-tv-scanlines,
   .book-intro-tv-noise,
   .book-intro-tv-rgb,
@@ -991,7 +1087,8 @@
   }
 
   .book-intro-tv-rgb,
-  .book-intro-tv-tear {
+  .book-intro-tv-tear,
+  .book-intro-glyph-ghost {
     opacity: 0;
   }
 
