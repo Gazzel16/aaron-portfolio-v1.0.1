@@ -2,14 +2,8 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
-import { Instrument_Serif, Syne } from "next/font/google";
+import { Syne } from "next/font/google";
 import BearRoarAnimation from "@/components/common/BearRoarAnimation";
-
-const instrumentSerif = Instrument_Serif({
-  weight: "400",
-  subsets: ["latin"],
-  variable: "--font-book-display",
-});
 
 const syne = Syne({
   subsets: ["latin"],
@@ -18,31 +12,24 @@ const syne = Syne({
 
 const SESSION_KEY = "book-intro-seen";
 
-type BookIntroPhase = "closed" | "open" | "roar" | "type" | "hold" | "exit";
-type DoorsState = "closed" | "opening" | "open";
+type BookIntroPhase = "idle" | "roar" | "type" | "hold" | "exit";
 
 export type BookIntroProps = {
-  title: string;
-  subtitle: string;
+  description: string;
   oncePerSession?: boolean;
   onComplete?: () => void;
 };
 
 export default function BookIntro({
-  title,
-  subtitle,
+  description,
   oncePerSession = true,
   onComplete,
 }: BookIntroProps) {
   const [mounted, setMounted] = useState(false);
   const [visible, setVisible] = useState(false);
-  const [phase, setPhase] = useState<BookIntroPhase>("closed");
-  const [doors, setDoors] = useState<DoorsState>("closed");
-  const [typedTitle, setTypedTitle] = useState("");
-  const [typedSubtitle, setTypedSubtitle] = useState("");
-  const [typingTarget, setTypingTarget] = useState<"title" | "subtitle" | null>(
-    null,
-  );
+  const [phase, setPhase] = useState<BookIntroPhase>("idle");
+  const [typedDescription, setTypedDescription] = useState("");
+  const [typing, setTyping] = useState(false);
 
   const finish = useCallback(() => {
     if (oncePerSession) {
@@ -79,9 +66,7 @@ export default function BookIntro({
     document.body.style.overflow = "hidden";
 
     if (reduceMotion) {
-      setTypedTitle(title);
-      setTypedSubtitle(subtitle);
-      setDoors("open");
+      setTypedDescription(description);
       setPhase("hold");
       const done = window.setTimeout(() => finish(), 2000);
       return () => {
@@ -90,57 +75,35 @@ export default function BookIntro({
       };
     }
 
-    const tOpen = window.setTimeout(() => {
-      setPhase("open");
-      setDoors("opening");
-    }, 750);
-    const tDoorsPark = window.setTimeout(() => setDoors("open"), 1550);
-    const tRoar = window.setTimeout(() => setPhase("roar"), 1600);
-    const tType = window.setTimeout(() => setPhase("type"), 3400);
+    const tRoar = window.setTimeout(() => setPhase("roar"), 400);
+    const tType = window.setTimeout(() => setPhase("type"), 2200);
 
     return () => {
-      window.clearTimeout(tOpen);
-      window.clearTimeout(tDoorsPark);
       window.clearTimeout(tRoar);
       window.clearTimeout(tType);
       document.body.style.overflow = "";
     };
-  }, [finish, oncePerSession, onComplete, subtitle, title]);
+  }, [description, finish, oncePerSession, onComplete]);
 
   useEffect(() => {
     if (phase !== "type") return;
 
-    setTypedTitle("");
-    setTypedSubtitle("");
-    setTypingTarget("title");
+    setTypedDescription("");
+    setTyping(true);
 
-    let titleIndex = 0;
-    let subtitleIndex = 0;
-    let subtitleTimer: number | undefined;
-
-    const titleTimer = window.setInterval(() => {
-      titleIndex += 1;
-      setTypedTitle(title.slice(0, titleIndex));
-      if (titleIndex >= title.length) {
-        window.clearInterval(titleTimer);
-        setTypingTarget("subtitle");
-        subtitleTimer = window.setInterval(() => {
-          subtitleIndex += 1;
-          setTypedSubtitle(subtitle.slice(0, subtitleIndex));
-          if (subtitleIndex >= subtitle.length) {
-            window.clearInterval(subtitleTimer);
-            setTypingTarget(null);
-            setPhase("hold");
-          }
-        }, 22);
+    let index = 0;
+    const timer = window.setInterval(() => {
+      index += 1;
+      setTypedDescription(description.slice(0, index));
+      if (index >= description.length) {
+        window.clearInterval(timer);
+        setTyping(false);
+        setPhase("hold");
       }
-    }, 55);
+    }, 28);
 
-    return () => {
-      window.clearInterval(titleTimer);
-      if (subtitleTimer) window.clearInterval(subtitleTimer);
-    };
-  }, [phase, title, subtitle]);
+    return () => window.clearInterval(timer);
+  }, [phase, description]);
 
   // Hold the finished plate for 2s, then fade to dashboard
   useEffect(() => {
@@ -161,12 +124,11 @@ export default function BookIntro({
 
   return createPortal(
     <div
-      className={`${instrumentSerif.variable} ${syne.variable} book-intro-root fixed inset-0 z-[300] flex items-center justify-center bg-[#e8ebe6]`}
+      className={`${syne.variable} book-intro-root fixed inset-0 z-[300] flex items-center justify-center bg-[#e8ebe6]`}
       data-phase={phase}
-      data-doors={doors}
       role="dialog"
       aria-modal="true"
-      aria-label={`${title} introduction`}
+      aria-label="Introduction"
     >
       <div
         aria-hidden
@@ -180,41 +142,13 @@ export default function BookIntro({
       <div className="relative z-0 flex max-w-md flex-col items-center px-6 text-center">
         <BearRoarAnimation
           roaring={roaring}
-          className="mb-5 h-40 w-40 sm:h-48 sm:w-48"
+          className="mb-5 h-40 w-56 sm:h-48 sm:w-72"
         />
 
-        <h1 className="min-h-[1.1em] font-[family-name:var(--font-book-display)] text-[clamp(2.25rem,6vw,3.25rem)] leading-[1] tracking-[-0.02em] text-[#1c2430]">
-          {typedTitle}
-          {typingTarget === "title" && (
-            <span className="book-intro-caret" aria-hidden />
-          )}
-        </h1>
-        <p className="mt-4 min-h-[3.2em] max-w-[30ch] font-[family-name:var(--font-book-sans)] text-sm leading-relaxed text-[#4a554c] sm:text-base">
-          {typedSubtitle}
-          {typingTarget === "subtitle" && (
-            <span className="book-intro-caret" aria-hidden />
-          )}
+        <p className="min-h-[3.2em] max-w-[32ch] font-[family-name:var(--font-book-sans)] text-base leading-relaxed text-[#1c2430] sm:text-lg">
+          {typedDescription}
+          {typing && <span className="book-intro-caret" aria-hidden />}
         </p>
-      </div>
-
-      <div className="book-intro-stage pointer-events-none absolute inset-0 z-10">
-        <div aria-hidden className="book-intro-seam" />
-        <div className="book-intro-door book-intro-door-left absolute inset-y-0 left-0 w-1/2">
-          <div className="book-intro-door-face book-intro-door-face-left relative h-full w-full">
-            <span aria-hidden className="book-intro-door-sheen" />
-            <span aria-hidden className="book-intro-door-groove" />
-            <span aria-hidden className="book-intro-door-edge book-intro-door-edge-left" />
-            <span aria-hidden className="book-intro-door-pull book-intro-door-pull-left" />
-          </div>
-        </div>
-        <div className="book-intro-door book-intro-door-right absolute inset-y-0 right-0 w-1/2">
-          <div className="book-intro-door-face book-intro-door-face-right relative h-full w-full">
-            <span aria-hidden className="book-intro-door-sheen book-intro-door-sheen-right" />
-            <span aria-hidden className="book-intro-door-groove book-intro-door-groove-right" />
-            <span aria-hidden className="book-intro-door-edge book-intro-door-edge-right" />
-            <span aria-hidden className="book-intro-door-pull book-intro-door-pull-right" />
-          </div>
-        </div>
       </div>
     </div>,
     document.body,

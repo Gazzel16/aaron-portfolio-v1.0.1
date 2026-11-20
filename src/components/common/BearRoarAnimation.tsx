@@ -42,7 +42,7 @@ export default function BearRoarAnimation({
         className={`profile-bear-head relative h-full w-full ${roaring ? "is-roaring" : ""}`}
       >
         <img
-          src="/mammal.svg"
+          src="/logo2.svg"
           alt=""
           className="h-full w-full object-contain"
           draggable={false}

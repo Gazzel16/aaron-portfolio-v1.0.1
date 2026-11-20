@@ -175,8 +175,7 @@ export default function DashboardV3() {
       className={`${instrumentSerif.variable} ${syne.variable} bg-[#e8ebe6]`}
     >
       <BookIntro
-        title="Aaron Mercado"
-        subtitle="A builder who turns ideas into working solutions through technology."
+        description="A builder who turns ideas into working solutions through technology."
         oncePerSession={false}
       />
 
